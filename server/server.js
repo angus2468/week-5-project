@@ -23,7 +23,22 @@ const db = new pg.Pool({
 
 //get requests for fetching current data
 
-//post requests for adding information to watched/read DB
+//post requests for adding information sign up
+
+app.post("/userInfo", async (req, res) => {
+
+    const userNameClient = req.body.userName;
+    const passwordClient = req.body.password;
+    const firstNameClient = req.body.firstName;
+    const lastNameClient = req.body.lastName;
+  
+    console.log(req.body)
+  
+    const data = await db.query(
+      `INSERT INTO (userName, password, firstName, lastName) VALUES ('${userNameClient}', '${passwordClient}', '${firstNameClient}', '${lastNameClient}')`
+    );
+    res.json(data);
+  });
 
 //setting reminders using general date and time stamps
 

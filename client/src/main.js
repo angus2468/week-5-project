@@ -7,3 +7,18 @@
 //post to server updates based on reminders, watch history etc
 
 //requests for API information and display
+//retrieve form data + add to database
+const userForm = document.getElementById("userForm");
+async function submitUser(event) {
+  event.preventDefault();
+  const userFormData = new FormData(userForm);
+  const userData = Object.fromEntries(userFormData);
+  fetch(`http:localhost:8080/userInfo`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userData),
+  });
+}
+userForm.addEventListener("submit", submitUser);

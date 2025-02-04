@@ -49,6 +49,7 @@ function setDateValue() {
   // Check if the saved date is in the past and use today's date if it is
   dateSelector.value =
     dateSelector.value < todayDate ? todayDate : dateSelector.value;
+}
 
 async function fetchBookData(book) {
   const response = await fetch(
@@ -69,3 +70,4 @@ async function fetchBookData(book) {
   bookCover.src = data.items[1].volumeInfo.imageLinks.smallThumbnail;
   bookContainer.appendChild(bookCover);
 }
+

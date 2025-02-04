@@ -54,6 +54,12 @@ app.post("/checklist", async (req, res) => {
   res.json(data);
 });
 //delete reminders
+app.delete('/reminders/:id', async (req, res) => {
+  console.log(req.params.id)
+  const deleted = await db.query(`DELETE FROM checklist WHERE id = $1`, [req.params.id])
+  res.send(req.params.id)
+})
+
 app.delete('/checklist/:id', async (req, res) => {
   console.log(req.params.id)
   const deleted = await db.query(`DELETE FROM checklist WHERE id = $1`, [req.params.id])

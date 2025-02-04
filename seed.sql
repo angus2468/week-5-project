@@ -5,3 +5,9 @@ CREATE TABLE IF NOT exists userInfo (
     firstName TEXT,
     lastName TEXT
 );
+
+INSERT INTO userInfo (userName, password, firstName, lastName) VALUES
+('Testing123',
+'Password123',
+'John',
+'Doe');

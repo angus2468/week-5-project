@@ -1,3 +1,13 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 #content {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -32,4 +42,32 @@
   grid-column: 9 / 11;
   grid-row: 3 / 10;
   background-color: hotpink;
+}
+
+.mainNav {
+  position: relative;
+  display: flex;
+  gap: 36px;
+  text-transform: uppercase;
+  align-items: center;
+}
+
+.mainNav div {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mainNav div:hover {
+  text-decoration: underline;
+}
+
+.createButton{
+  display: flex;
+  align-items: right;
+}
+
+.hiddenForm{
+  position: relative;
+  flex-direction: column;
 }

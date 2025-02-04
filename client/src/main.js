@@ -37,6 +37,19 @@ async function submitUser(event) {
 }
 userForm.addEventListener("submit", submitUser);
 
+//create new task
+
+//setting current date for the task
+
+function setDateValue() {
+  // Check if there's a saved date in localStorage and use it, otherwise use today's date
+  const savedDate = localStorage.getItem("selectedDate");
+  const todayDate = new Date().toISOString().split("T")[0];
+  dateSelector.value = savedDate ? savedDate : todayDate;
+  // Check if the saved date is in the past and use today's date if it is
+  dateSelector.value =
+    dateSelector.value < todayDate ? todayDate : dateSelector.value;
+
 async function fetchBookData(book) {
   const response = await fetch(
     `https://www.googleapis.com/books/v1/volumes?q=${book.name}&key=${GOOGLE_API_KEY}`

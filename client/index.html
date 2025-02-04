@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <nav id="mainNav">
+      <nav class="mainNav" id="mainNav">
         <div id="home">Home</div>
         <div id="checklist">Checklists</div>
         <div id="books">Books</div>
@@ -17,8 +17,8 @@
         <div id="reminders">Reminders</div>
         <div id="calender">Calender</div>
       </nav>
-      <button id="createButton">+</button>
-      <nav hidden id="createNav">
+      <button class="createButton" id="createButton">+</button>
+      <nav hidden class="hiddenNav" id="createNav">
         <button id="addChecklist">Add New Checklist</button>
         <button id="addBooks">Add New Books</button>
         <button id="addMovies">Add New Movies</button>
@@ -26,7 +26,7 @@
       </nav>
     </header>
     <main>
-      <form id="userForm">
+      <form class="userForm" id="userForm">
         <label for="username">Username:</label>
         <input id="username" name="username" type="text">
 
@@ -41,7 +41,7 @@
 
         <button type="submit">Submit</button>
       </form>
-      <div id="content">
+      <div class="siteContent" id="content">
         <section id="homeSection"></section>
         <section id="checklistSection"></section>
         <section id="booksSection"></section>

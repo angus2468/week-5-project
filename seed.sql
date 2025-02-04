@@ -13,11 +13,10 @@ INSERT INTO userInfo (userName, password, firstName, lastName) VALUES
 'John',
 'Doe');
 
-CREATE TABLE IF NOT EXISTS moviewatchlist (
+CREATE TABLE IF NOT EXISTS reminders (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    movieName TEXT,
-    movieGenre TEXT,
-    movieLanguage TEXT
+    reminder TEXT,
+    reminderdate DATE
 );
 
 INSERT INTO reminders (reminder, reminderdate) VALUES

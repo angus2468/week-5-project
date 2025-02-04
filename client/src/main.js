@@ -163,7 +163,7 @@ function moviesForm() {
   }
 }
 
-addReminder.addEventListener("click", reminderForm);
+addReminders.addEventListener("click", reminderForm);
 function reminderForm() {
   const reminderDiv = document.createElement("div");
   const reminderForm = document.createElement("form");

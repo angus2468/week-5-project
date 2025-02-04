@@ -16,18 +16,6 @@ const addReminders = document.getElementById('addReminders')
 
 createButton.addEventListener("click", handleCreate);
 
-const createNav = document.getElementById("createNav");
-const createButton = document.getElementById("createButton");
-
-const addChecklist = document.getElementById("addChecklist");
-const addBooks = document.getElementById("addBooks");
-const addMovies = document.getElementById("addMovies");
-const addReminders = document.getElementById("addReminders");
-
-createButton.addEventListener("click", handleCreate);
-
-createButton.addEventListener("click", handleCreate);
-
 function handleCreate() {
   if (createNav.hasAttribute("hidden")) {
     createNav.removeAttribute("hidden", "");
@@ -63,6 +51,8 @@ function checklistForm() {
   createForm.addEventListener('submit', (event) => {
     handleSubmit(event)
   })
+
+}
 
 addChecklist.addEventListener("click", checklistForm);
 

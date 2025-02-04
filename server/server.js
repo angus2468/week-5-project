@@ -1,4 +1,4 @@
-import express, { response } from "express";
+import express from "express";
 import cors from "cors";
 import pg from "pg";
 import dotenv from "dotenv";
@@ -12,7 +12,7 @@ const db = new pg.Pool({
   connectionString: process.env.DB_CONN,
 });
 
-app.get("/", (req, res) => response.json("Hello there (◕ᴥ◕ʋ)"));
+app.get("/", (req, res) => res.json("Hello there (◕ᴥ◕ʋ)"));
 
 //using databases from supabase, allow program to access for movie API(maybe) and book API(maybe) and use a DB to hold user info
 
@@ -91,7 +91,6 @@ app.post("/userInfo", async (req, res) => {
   res.json(data);
 });
 
-
 app.post("/moviewatchlist", async (req, res) => {
   const moviename = req.body.moviename;
   const moviegenre = req.body.moviegenre;
@@ -132,6 +131,7 @@ app.post("/booklist", async (req, res) => {
 
 //delete requests
 app.delete("/checklist/:id", async (req, res) => {
+  console.log(req.params.id);
   const deleted = await db.query(`DELETE FROM checklist WHERE id = $1`, [
     req.params.id,
   ]);
@@ -168,6 +168,5 @@ app.delete("/booklist/:id", async (request, response) => {
 
 //update requests
 app.listen(8080, () => {
-    console.log("Ther server is running and lsitening on port 8080");
-  });
-
+  console.log("Ther server is running and lsitening on port 8080");
+});

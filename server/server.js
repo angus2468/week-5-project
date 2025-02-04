@@ -60,7 +60,7 @@ app.get("/reminders", async (req, res) => {
 });
 
 app.get("/booklist", async (req, res) => {
-  const result = await db.query("SELECT * FROM booklist");
+  const result = await db.query("SELECT * FROM bookslist");
   res.json(result);
 });
 
@@ -124,7 +124,7 @@ app.post("/booklist", async (req, res) => {
   console.log(req.body);
 
   const data = await db.query(
-    `INSERT INTO booklist (name, genre, author) VALUES ('${name}', '${genre}', '${author}')`
+    `INSERT INTO bookslist (name, genre, author) VALUES ('${name}', '${genre}', '${author}')`
   );
   res.json(data);
 });
@@ -153,14 +153,14 @@ app.delete("/moviewatchlist/:id", async (request, response) => {
 });
 
 app.delete("/reminders/:id", async (request, response) => {
-  const deleted = await db.query(`DELETE FROM userInfo reminders id = $1`, [
+  const deleted = await db.query(`DELETE FROM reminders id = $1`, [
     request.params.id,
   ]);
   response.json(deleted);
 });
 
 app.delete("/booklist/:id", async (request, response) => {
-  const deleted = await db.query(`DELETE FROM reminders WHERE id = $1`, [
+  const deleted = await db.query(`DELETE FROM bookslist WHERE id = $1`, [
     request.params.id,
   ]);
   response.json(deleted);

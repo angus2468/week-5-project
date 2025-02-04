@@ -6,6 +6,13 @@ CREATE TABLE IF NOT exists userInfo (
     lastName TEXT
 );
 
+
+INSERT INTO userInfo (userName, password, firstName, lastName) VALUES
+('Testing123',
+'Password123',
+'John',
+'Doe');
+
 CREATE TABLE IF NOT EXISTS checklist(
  id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
  task TEXT,

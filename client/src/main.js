@@ -21,10 +21,6 @@ function handleCreate() {
 } 
 
 //requests for API information and display
-const createButton = document.getElementById('createButton')
-const createNav = document.getElementById('createNav')
-
-createButton.addEventListener('click', handleCreate)
 
 function handleCreate() {
  createNav.removeAttribute('hidden')

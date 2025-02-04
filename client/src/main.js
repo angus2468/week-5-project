@@ -53,10 +53,11 @@ function checklistForm() {
     handleSubmit(event)
   })
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    createNav.innerHTML = ''
+  }
 
-  createForm.addEventListener("submit", (event) => {
-    handleSubmit(event);
-  });
 }
 
 addChecklist.addEventListener("click", checklistForm);
@@ -89,7 +90,7 @@ function checklistForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.setAttribute("hidden", "");
+    createNav.innerHTML = ''
   }
 }
 
@@ -137,7 +138,7 @@ function bookForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.setAttribute("hidden", "");
+    createNav.innerHTML = '';
   }
 }
 
@@ -190,7 +191,7 @@ function moviesForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.setAttribute("hidden", "");
+    createNav.innerHTML = '';
   }
 }
 
@@ -231,7 +232,7 @@ function reminderForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.setAttribute("hidden", "");
+    createNav.innerHTML = ''
   }
 }
 

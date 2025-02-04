@@ -41,6 +41,7 @@ function checklistForm() {
   formDiv.appendChild(createForm)
   formDiv.appendChild(taskLabel)
   formDiv.appendChild(taskInput)
+  formDiv.appendChild(submitButton)
 
   taskLabel.innerText = 'Item:'
   submitButton.innerText = 'Add'

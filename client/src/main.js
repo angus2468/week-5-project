@@ -1,5 +1,5 @@
 //error handling for repeat items e.g you have watched this already, do you wish to add this again.
-
+const API_URL = "http://localhost:8080/";
 //hamburger/drop down menu for creation of reminders
 
 //UI updates
@@ -8,10 +8,10 @@
 const createNav = document.getElementById("createNav");
 const createButton = document.getElementById("createButton");
 
-const addChecklist = document.getElementById('addChecklist')
-const addBooks = document.getElementById('addBooks')
-const addMovies = document.getElementById('addMovies')
-const addReminders = document.getElementById('addReminders')
+const addChecklist = document.getElementById("addChecklist");
+const addBooks = document.getElementById("addBooks");
+const addMovies = document.getElementById("addMovies");
+const addReminders = document.getElementById("addReminders");
 
 createButton.addEventListener("click", handleCreate);
 
@@ -23,34 +23,33 @@ function handleCreate() {
   }
 }
 
-addChecklist.addEventListener('click', checklistForm)
+addChecklist.addEventListener("click", checklistForm);
 
 function checklistForm() {
-  const formDiv = document.createElement('div')
-  const createForm = document.createElement('form')
-  const taskLabel = document.createElement('label')
-  const taskInput = document.createElement('input')
-  const submitButton = document.createElement('button')
+  const formDiv = document.createElement("div");
+  const createForm = document.createElement("form");
+  const taskLabel = document.createElement("label");
+  const taskInput = document.createElement("input");
+  const submitButton = document.createElement("button");
 
-  createForm.setAttribute('class', 'checklistForm')
-  taskLabel.setAttribute('for', 'task')
-  taskInput.setAttribute('name', 'task')
-  taskInput.setAttribute('type', 'text')
-  submitButton.setAttribute('type', 'submit')
+  createForm.setAttribute("class", "checklistForm");
+  taskLabel.setAttribute("for", "task");
+  taskInput.setAttribute("name", "task");
+  taskInput.setAttribute("type", "text");
+  submitButton.setAttribute("type", "submit");
 
-  formDiv.appendChild(createForm)
-  formDiv.appendChild(taskLabel)
-  formDiv.appendChild(taskInput)
+  formDiv.appendChild(createForm);
+  formDiv.appendChild(taskLabel);
+  formDiv.appendChild(taskInput);
 
-  taskLabel.innerText = 'Item:'
-  submitButton.innerText = 'Add'
+  taskLabel.innerText = "Item:";
+  submitButton.innerText = "Add";
 
-  createNav.appendChild(formDiv)
-  
-  createForm.addEventListener('submit', (event) => {
-    handleSubmit(event)
-  })
+  createNav.appendChild(formDiv);
 
+  createForm.addEventListener("submit", (event) => {
+    handleSubmit(event);
+  });
 }
 
 addChecklist.addEventListener("click", checklistForm);
@@ -286,3 +285,21 @@ async function fetchBookData(book) {
   bookCover.src = data.items[1].volumeInfo.imageLinks.smallThumbnail;
   bookContainer.appendChild(bookCover);
 }
+
+async function displayChecklist() {
+  const response = await fetch(`${API_URL}checklist`);
+  const data = await response.json();
+  data.rows.forEach((element) => {
+    const checklistContainer = document.createElement("div");
+    const checklistTask = document.createElement("p");
+    checklistTask.innerText = " - " + element.task;
+    const checklistbutton = document.createElement("button");
+    checklistbutton.innerText = "X";
+    checklistContainer.appendChild(checklistTask);
+    checklistContainer.appendChild(checklistbutton);
+    const checklistElement = document.getElementById("checklistSection");
+    checklistElement.appendChild(checklistContainer);
+  });
+}
+
+displayChecklist();

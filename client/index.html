@@ -17,8 +17,14 @@
         <div id="reminders">Reminders</div>
         <div id="calender">Calender</div>
       </nav>
+
+      <button id="createButton">+</button>
+
+      <nav hidden id="createNav">
+
       <button class="createButton" id="createButton">+</button>
       <nav hidden class="hiddenNav" id="createNav">
+
         <button id="addChecklist">Add New Checklist</button>
         <button id="addBooks">Add New Books</button>
         <button id="addMovies">Add New Movies</button>
@@ -26,22 +32,36 @@
       </nav>
     </header>
     <main>
+
+      <div id="sign-up">
+        <h1>Sign Up</h1>
+        <form id="userForm">
+          <label for="firstName">First name:</label>
+          <input id="firstName" name="firstName" type="text" />
+
       <form class="userForm" id="userForm">
         <label for="username">Username:</label>
         <input id="username" name="username" type="text">
 
-        <label for="password">Password:</label>
-        <input id="password" name="password" type="password">
 
-        <label for="firstName">First name:</label>
-        <input id="firstName" name="firstName" type="text">
+          <label for="lastName">Surname:</label>
+          <input id="lastName" name="lastName" type="text" />
 
-        <label for="lastName">Surname:</label>
-        <input id="lastName" name="lastName" type="text">
+          <label for="username">Username:</label>
+          <input id="username" name="username" type="text" />
+
+          <label for="password">Password:</label>
+          <input id="password" name="password" type="password" />
+
+
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+      <div id="content">
 
         <button type="submit">Submit</button>
       </form>
-      <div class="siteContent" id="content">
+
         <section id="homeSection"></section>
         <section id="checklistSection"></section>
         <section id="booksSection"></section>
@@ -50,8 +70,6 @@
         <section id="calenderSection"></section>
       </div>
     </main>
-    <footer>
-
-    </footer>
+    <footer></footer>
   </body>
 </html>

@@ -5,6 +5,11 @@
 //UI updates
 
 //post to server updates based on reminders, watch history etc
+const createNav = document.getElementById("createNav");
+const createButton = document.getElementById("createButton");
+
+
+createButton.addEventListener("click", handleCreate);
 
 const createNav = document.getElementById("createNav");
 const createButton = document.getElementById("createButton");
@@ -17,6 +22,7 @@ const addReminders = document.getElementById('addReminders')
 
 createButton.addEventListener('click', handleCreate)
 
+
 createButton.addEventListener("click", handleCreate);
 
 
@@ -26,8 +32,7 @@ function handleCreate() {
   } else {
     createNav.setAttribute("hidden", "");
   }
-
-} 
+}
 
 }
 
@@ -228,6 +233,11 @@ async function submitUser(event) {
     body: JSON.stringify(userData),
   });
 }
+
+userForm.addEventListener("submit", (event) => {
+  submitUser(event);
+});
+
 userForm.addEventListener("submit", submitUser);
 
 //create new task
@@ -263,4 +273,5 @@ async function fetchBookData(book) {
   bookCover.src = data.items[1].volumeInfo.imageLinks.smallThumbnail;
   bookContainer.appendChild(bookCover);
 }
+
 

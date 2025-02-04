@@ -70,10 +70,9 @@ header {
   text-decoration: underline;
 }
 
-.createButton {
+/*.createButton {}*/
 
-#createButton{
-
+#createButton {
   display: flex;
   align-items: right;
 }
@@ -82,7 +81,6 @@ header {
   position: relative;
   flex-direction: column;
 }
-
 
 /* css for sign up form */
 #sign-up {
@@ -189,4 +187,3 @@ input:not(:placeholder-shown) + .label {
 .userForm {
   gap: 5px;
 }
-

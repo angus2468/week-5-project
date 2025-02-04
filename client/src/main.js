@@ -118,7 +118,7 @@ function bookForm() {
 
   bookForm.appendChild(bookName);
   bookForm.appendChild(bookNameData);
-  bookForm.appendChild(bookGenreData);
+  bookForm.appendChild(bookGenre);
   bookForm.appendChild(bookGenreData);
   bookForm.appendChild(bookAuthor);
   bookForm.appendChild(bookAuthorData);

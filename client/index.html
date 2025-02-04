@@ -25,21 +25,38 @@
         <button id="addReminders" class="createButton">Add New Reminders</button>
       </nav>
       <div id="sign-up">
+
         <h1>Sign Up!</h1>
+
         <form class="userForm" id="userForm">
-          <label for="firstName">First Name:</label>
-          <input id="firstName" name="firstName" type="text">
-
-          <label for="lastName">Surname:</label>
-          <input id="lastName" name="lastName" type="text" />
-
-          <label for="username">Username:</label>
-          <input id="username" name="username" type="text" />
-
-          <label for="password">Password:</label>
-          <input id="password" name="password" type="password" />
-
-          <button type="submit">Sign Up</button>
+          <h1 class="title">Sign Up</h1>
+          <div class="inputContainer">
+            <input
+              id="firstName"
+              name="firstName"
+              type="text"
+              placeholder="a"
+            />
+            <label class="label" for="firstName">First Name:</label>
+          </div>
+          <div class="inputContainer">
+            <input id="lastName" name="lastName" type="text" placeholder="a" />
+            <label class="label" for="lastName">Surname:</label>
+          </div>
+          <div class="inputContainer">
+            <input id="username" name="username" type="text" placeholder="a" />
+            <label class="label" for="username">Username:</label>
+          </div>
+          <div class="inputContainer">
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="a"
+            />
+            <label class="label" for="password">Password:</label>
+          </div>
+          <button type="submit" class="signUpBtn">Sign Up</button>
         </form>
       </div>
     </header>

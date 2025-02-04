@@ -41,8 +41,24 @@ app.post("/userInfo", async (req, res) => {
   });
 
 //setting reminders using general date and time stamps
+app.post("/checklist", async (req, res) => {
 
+  const checklistClient = req.body.task;
+  const completedClient = req.body.completed;
+
+  console.log(req.body)
+
+  const data = await db.query(
+    `INSERT INTO (task, completed) VALUES ('${checklistClient}', '${completedClient}')`
+  );
+  res.json(data);
+});
 //delete reminders
+app.delete('/checklist/:id', async (req, res) => {
+  console.log(req.params.id)
+  const deleted = await db.query(`DELETE FROM checklist WHERE id = $1`, [req.params.id])
+  res.send(req.params.id)
+})
 
 //update requests
 app.listen(8080, () => {

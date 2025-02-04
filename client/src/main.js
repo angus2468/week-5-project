@@ -91,14 +91,14 @@ function checklistForm() {
   function handleSubmit(event) {
     event.preventDefault();
     createNav.innerHTML = ''
-    const userFormData = new FormData(userForm);
-    const userData = Object.fromEntries(userFormData);
-    fetch(`http:localhost:8080/checklist`, {
+    const taskFormData = new FormData(createForm);
+    const taskData = Object.fromEntries(taskFormData);
+    fetch(`http://localhost:8080/checklist`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(userData),
+    body: JSON.stringify(taskData),
   });
   }
 }
@@ -115,12 +115,12 @@ function bookForm() {
   const bookAuthorData = document.createElement("input");
   const bookBtn = document.createElement("button");
 
-  bookName.setAttribute("for", "bookName");
-  bookNameData.setAttribute("name", "bookName");
-  bookGenre.setAttribute("for", "bookGenre");
-  bookGenreData.setAttribute("name", "bookGenre");
-  bookAuthor.setAttribute("for", "bookAuthor");
-  bookAuthorData.setAttribute("name", "bookAuthor");
+  bookName.setAttribute("for", "name");
+  bookNameData.setAttribute("name", "name");
+  bookGenre.setAttribute("for", "genre");
+  bookGenreData.setAttribute("name", "genre");
+  bookAuthor.setAttribute("for", "author");
+  bookAuthorData.setAttribute("name", "author");
   bookNameData.setAttribute("type", "text");
   bookGenreData.setAttribute("type", "text");
   bookAuthorData.setAttribute("type", "text");
@@ -148,14 +148,14 @@ function bookForm() {
   function handleSubmit(event) {
     event.preventDefault();
     createNav.innerHTML = '';
-    const userFormData = new FormData(userForm);
-  const userData = Object.fromEntries(userFormData);
-  fetch(`http:localhost:8080/bookslist`, {
+    const bookFormData = new FormData(bookForm);
+    const bookData = Object.fromEntries(bookFormData);
+    fetch(`http://localhost:8080/booklist`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(userData),
+    body: JSON.stringify(bookData),
   });
   }
 }
@@ -176,12 +176,12 @@ function moviesForm() {
 
   const submitButton = document.createElement("button");
 
-  nameInput.setAttribute("name", "name");
-  genreInput.setAttribute("name", "genre");
-  languageInput.setAttribute("name", "language");
-  nameLabel.setAttribute("for", "name");
-  genreLabel.setAttribute("for", "genre");
-  languageLabel.setAttribute("for", "language");
+  nameInput.setAttribute("name", "moviename");
+  genreInput.setAttribute("name", "moviegenre");
+  languageInput.setAttribute("name", "movielanguage");
+  nameLabel.setAttribute("for", "moviename");
+  genreLabel.setAttribute("for", "moviegenre");
+  languageLabel.setAttribute("for", "movielanguage");
 
   nameInput.setAttribute("type", "text");
   genreInput.setAttribute("type", "text");
@@ -204,20 +204,20 @@ function moviesForm() {
   createNav.appendChild(formDiv);
 
   createForm.addEventListener("submit", (event) => {
-    handleSubmit(event);
+    movieHandleSubmit(event);
   });
 
-  function handleSubmit(event) {
+  function movieHandleSubmit(event) {
     event.preventDefault();
     createNav.innerHTML = '';
-    const userFormData = new FormData(userForm);
-    const userData = Object.fromEntries(userFormData);
-    fetch(`http:localhost:8080/moviewatchlist`, {
+    const movieFormData = new FormData(createForm);
+    const movieData = Object.fromEntries(movieFormData);
+    fetch(`http://localhost:8080/moviewatchlist`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(userData),
+    body: JSON.stringify(movieData),
   });
   }
 }
@@ -232,10 +232,10 @@ function reminderForm() {
   const reminderDateData = document.createElement("input");
   const reminderBtn = document.createElement("button");
 
-  reminderTask.setAttribute("for", "reminderTask");
-  reminderTaskData.setAttribute("name", "reminderTask");
-  reminderDate.setAttribute("for", "reminderDate");
-  reminderDateData.setAttribute("name", "reminderDate");
+  reminderTask.setAttribute("for", "reminder");
+  reminderTaskData.setAttribute("name", "reminder");
+  reminderDate.setAttribute("for", "reminderdate");
+  reminderDateData.setAttribute("name", "reminderdate");
 
   reminderTaskData.setAttribute("type", "text");
   reminderDateData.setAttribute("type", "date");
@@ -260,14 +260,14 @@ function reminderForm() {
   function handleSubmit(event) {
     event.preventDefault();
     createNav.innerHTML = ''
-    const userFormData = new FormData(userForm);
-    const userData = Object.fromEntries(userFormData);
-    fetch(`http:localhost:8080/reminders`, {
+    const reminderFormData = new FormData(reminderForm);
+    const reminderData = Object.fromEntries(reminderFormData);
+    fetch(`http://localhost:8080/reminders`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(userData),
+    body: JSON.stringify(reminderData),
   });
   }
 }

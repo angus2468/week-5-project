@@ -8,23 +8,12 @@
 const createNav = document.getElementById("createNav");
 const createButton = document.getElementById("createButton");
 
-
-createButton.addEventListener("click", handleCreate);
-
-const createNav = document.getElementById("createNav");
-const createButton = document.getElementById("createButton");
-
-
 const addChecklist = document.getElementById('addChecklist')
 const addBooks = document.getElementById('addBooks')
 const addMovies = document.getElementById('addMovies')
 const addReminders = document.getElementById('addReminders')
 
-createButton.addEventListener('click', handleCreate)
-
-
 createButton.addEventListener("click", handleCreate);
-
 
 function handleCreate() {
   if (createNav.hasAttribute("hidden")) {
@@ -34,11 +23,7 @@ function handleCreate() {
   }
 }
 
-}
-
-
 addChecklist.addEventListener('click', checklistForm)
-
 
 function checklistForm() {
   const formDiv = document.createElement('div')
@@ -217,9 +202,8 @@ function reminderForm() {
 
 //requests for API information and display
 
-
-
 //retrieve form data + add to database
+
 const userForm = document.getElementById("userForm");
 async function submitUser(event) {
   event.preventDefault();

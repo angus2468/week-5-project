@@ -90,6 +90,7 @@ app.post("/userInfo", async (req, res) => {
   res.json(data);
 });
 
+
 app.post("/moviewatchlist", async (req, res) => {
   const moviename = req.body.moviename;
   const moviegenre = req.body.moviegenre;
@@ -167,5 +168,6 @@ app.delete("/booklist/:id", async (request, response) => {
 
 //update requests
 app.listen(8080, () => {
-  console.log("Ther server is running and lsitening on port 8080");
-});
+    console.log("Ther server is running and lsitening on port 8080");
+  });
+

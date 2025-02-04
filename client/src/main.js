@@ -6,6 +6,14 @@
 
 //post to server updates based on reminders, watch history etc
 
+const createNav = document.getElementById("createNav");
+const createButton = document.getElementById("createButton");
+
+const addChecklist = document.getElementById('addChecklist')
+const addBooks = document.getElementById('addBooks')
+const addMovies = document.getElementById('addMovies')
+const addReminders = document.getElementById('addReminders')
+
 createButton.addEventListener("click", handleCreate);
 
 const createNav = document.getElementById("createNav");
@@ -27,6 +35,34 @@ function handleCreate() {
     createNav.setAttribute("hidden", "");
   }
 }
+
+addChecklist.addEventListener('click', checklistForm)
+
+function checklistForm() {
+  const formDiv = document.createElement('div')
+  const createForm = document.createElement('form')
+  const taskLabel = document.createElement('label')
+  const taskInput = document.createElement('input')
+  const submitButton = document.createElement('button')
+
+  createForm.setAttribute('class', 'checklistForm')
+  taskLabel.setAttribute('for', 'task')
+  taskInput.setAttribute('name', 'task')
+  taskInput.setAttribute('type', 'text')
+  submitButton.setAttribute('type', 'submit')
+
+  formDiv.appendChild(createForm)
+  formDiv.appendChild(taskLabel)
+  formDiv.appendChild(taskInput)
+
+  taskLabel.innerText = 'Item:'
+  submitButton.innerText = 'Add'
+
+  createNav.appendChild(formDiv)
+  
+  createForm.addEventListener('submit', (event) => {
+    handleSubmit(event)
+  })
 
 addChecklist.addEventListener("click", checklistForm);
 
@@ -207,6 +243,7 @@ function reminderForm() {
 //requests for API information and display
 
 //retrieve form data + add to database
+
 const userForm = document.getElementById("userForm");
 async function submitUser(event) {
   event.preventDefault();

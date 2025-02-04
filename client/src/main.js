@@ -5,7 +5,6 @@
 //UI updates
 
 //post to server updates based on reminders, watch history etc
-
 const createNav = document.getElementById("createNav");
 const createButton = document.getElementById("createButton");
 

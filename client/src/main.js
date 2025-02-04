@@ -91,15 +91,6 @@ function checklistForm() {
   function handleSubmit(event) {
     event.preventDefault();
     createNav.innerHTML = ''
-    const userFormData = new FormData(userForm);
-    const userData = Object.fromEntries(userFormData);
-    fetch(`http:localhost:8080/checklist`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userData),
-  });
   }
 }
 
@@ -148,15 +139,6 @@ function bookForm() {
   function handleSubmit(event) {
     event.preventDefault();
     createNav.innerHTML = '';
-    const userFormData = new FormData(userForm);
-  const userData = Object.fromEntries(userFormData);
-  fetch(`http:localhost:8080/bookslist`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userData),
-  });
   }
 }
 
@@ -210,15 +192,6 @@ function moviesForm() {
   function handleSubmit(event) {
     event.preventDefault();
     createNav.innerHTML = '';
-    const userFormData = new FormData(userForm);
-    const userData = Object.fromEntries(userFormData);
-    fetch(`http:localhost:8080/moviewatchlist`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userData),
-  });
   }
 }
 
@@ -260,15 +233,6 @@ function reminderForm() {
   function handleSubmit(event) {
     event.preventDefault();
     createNav.innerHTML = ''
-    const userFormData = new FormData(userForm);
-    const userData = Object.fromEntries(userFormData);
-    fetch(`http:localhost:8080/reminders`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userData),
-  });
   }
 }
 
@@ -347,3 +311,46 @@ async function displayChecklist() {
 }
 
 displayChecklist();
+
+async function fetchMovieData(movie){
+  const response = await fetch(`http://www.omdbapi.com/?t=${movie.name}&apikey=72bf2de2`)
+
+  const data = await response.json();
+  const movieContainer = document.createAttribute("section");
+  const movieName = document.createAttribute("p");
+  movieName.InnerText = data.Title;
+  movieContainer.appendChild(movieName);
+  const movieType = document.createAttribute("p");
+  movieType.innerText = data.Genre;
+  movieContainer.appendChild(movieType);
+  const movieLang = document.createAttribute("p");
+  movieLang.innerText = data.Language;
+  movieContainer.appendChild(movieLang);
+}
+
+async function displayMovies(){
+  const response = await fetch('http://www.omdbapi.com/?i=tt3896198&apikey=72bf2de2');
+
+    const data = await response.json();
+      const movieContainer = document.createElement("div");
+      const movieName = document.createElement("h1");
+      movieName.innerText = data.Title;
+      const movieGenre = document.createElement("p");
+      movieGenre.innerText = " - " + data.Genre;
+      const moviebutton = document.createElement("button");
+      moviebutton.innerText = "X";
+      const movieLanguage = document.createElement("p");
+      movieLanguage.innerText = " - " + data.Language;
+      const moviePlot = document.createElement("p");
+      moviePlot.innerText = " - " + data.Plot;
+      movieContainer.appendChild(movieName);
+      movieContainer.appendChild(movieGenre);
+      movieContainer.appendChild(movieLanguage);
+      movieContainer.appendChild(moviePlot);
+      movieContainer.appendChild(moviebutton);
+      const movieElement = document.getElementById("moviesSection");
+      movieElement.appendChild(movieContainer);;
+      console.log(movieContainer);
+}
+
+displayMovies();

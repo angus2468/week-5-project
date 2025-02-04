@@ -41,6 +41,7 @@ app.get("/", (req, res) => response.json("Hello there (◕ᴥ◕ʋ)"));
 //get requests
 app.get("/checklist", async (req, res) => {
   const result = await db.query("SELECT * FROM checklist");
+  res.json(result);
 });
 
 app.get("/userInfo", async (req, res) => {
@@ -131,7 +132,6 @@ app.post("/booklist", async (req, res) => {
 
 //delete requests
 app.delete("/checklist/:id", async (req, res) => {
-  console.log(req.params.id);
   const deleted = await db.query(`DELETE FROM checklist WHERE id = $1`, [
     req.params.id,
   ]);

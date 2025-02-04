@@ -26,12 +26,12 @@ INSERT INTO booksList (name, genre, author) VALUES
 ('A Court of Thorns & Roses', 'Fantasy', 'Sarah J Maas'),
 ('The subtle art of not giving a f*ck', 'Self Help', 'Mark Manson');
 
-CREATE TABLE IF NOT EXISTS booksList (
-  id INT PRIMARY KEY GENERATED ALWAYS AS identity,
-  name VARCHAR(40),
-  genre TEXT
+CREATE TABLE IF NOT EXISTS moviewatchlist (
+    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    movieName TEXT,
+    movieGenre TEXT,
+    movieLanguage TEXT
 );
 
-INSERT INTO booksList (name, genre) VALUES 
-('A Court of Thorns & Roses', 'Fantasy'),
-('The subtle art of not giving a f*ck', 'Self Help');
+INSERT INTO moviewatchlist (movieName, movieGenre, movieLanguage) VALUES
+('Forgotten', 'Thriller/Mystery', 'Korean')

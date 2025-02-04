@@ -1,7 +1,7 @@
 *{
   margin: 0px;
   padding: 0px;
-  font-family: sans-serif;
+  font-family: monospace;
 }
 
 html {
@@ -44,12 +44,19 @@ html {
   background-color: hotpink;
 }
 
+header {
+  background-color: goldenrod;
+  padding-bottom: 10px;
+}
+
 .mainNav {
   position: relative;
   display: flex;
   gap: 36px;
   text-transform: uppercase;
   align-items: center;
+  justify-self: center;
+  padding-top: 15px;
 }
 
 .mainNav div {
@@ -62,7 +69,7 @@ html {
   text-decoration: underline;
 }
 
-.createButton{
+#createButton{
   display: flex;
   align-items: right;
 }
@@ -71,3 +78,22 @@ html {
   position: relative;
   flex-direction: column;
 }
+
+.hiddenNav {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  gap: 3px;
+}
+
+.createButton {
+  width: 135px;
+}
+
+.userForm {
+  gap: 5px;
+}
+

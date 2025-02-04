@@ -26,26 +26,33 @@ function handleCreate() {
 addChecklist.addEventListener("click", checklistForm);
 
 function checklistForm() {
-  const formDiv = document.createElement("div");
-  const createForm = document.createElement("form");
-  const taskLabel = document.createElement("label");
-  const taskInput = document.createElement("input");
-  const submitButton = document.createElement("button");
 
-  createForm.setAttribute("class", "checklistForm");
-  taskLabel.setAttribute("for", "task");
-  taskInput.setAttribute("name", "task");
-  taskInput.setAttribute("type", "text");
-  submitButton.setAttribute("type", "submit");
+  const formDiv = document.createElement('div')
+  const createForm = document.createElement('form')
+  const taskLabel = document.createElement('label')
+  const taskInput = document.createElement('input')
+  const submitButton = document.createElement('button')
 
-  formDiv.appendChild(createForm);
-  formDiv.appendChild(taskLabel);
-  formDiv.appendChild(taskInput);
+  createForm.setAttribute('class', 'checklistForm')
+  taskLabel.setAttribute('for', 'task')
+  taskInput.setAttribute('name', 'task')
+  taskInput.setAttribute('type', 'text')
+  submitButton.setAttribute('type', 'submit')
 
-  taskLabel.innerText = "Item:";
-  submitButton.innerText = "Add";
+  formDiv.appendChild(createForm)
+  formDiv.appendChild(taskLabel)
+  formDiv.appendChild(taskInput)
+  formDiv.appendChild(submitButton)
 
-  createNav.appendChild(formDiv);
+  taskLabel.innerText = 'Item:'
+  submitButton.innerText = 'Add'
+
+  createNav.appendChild(formDiv)
+  
+  createForm.addEventListener('submit', (event) => {
+    handleSubmit(event)
+  })
+
 
   createForm.addEventListener("submit", (event) => {
     handleSubmit(event);
@@ -116,7 +123,7 @@ function bookForm() {
 
   bookForm.appendChild(bookName);
   bookForm.appendChild(bookNameData);
-  bookForm.appendChild(bookGenreData);
+  bookForm.appendChild(bookGenre);
   bookForm.appendChild(bookGenreData);
   bookForm.appendChild(bookAuthor);
   bookForm.appendChild(bookAuthorData);

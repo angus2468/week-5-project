@@ -13,6 +13,26 @@ INSERT INTO userInfo (userName, password, firstName, lastName) VALUES
 'John',
 'Doe');
 
+CREATE TABLE IF NOT EXISTS moviewatchlist (
+    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    movieName TEXT,
+    movieGenre TEXT,
+    movieLanguage TEXT
+);
+
+INSERT INTO reminders (reminder, reminderdate) VALUES
+('Go buy more eggs', '2025-02-04')
+
+CREATE TABLE IF NOT EXISTS moviewatchlist (
+    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    movieName TEXT,
+    movieGenre TEXT,
+    movieLanguage TEXT
+);
+
+INSERT INTO moviewatchlist (movieName, movieGenre, movieLanguage) VALUES
+('Forgotten', 'Thriller/Mystery', 'Korean')
+
 CREATE TABLE IF NOT EXISTS checklist(
  id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
  task TEXT,

@@ -6,6 +6,20 @@
 
 //post to server updates based on reminders, watch history etc
 
+const createNav = document.getElementById('createNav')
+const createButton = document.getElementById('createButton')
+
+createButton.addEventListener('click', handleCreate)
+
+function handleCreate() {
+  if (createNav.hasAttribute('hidden')) {
+    createNav.removeAttribute('hidden', '')
+  } else {
+    createNav.setAttribute('hidden', '')
+  }
+
+} 
+
 //requests for API information and display
 const createButton = document.getElementById('createButton')
 const createNav = document.getElementById('createNav')

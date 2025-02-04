@@ -150,7 +150,7 @@ function bookForm() {
     createNav.innerHTML = '';
     const userFormData = new FormData(userForm);
   const userData = Object.fromEntries(userFormData);
-  fetch(`http:localhost:8080/booklist`, {
+  fetch(`http:localhost:8080/bookslist`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

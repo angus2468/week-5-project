@@ -22,9 +22,6 @@ function handleCreate() {
 
 //requests for API information and display
 
-function handleCreate() {
- createNav.removeAttribute('hidden')
-}
 //retrieve form data + add to database
 const userForm = document.getElementById("userForm");
 async function submitUser(event) {

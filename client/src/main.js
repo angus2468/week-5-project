@@ -91,6 +91,15 @@ function checklistForm() {
   function handleSubmit(event) {
     event.preventDefault();
     createNav.innerHTML = ''
+    const userFormData = new FormData(userForm);
+    const userData = Object.fromEntries(userFormData);
+    fetch(`http:localhost:8080/checklist`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userData),
+  });
   }
 }
 
@@ -139,6 +148,15 @@ function bookForm() {
   function handleSubmit(event) {
     event.preventDefault();
     createNav.innerHTML = '';
+    const userFormData = new FormData(userForm);
+  const userData = Object.fromEntries(userFormData);
+  fetch(`http:localhost:8080/bookslist`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userData),
+  });
   }
 }
 
@@ -192,6 +210,15 @@ function moviesForm() {
   function handleSubmit(event) {
     event.preventDefault();
     createNav.innerHTML = '';
+    const userFormData = new FormData(userForm);
+    const userData = Object.fromEntries(userFormData);
+    fetch(`http:localhost:8080/moviewatchlist`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userData),
+  });
   }
 }
 
@@ -233,6 +260,15 @@ function reminderForm() {
   function handleSubmit(event) {
     event.preventDefault();
     createNav.innerHTML = ''
+    const userFormData = new FormData(userForm);
+    const userData = Object.fromEntries(userFormData);
+    fetch(`http:localhost:8080/reminders`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userData),
+  });
   }
 }
 

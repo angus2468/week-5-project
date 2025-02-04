@@ -6,19 +6,18 @@
 
 //post to server updates based on reminders, watch history etc
 
-const createNav = document.getElementById('createNav')
-const createButton = document.getElementById('createButton')
+const createNav = document.getElementById("createNav");
+const createButton = document.getElementById("createButton");
 
-createButton.addEventListener('click', handleCreate)
+createButton.addEventListener("click", handleCreate);
 
 function handleCreate() {
-  if (createNav.hasAttribute('hidden')) {
-    createNav.removeAttribute('hidden', '')
+  if (createNav.hasAttribute("hidden")) {
+    createNav.removeAttribute("hidden", "");
   } else {
-    createNav.setAttribute('hidden', '')
+    createNav.setAttribute("hidden", "");
   }
-
-} 
+}
 
 //requests for API information and display
 
@@ -38,4 +37,22 @@ async function submitUser(event) {
 }
 userForm.addEventListener("submit", submitUser);
 
-
+async function fetchBookData(book) {
+  const response = await fetch(
+    `https://www.googleapis.com/books/v1/volumes?q=${book.name}&key=${GOOGLE_API_KEY}`
+  );
+  const data = await response.json();
+  const bookContainer = document.createAttribute("section");
+  const bookTitle = document.createAttribute("p");
+  bookTitle.innerText = data.items[1].volumeInfo.title;
+  bookContainer.appendChild(bookTitle);
+  const bookDate = document.createAttribute("p");
+  bookDate.innerText = data.items[1].volumeInfo.publishedDate;
+  bookContainer.appendChild(bookDate);
+  const bookDescription = document.createAttribute("p");
+  bookDescription.innerText = data.items[1].volumeInfo.description;
+  bookContainer.appendChild(bookDescription);
+  const bookCover = document.createAttribute("img");
+  bookCover.src = data.items[1].volumeInfo.imageLinks.smallThumbnail;
+  bookContainer.appendChild(bookCover);
+}

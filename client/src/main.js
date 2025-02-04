@@ -7,6 +7,14 @@
 //post to server updates based on reminders, watch history etc
 
 //requests for API information and display
+const createButton = document.getElementById('createButton')
+const createNav = document.getElementById('createNav')
+
+createButton.addEventListener('click', handleCreate)
+
+function handleCreate() {
+ createNav.removeAttribute('hidden')
+}
 //retrieve form data + add to database
 const userForm = document.getElementById("userForm");
 async function submitUser(event) {
@@ -22,3 +30,5 @@ async function submitUser(event) {
   });
 }
 userForm.addEventListener("submit", submitUser);
+
+

@@ -355,24 +355,8 @@ async function displayChecklist() {
 
 displayChecklist();
 
-async function fetchMovieData(movie){
-  const response = await fetch(`http://www.omdbapi.com/?t=${movie.name}&apikey=72bf2de2`)
-
-  const data = await response.json();
-  const movieContainer = document.createAttribute("section");
-  const movieName = document.createAttribute("p");
-  movieName.InnerText = data.Title;
-  movieContainer.appendChild(movieName);
-  const movieType = document.createAttribute("p");
-  movieType.innerText = data.Genre;
-  movieContainer.appendChild(movieType);
-  const movieLang = document.createAttribute("p");
-  movieLang.innerText = data.Language;
-  movieContainer.appendChild(movieLang);
-}
-
-async function displayMovies(){
-  const response = await fetch('http://www.omdbapi.com/?i=tt3896198&apikey=72bf2de2');
+async function displayMovies(movie){
+  const response = await fetch(`http://www.omdbapi.com/?t=${movie}&apikey=72bf2de2`);
 
     const data = await response.json();
       const movieContainer = document.createElement("div");
@@ -392,8 +376,32 @@ async function displayMovies(){
       movieContainer.appendChild(moviePlot);
       movieContainer.appendChild(moviebutton);
       const movieElement = document.getElementById("moviesSection");
-      movieElement.appendChild(movieContainer);;
+      movieElement.appendChild(movieContainer);
       console.log(movieContainer);
 }
 
 displayMovies();
+
+async function displayWeather(weather){
+  const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=2d89413830e24b93bab110358250502&q=London`);
+
+  const data = await response.json();
+  const weatherContainer = document.createElement("div");
+      const myLocation = document.createElement("h3");
+      myLocation.innerText = data.location.name;
+      const currentWeather = document.createElement("h1");
+      currentWeather.innerText = data.current.condition.text;
+      const weatherImg = document.createElement("img");
+      weatherImg.src = data.current.condition.icon;
+      const currentTemp = document.createElement("p");
+      currentTemp.innerText = data.current.temp_c + "°C";
+      weatherContainer.appendChild(myLocation);
+      weatherContainer.appendChild(currentTemp);
+      weatherContainer.appendChild(currentWeather);
+      weatherContainer.appendChild(weatherImg)
+      const weatherSection = document.getElementById("remindersSection");
+      weatherSection.appendChild(weatherContainer);
+      console.log
+}
+
+displayWeather();

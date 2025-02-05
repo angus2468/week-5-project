@@ -91,11 +91,11 @@ function checklistForm() {
     const taskFormData = new FormData(createForm);
     const taskData = Object.fromEntries(taskFormData);
     fetch(`http://localhost:8080/checklist`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(taskData),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(taskData),
     });
     createForm.innerHTML = "";
   }
@@ -143,20 +143,21 @@ function bookForm() {
     handleSubmit(event);
   });
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const bookFormData = new FormData(bookForm);
     const bookData = Object.fromEntries(bookFormData);
-    fetch(`http://localhost:8080/booklist`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(bookData),
+    await fetch(`http://localhost:8080/booklist`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bookData),
     });
     bookForm.innerHTML = "";
+    getLatestBook();
   }
-  }
+}
 
 addMovies.addEventListener("click", moviesForm);
 
@@ -211,11 +212,11 @@ function moviesForm() {
     const movieFormData = new FormData(createForm);
     const movieData = Object.fromEntries(movieFormData);
     fetch(`http://localhost:8080/moviewatchlist`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(movieData),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(movieData),
     });
     createForm.innerHTML = "";
   }
@@ -261,11 +262,11 @@ function reminderForm() {
     const reminderFormData = new FormData(reminderForm);
     const reminderData = Object.fromEntries(reminderFormData);
     fetch(`http://localhost:8080/reminders`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(reminderData),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reminderData),
     });
     reminderForm.innerHTML = "";
   }
@@ -314,6 +315,8 @@ async function fetchBookData(book) {
     `https://www.googleapis.com/books/v1/volumes?q=${book}&key=AIzaSyABiSCRECheWyoruOwQs0AN81RKWe3-gsU`
   );
   const data = await response.json();
+  const calenderSection = document.getElementById("calenderSection");
+  calenderSection.innerHTML = "";
   const bookContainer = document.createElement("section");
   const bookTitle = document.createElement("p");
   bookTitle.innerText = data.items[1].volumeInfo.title;
@@ -327,7 +330,6 @@ async function fetchBookData(book) {
   const bookCover = document.createElement("img");
   bookCover.src = data.items[1].volumeInfo.imageLinks.smallThumbnail;
   bookContainer.appendChild(bookCover);
-  const calenderSection = document.getElementById("calenderSection");
   calenderSection.appendChild(bookContainer);
 }
 

@@ -60,14 +60,19 @@ html {
    display: grid;
    grid-template-rows: 1fr 1fr;
    gap: 30px;
- }
+   
+}
 
  .moviesContainer {
   background-color: #93c4e1;
+  border-radius: 10px;
+  height: 300px;
  }
 
  .booksContainer {
   background-color: #d3dbd9;
+  border-radius: 10px;
+  height: 300px;
  }
  
  .wcContainer {
@@ -80,11 +85,69 @@ html {
  .weatherContainer {
    grid-row: 1/2;
    background-color: #ddfff7;
+   border-radius: 10px;
  }
  
  .checklistContainer {
    grid-row: 2/5;
    background-color: rgb(236, 159, 144);
+   border-radius: 10px;
+   justify-content: center;
+ }
+
+ @media (max-width: 500px){
+  
+  .mainContainer {
+    display: grid;
+    grid-template-rows: 2fr 2fr 1fr 1fr;
+    gap: 30px;
+    background-color: #e6adec;
+    padding: 10px;
+    height: 650px;
+    justify-content: center;
+    align-items: center;
+   }
+   
+   .mbContainer {
+     grid-row: 1/4;
+     display: grid;
+     grid-template-rows: 1fr 1fr;
+     
+  }
+  
+   .moviesContainer {
+    background-color: #93c4e1;
+    border-radius: 10px;
+    width: 300px;
+    align-self: center;
+   }
+  
+   .booksContainer {
+    background-color: #d3dbd9;
+    border-radius: 10px;
+    width: 300px;
+    height: 155px;
+   }
+   
+   .wcContainer {
+     grid-row: 4/6;
+     display: grid;
+     grid-template-rows: 1fr 3fr;
+   }
+   
+   .weatherContainer {
+     grid-row: 1/2;
+     background-color: #ddfff7;
+     border-radius: 10px;
+     width: 300px;
+   }
+   
+   .checklistContainer {
+     grid-row: 2/5;
+     background-color: rgb(236, 159, 144);
+     border-radius: 10px;
+     width: 300px;
+   }
  }
 
  /* THIS IS THE END*/
@@ -125,13 +188,6 @@ header {
   padding: 10px;
 }
 
-.bookContainer {
-  padding: 15px;
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 /* css for sign up form */
 #loginContainer {
   left: 80vh;

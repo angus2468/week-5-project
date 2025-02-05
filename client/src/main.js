@@ -91,11 +91,11 @@ function checklistForm() {
     const taskFormData = new FormData(createForm);
     const taskData = Object.fromEntries(taskFormData);
     fetch(`http://localhost:8080/checklist`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(taskData),
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(taskData),
     });
     createForm.innerHTML = "";
   }
@@ -113,12 +113,12 @@ function bookForm() {
   const bookAuthorData = document.createElement("input");
   const bookBtn = document.createElement("button");
 
-  bookName.setAttribute("for", "bookName");
-  bookNameData.setAttribute("name", "bookName");
-  bookGenre.setAttribute("for", "bookGenre");
-  bookGenreData.setAttribute("name", "bookGenre");
-  bookAuthor.setAttribute("for", "bookAuthor");
-  bookAuthorData.setAttribute("name", "bookAuthor");
+  bookName.setAttribute("for", "name");
+  bookNameData.setAttribute("name", "name");
+  bookGenre.setAttribute("for", "genre");
+  bookGenreData.setAttribute("name", "genre");
+  bookAuthor.setAttribute("for", "author");
+  bookAuthorData.setAttribute("name", "author");
   bookNameData.setAttribute("type", "text");
   bookGenreData.setAttribute("type", "text");
   bookAuthorData.setAttribute("type", "text");
@@ -148,15 +148,15 @@ function bookForm() {
     const bookFormData = new FormData(bookForm);
     const bookData = Object.fromEntries(bookFormData);
     fetch(`http://localhost:8080/booklist`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(bookData),
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(bookData),
     });
     bookForm.innerHTML = "";
   }
-}
+  }
 
 addMovies.addEventListener("click", moviesForm);
 
@@ -211,11 +211,11 @@ function moviesForm() {
     const movieFormData = new FormData(createForm);
     const movieData = Object.fromEntries(movieFormData);
     fetch(`http://localhost:8080/moviewatchlist`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(movieData),
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(movieData),
     });
     createForm.innerHTML = "";
   }
@@ -261,11 +261,11 @@ function reminderForm() {
     const reminderFormData = new FormData(reminderForm);
     const reminderData = Object.fromEntries(reminderFormData);
     fetch(`http://localhost:8080/reminders`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(reminderData),
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(reminderData),
     });
     reminderForm.innerHTML = "";
   }

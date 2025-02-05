@@ -10,11 +10,14 @@
   <body>
     <header>
       <nav class="mainNav" id="mainNav">
-        <div id="home">Home</div>
-        <div id="checklist">Checklists</div>
-        <div id="books">Books</div>
-        <div id="movies">Movies</div>
-        <button id="createButton">+</button>
+        <button id="menuToggle" class="menu-button">☰</button>
+        <div class="nav-dropdown" id="nav-dropdown">
+          <div id="home">Home</div>
+          <div id="checklist">Checklists</div>
+          <div id="books">Books</div>
+          <div id="movies">Movies</div>
+          <button id="createButton">+</button>
+        </div>
       </nav>
       <nav hidden class="hiddenNav" id="createNav">
         <button id="addChecklist" class="createButton">
@@ -113,7 +116,7 @@
           <div class="moviesContainer" id="moviesSection"></div>
           <div class="booksContainer" id="calenderSection"></div>
         </div>
-        <div clasS="wcContainer">
+        <div class="wcContainer">
           <div class="weatherContainer" id="remindersSection"></div>
           <div class="checklistContainer" id="checklistSection"></div>
         </div>

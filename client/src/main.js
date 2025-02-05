@@ -155,15 +155,15 @@ function moviesForm() {
 
   const submitButton = document.createElement("button");
 
-  nameInput.setAttribute('name', 'moviename')
-  genreInput.setAttribute('name', 'moviegenre')
-  languageInput.setAttribute('name', 'movielanguage')
-  nameInput.setAttribute('type', 'text')
-  genreInput.setAttribute('type', 'text')
-  languageInput.setAttribute('type', 'text')
-  nameLabel.setAttribute('for', 'moviename')
-  genreLabel.setAttribute('for', 'moviegenre')
-  languageLabel.setAttribute('for', 'movielanguage')
+  nameInput.setAttribute("name", "moviename");
+  genreInput.setAttribute("name", "moviegenre");
+  languageInput.setAttribute("name", "movielanguage");
+  nameInput.setAttribute("type", "text");
+  genreInput.setAttribute("type", "text");
+  languageInput.setAttribute("type", "text");
+  nameLabel.setAttribute("for", "moviename");
+  genreLabel.setAttribute("for", "moviegenre");
+  languageLabel.setAttribute("for", "movielanguage");
 
   nameLabel.innerText = "Title:";
   genreLabel.innerText = "Genre:";
@@ -197,7 +197,7 @@ function moviesForm() {
       body: JSON.stringify(movieData),
     });
     createForm.innerHTML = "";
-    displayMovies()
+    displayMovies();
   }
 }
 
@@ -359,7 +359,7 @@ async function getLatestBook() {
 getLatestBook();
 
 const openChecklistBtn = document.getElementById("checklist");
-const checklistPageDiv = document.getElementById("checklistPageDiv")
+const checklistPageDiv = document.getElementById("checklistPageDiv");
 
 openChecklistBtn.addEventListener("click", changeForegroundChecklist);
 
@@ -388,13 +388,13 @@ function generateChecklist(dataToRender) {
 
     listItem.setAttribute("class", "listItem");
     deleteListItem.setAttribute("class", "deleteListItem");
-    checklistContainer.setAttribute('class', 'checklistPageItem')
+    checklistContainer.setAttribute("class", "checklistPageItem");
 
     itemDiv.appendChild(deleteListItem);
     itemDiv.appendChild(listItem);
     checklistContainer.appendChild(itemDiv);
     checklistPageDiv.appendChild(checklistContainer);
-    
+
     deleteListItem.addEventListener("click", () => {
       handleDelete(dataToRender[i].id);
     });
@@ -411,14 +411,14 @@ function generateChecklist(dataToRender) {
 }
 
 const openBooksBtn = document.getElementById("books");
-const bookPageDiv = document.getElementById('bookPageDiv')
+const bookPageDiv = document.getElementById("bookPageDiv");
 
 openBooksBtn.addEventListener("click", changeForegroundBooks);
 
 function changeForegroundBooks() {
   bookPageDiv.removeAttribute("hidden");
-  checklistPageDiv.setAttribute('hidden', '')
-  moviePageDiv.setAttribute('hidden', '')
+  checklistPageDiv.setAttribute("hidden", "");
+  moviePageDiv.setAttribute("hidden", "");
   fetchBookPageData();
 }
 
@@ -449,7 +449,7 @@ function generateBooks(dataToRender) {
     bookGenre.setAttribute("class", "bookGenre");
     bookAuthor.setAttribute("class", "bookLanguage");
     deleteBook.setAttribute("class", "deleteBook");
-    booksContainer.setAttribute('class', 'bookPageItem')
+    booksContainer.setAttribute("class", "bookPageItem");
 
     booksDiv.appendChild(deleteBook);
     booksDiv.appendChild(bookName);
@@ -474,7 +474,7 @@ function generateBooks(dataToRender) {
 }
 
 const openMoviesBtn = document.getElementById("movies");
-const moviePageDiv = document.getElementById("moviePageDiv")
+const moviePageDiv = document.getElementById("moviePageDiv");
 
 openMoviesBtn.addEventListener("click", changeForeground);
 
@@ -513,7 +513,7 @@ function generateMovie(dataToRender) {
     movieGenre.setAttribute("class", "movieGenre");
     movieLanguage.setAttribute("class", "movieLanguage");
     deleteMovie.setAttribute("class", "deleteMovie");
-    moviesContainer.setAttribute('class', 'moviePageItem')
+    moviesContainer.setAttribute("class", "moviePageItem");
 
     movieDiv.appendChild(deleteMovie);
     movieDiv.appendChild(movieName);
@@ -539,3 +539,9 @@ function generateMovie(dataToRender) {
     }
   }
 }
+//nav dropdown for mobile ver
+const menuBtn = document.getElementById("menuToggle");
+const navDropdown = document.getElementById("nav-dropdown");
+menuBtn.addEventListener("click", () => {
+  navDropdown.classList.toggle("active");
+});

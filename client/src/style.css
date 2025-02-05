@@ -9,7 +9,7 @@ html {
   scroll-behavior: smooth;
 }
 
-#content {
+/* #content {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(9, 1fr);
@@ -43,7 +43,51 @@ html {
   grid-column: 9 / 11;
   grid-row: 3 / 10;
   background-color: hotpink;
-}
+} */
+
+/*THIS IS THE END*/
+
+.mainContainer {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 30px;
+  background-color: #e6adec;
+  padding: 30px;
+ }
+ 
+ .mbContainer {
+   grid-column: 1/4;
+   display: grid;
+   grid-template-rows: 1fr 1fr;
+   gap: 30px;
+ }
+
+ .moviesContainer {
+  background-color: #93c4e1;
+ }
+
+ .booksContainer {
+  background-color: #d3dbd9;
+ }
+ 
+ .wcContainer {
+   grid-column: 4/5;
+   display: grid;
+   grid-template-rows: 1fr 3fr;
+   gap: 30px;
+ }
+ 
+ .weatherContainer {
+   grid-row: 1/2;
+   background-color: #ddfff7;
+ }
+ 
+ .checklistContainer {
+   grid-row: 2/5;
+   background-color: rgb(236, 159, 144);
+ }
+
+ /* THIS IS THE END*/
 
 header {
   background-color: goldenrod;

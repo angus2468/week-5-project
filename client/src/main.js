@@ -276,7 +276,7 @@ function reminderForm() {
 
 //retrieve form data + add to database
 
-const userForm = document.getElementById("userForm");
+const userForm = document.getElementById("signupForm");
 async function submitUser(event) {
   event.preventDefault();
   const userFormData = new FormData(userForm);
@@ -293,6 +293,8 @@ async function submitUser(event) {
 userForm.addEventListener("submit", (event) => {
   submitUser(event);
 });
+
+userForm.addEventListener("submit", submitUser);
 
 //create new task
 

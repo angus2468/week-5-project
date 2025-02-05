@@ -73,9 +73,10 @@ function checklistForm() {
   taskInput.setAttribute("type", "text");
   submitButton.setAttribute("type", "submit");
 
+  createForm.appendChild(taskLabel);
+  createForm.appendChild(taskInput);
+  createForm.appendChild(submitButton)
   formDiv.appendChild(createForm);
-  formDiv.appendChild(taskLabel);
-  formDiv.appendChild(taskInput);
 
   taskLabel.innerText = "Item:";
   submitButton.innerText = "Add";
@@ -88,16 +89,19 @@ function checklistForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.innerHTML = "";
-    const userFormData = new FormData(userForm);
-    const userData = Object.fromEntries(userFormData);
-    fetch(`http:localhost:8080/checklist`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
+
+    createForm.innerHTML = ''
+
+    const taskFormData = new FormData(createForm);
+    const taskData = Object.fromEntries(taskFormData);
+    fetch(`http://localhost:8080/checklist`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(taskData),
+  });
+
   }
 }
 
@@ -145,16 +149,18 @@ function bookForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.innerHTML = "";
-    const userFormData = new FormData(userForm);
-    const userData = Object.fromEntries(userFormData);
-    fetch(`http:localhost:8080/bookslist`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
+
+    bookForm.innerHTML = '';
+
+    const bookFormData = new FormData(bookForm);
+    const bookData = Object.fromEntries(bookFormData);
+    fetch(`http://localhost:8080/booklist`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(bookData),
+  });
   }
 }
 
@@ -191,13 +197,14 @@ function moviesForm() {
   languageLabel.innerText = "Language:";
   submitButton.innerText = "Add";
 
-  formDiv.appendChild(nameLabel);
-  formDiv.appendChild(nameInput);
-  formDiv.appendChild(genreLabel);
-  formDiv.appendChild(genreInput);
-  formDiv.appendChild(languageLabel);
-  formDiv.appendChild(languageInput);
-  formDiv.appendChild(submitButton);
+  createForm.appendChild(nameLabel);
+  createForm.appendChild(nameInput);
+  createForm.appendChild(genreLabel);
+  createForm.appendChild(genreInput);
+  createForm.appendChild(languageLabel);
+  createForm.appendChild(languageInput);
+  createForm.appendChild(submitButton);
+  formDiv.appendChild(createForm)
 
   createNav.appendChild(formDiv);
 
@@ -207,16 +214,17 @@ function moviesForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.innerHTML = "";
-    const userFormData = new FormData(userForm);
-    const userData = Object.fromEntries(userFormData);
-    fetch(`http:localhost:8080/moviewatchlist`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
+    createForm.innerHTML = '';
+
+    const movieFormData = new FormData(createForm);
+    const movieData = Object.fromEntries(movieFormData);
+    fetch(`http://localhost:8080/moviewatchlist`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(movieData),
+  });
   }
 }
 
@@ -257,16 +265,18 @@ function reminderForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.innerHTML = "";
-    const userFormData = new FormData(userForm);
-    const userData = Object.fromEntries(userFormData);
-    fetch(`http:localhost:8080/reminders`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
+
+    reminderForm.innerHTML = ''
+
+    const reminderFormData = new FormData(reminderForm);
+    const reminderData = Object.fromEntries(reminderFormData);
+    fetch(`http://localhost:8080/reminders`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(reminderData),
+  });
   }
 }
 

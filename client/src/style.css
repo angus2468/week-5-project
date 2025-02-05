@@ -70,20 +70,13 @@ header {
   text-decoration: underline;
 }
 
-/*.createButton {}*/
-
-#createButton {
-  display: flex;
-  align-items: right;
-}
-
 .hiddenForm {
   position: relative;
   flex-direction: column;
 }
 
 /* css for sign up form */
-#sign-up {
+/* #sign-up {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -171,9 +164,6 @@ input:not(:placeholder-shown) + .label {
 }
 
 .hiddenNav {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
   position: absolute;
   right: 5px;
   top: 5px;
@@ -186,4 +176,4 @@ input:not(:placeholder-shown) + .label {
 
 .userForm {
   gap: 5px;
-}
+} */

@@ -410,33 +410,72 @@ header {
   background-color: #d18fc0;
   margin: 5px;
   width: 300px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 20px;
   margin-top: 10px;
+
+  border: white solid 2px;
+  position: relative;
+}
+
+.deleteListItem {
+  position: absolute;
+  right: 0px;
+  width: 20px;
+  border-radius: 10px;
+  background-color: none;
+  border-style: hidden;
+  background-color: #d18fc0;
+
 }
 
 .bookPageItem {
   background-color: rgb(44, 162, 44);
   margin: 5px;
   width: 300px;
+  height: 50px;
   display: flex;
-  align-items: center;
   justify-content: center;
   border-radius: 10px;
   margin-top: 10px;
+  border: white solid 2px;
+  position: relative;
+}
+
+.deleteBook {
+  position: absolute;
+  right: 0px;
+  width: 20px;
+  border-radius: 10px;
+  background-color: none;
+  border-style: hidden;
+  background-color: rgb(44, 162, 44);
 }
 
 .moviePageItem {
   background-color: rgb(78, 201, 231);
   margin: 5px;
   width: 300px;
+  height: 50px;
   display: flex;
-  align-items: center;
   justify-content: center;
   border-radius: 10px;
+  border: white solid 2px;
   margin-top: 10px;
+  position: relative;
+}
+
+.deleteMovie {
+  position: absolute;
+  right: 0px;
+  width: 20px;
+  border-radius: 10px;
+  background-color: none;
+  border-style: hidden;
+  background-color: rgb(78, 201, 231);
 }
 
 /*END OF NAV BAR PAGE STYLING*/

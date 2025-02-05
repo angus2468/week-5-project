@@ -291,7 +291,7 @@ function reminderForm() {
 
 //retrieve form data + add to database
 
-const userForm = document.getElementById("userForm");
+const userForm = document.getElementById("signupForm");
 async function submitUser(event) {
   event.preventDefault();
   const userFormData = new FormData(userForm);
@@ -333,14 +333,18 @@ async function fetchBookData(book) {
   const calenderSection = document.getElementById("calenderSection");
   calenderSection.innerHTML = "";
   const bookContainer = document.createElement("section");
+  bookContainer.setAttribute("class", "bookContainer");
+  const h2Title = document.createElement("h2");
+  h2Title.innerText = `Your current book!`;
+  bookContainer.appendChild(h2Title);
   const bookTitle = document.createElement("p");
-  bookTitle.innerText = data.items[1].volumeInfo.title;
+  bookTitle.innerText = `Title: ${data.items[1].volumeInfo.title}`;
   bookContainer.appendChild(bookTitle);
   const bookDate = document.createElement("p");
-  bookDate.innerText = data.items[1].volumeInfo.publishedDate;
+  bookDate.innerText = `Date published: ${data.items[1].volumeInfo.publishedDate}`;
   bookContainer.appendChild(bookDate);
   const bookDescription = document.createElement("p");
-  bookDescription.innerText = data.items[1].volumeInfo.description;
+  bookDescription.innerText = `Description: ${data.items[1].volumeInfo.description}`;
   bookContainer.appendChild(bookDescription);
   const bookCover = document.createElement("img");
   bookCover.src = data.items[1].volumeInfo.imageLinks.smallThumbnail;
@@ -355,6 +359,7 @@ async function displayChecklist() {
   checklistElement.innerHTML = "";
   data.rows.forEach((element) => {
     const checklistContainer = document.createElement("div");
+    checklistContainer.setAttribute("class", "checklistItem");
     const checklistTask = document.createElement("p");
     checklistTask.innerText = " - " + element.task;
     const checklistbutton = document.createElement("button");
@@ -439,7 +444,125 @@ async function getLatestBook() {
 }
 getLatestBook();
 
+
 const openMoviesBtn = document.getElementById("movies");
+
+const openChecklistBtn = document.getElementById('checklist')
+
+openChecklistBtn.addEventListener('click', changeForegroundChecklist)
+
+function changeForegroundChecklist () {
+  foregroundDiv.removeAttribute('hidden')
+  fetchChecklistData()
+}
+
+async function fetchChecklistData() {
+  const response = await fetch('http://localhost:8080/checklist')
+  const data = await response.json()
+  generateChecklist(data)
+}
+
+function generateChecklist(dataToRender) {
+  foregroundDiv.innerHTML = ''
+
+  for (let i = 0; i < dataToRender.rows.length; i++) {
+    const checklistContainer = document.createElement('div')
+    const itemDiv = document.createElement('div')
+    const listItem = document.createElement('p')
+    const deleteListItem = document.createElement('button')
+
+    listItem.innerText = dataToRender.rows[i].task
+    deleteListItem.innerText = 'x'
+
+    listItem.setAttribute('class', 'listItem')
+    deleteListItem.setAttribute('class', 'deleteListItem')
+    
+    itemDiv.appendChild(listItem)
+    itemDiv.appendChild(deleteListItem)
+    checklistContainer.appendChild(itemDiv)
+    foregroundDiv.appendChild(checklistContainer)
+    deleteListItem.addEventListener('click', () => {
+      handleDelete(dataToRender[i].id)
+    })
+
+    async function handleDelete(id) {
+      const response = await fetch (`http://localhost:8080/checklist/${id}`, {
+        method: 'DELETE'
+      })
+      if (response.ok) {
+        fetchChecklistData()
+    }
+  }
+}
+}
+  
+
+
+
+const openBooksBtn = document.getElementById('books')
+
+openBooksBtn.addEventListener('click', changeForegroundBooks)
+
+function changeForegroundBooks () {
+  foregroundDiv.removeAttribute('hidden')
+  fetchBookData()
+}
+
+async function fetchBookData() {
+  const response = await fetch('http://localhost:8080/booklist')
+  const data = await response.json()
+  generateBooks(data)
+}
+
+function generateBooks(dataToRender) {
+  foregroundDiv.innerHTML = ''
+  console.log(dataToRender)
+
+  for (let i = 0; i < dataToRender.rows.length; i++) {
+    const booksContainer = document.createElement('div')
+    const booksDiv = document.createElement('div')
+    const bookName = document.createElement('p')
+    const bookGenre = document.createElement('p')
+    const bookAuthor = document.createElement('p')
+    const deleteBook = document.createElement('button')
+
+    bookName.innerText = dataToRender.rows[i].name
+    bookGenre.innerText = dataToRender.rows[i].genre
+    bookAuthor.innerText = dataToRender.rows[i].author
+    deleteBook.innerText = 'x'
+
+    bookName.setAttribute('class', 'bookName')
+    bookGenre.setAttribute('class', 'bookGenre')
+    bookAuthor.setAttribute('class', 'bookLanguage')
+    deleteBook.setAttribute('class', 'deleteBook')
+    
+    booksDiv.appendChild(bookName)
+    booksDiv.appendChild(bookGenre)
+    booksDiv.appendChild(bookAuthor)
+    booksDiv.appendChild(deleteBook)
+    booksContainer.appendChild(booksDiv)
+    foregroundDiv.appendChild(booksContainer)
+
+    deleteBook.addEventListener('click', () => {
+      handleDelete(dataToRender[i].id)
+    })
+  
+    async function handleDelete(id) {
+      const response = await fetch (`http://localhost:8080/booklist/${id}`, {
+        method: 'DELETE'
+      })
+      if (response.ok) {
+        fetchBookData()
+      }
+    }
+  }
+}
+
+
+
+
+const openMoviesBtn = document.getElementById('movies')
+
 
 openMoviesBtn.addEventListener("click", changeForeground);
 

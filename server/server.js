@@ -54,11 +54,6 @@ app.get("/moviewatchlist", async (req, res) => {
   res.json(result);
 });
 
-app.get("/reminders", async (req, res) => {
-  const result = await db.query("SELECT * FROM reminders");
-  res.json(result);
-});
-
 app.get("/booklist", async (req, res) => {
   const result = await db.query("SELECT * FROM bookslist");
   res.json(result);
@@ -72,7 +67,8 @@ app.post("/checklist", async (req, res) => {
   console.log(req.body);
 
   const data = await db.query(
-    `INSERT INTO checklist (task, completed) VALUES ('${checklistClient}', '${completedClient}')`
+    `INSERT INTO checklist (task, completed) VALUES ($1, $2)`,
+    [checklistClient, completedClient]
   );
   res.json(data);
 });
@@ -86,7 +82,8 @@ app.post("/userInfo", async (req, res) => {
   console.log(req.body);
 
   const data = await db.query(
-    `INSERT INTO userInfo (username, password, firstname, lastname) VALUES ('${username}', '${password}', '${firstname}', '${lastname}')`
+    `INSERT INTO userInfo (username, password, firstname, lastname) VALUES ($1, $2, $3, $4)`,
+    [username, password, firstname, lastname]
   );
   res.json(data);
 });
@@ -99,19 +96,8 @@ app.post("/moviewatchlist", async (req, res) => {
   console.log(req.body);
 
   const data = await db.query(
-    `INSERT INTO moviewatchlist (moviename, moviegenre, movielanguage) VALUES ('${moviename}', '${moviegenre}', '${movielanguage}')`
-  );
-  res.json(data);
-});
-
-app.post("/reminders", async (req, res) => {
-  const reminder = req.body.reminder;
-  const reminderdate = req.body.reminderdate;
-
-  console.log(req.body);
-
-  const data = await db.query(
-    `INSERT INTO reminders (reminder, reminderdate) VALUES ('${reminder}', '${reminderdate}')`
+    `INSERT INTO moviewatchlist (moviename, moviegenre, movielanguage) VALUES ($1, $2, $3)`,
+    [moviename, moviegenre, movielanguage]
   );
   res.json(data);
 });
@@ -124,7 +110,8 @@ app.post("/booklist", async (req, res) => {
   console.log(req.body);
 
   const data = await db.query(
-    `INSERT INTO bookslist (name, genre, author) VALUES ('${name}', '${genre}', '${author}')`
+    `INSERT INTO bookslist (name, genre, author) VALUES ($1, $2, $3)`,
+    [name, genre, author]
   );
   res.json(data);
 });
@@ -147,13 +134,6 @@ app.delete("/userInfo/:id", async (request, response) => {
 
 app.delete("/moviewatchlist/:id", async (request, response) => {
   const deleted = await db.query(`DELETE FROM moviewatchlist WHERE id = $1`, [
-    request.params.id,
-  ]);
-  response.json(deleted);
-});
-
-app.delete("/reminders/:id", async (request, response) => {
-  const deleted = await db.query(`DELETE FROM reminders id = $1`, [
     request.params.id,
   ]);
   response.json(deleted);

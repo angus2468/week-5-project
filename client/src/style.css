@@ -76,7 +76,7 @@ header {
 }
 
 /* css for sign up form */
-#sign-up {
+/* #sign-up {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -176,4 +176,4 @@ input:not(:placeholder-shown) + .label {
 
 .userForm {
   gap: 5px;
-}
+} */

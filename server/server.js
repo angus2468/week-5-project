@@ -67,7 +67,9 @@ app.post("/checklist", async (req, res) => {
   console.log(req.body);
 
   const data = await db.query(
+
     `INSERT INTO checklist (task, completed) VALUES ('${checklistClient}', '${completedClient}')`
+
   );
   res.json(data);
 });
@@ -81,7 +83,9 @@ app.post("/userInfo", async (req, res) => {
   console.log(req.body);
 
   const data = await db.query(
+
     `INSERT INTO userInfo (username, password, firstname, lastname) VALUES ('${username}', '${password}', '${firstname}', '${lastname}')`
+
   );
   res.json(data);
 });
@@ -94,7 +98,9 @@ app.post("/moviewatchlist", async (req, res) => {
   console.log(req.body);
 
   const data = await db.query(
+
     `INSERT INTO moviewatchlist (moviename, moviegenre, movielanguage) VALUES ('${moviename}', '${moviegenre}', '${movielanguage}')`
+
   );
   res.json(data);
 });
@@ -107,7 +113,9 @@ app.post("/booklist", async (req, res) => {
   console.log(req.body);
 
   const data = await db.query(
+
     `INSERT INTO bookslist (name, genre, author) VALUES ('${name}', '${genre}', '${author}')`
+
   );
   res.json(data);
 });

@@ -3,6 +3,21 @@ const API_URL = "http://localhost:8080/";
 //hamburger/drop down menu for creation of reminders
 
 //UI updates
+//UI for signin/signup
+let signup = document.querySelector(".signup");
+let login = document.querySelector(".login");
+let toggle = document.querySelector(".toggle");
+let formSection = document.querySelector(".form-section-sl");
+
+signup.addEventListener("click", () => {
+  toggle.classList.add("moveslider");
+  formSection.classList.add("form-section-move");
+});
+
+login.addEventListener("click", () => {
+  toggle.classList.remove("moveslider");
+  formSection.classList.remove("form-section-move");
+});
 
 //post to server updates based on reminders, watch history etc
 const createNav = document.getElementById("createNav");
@@ -429,6 +444,9 @@ async function getLatestBook() {
 }
 getLatestBook();
 
+
+const openMoviesBtn = document.getElementById("movies");
+
 const openChecklistBtn = document.getElementById('checklist')
 
 openChecklistBtn.addEventListener('click', changeForegroundChecklist)
@@ -463,9 +481,7 @@ function generateChecklist(dataToRender) {
     itemDiv.appendChild(deleteListItem)
     checklistContainer.appendChild(itemDiv)
     foregroundDiv.appendChild(checklistContainer)
-  }
-  
-  deleteListItem.addEventListener('click', () => {
+    deleteListItem.addEventListener('click', () => {
       handleDelete(dataToRender[i].id)
     })
 
@@ -478,65 +494,134 @@ function generateChecklist(dataToRender) {
     }
   }
 }
+}
+  
 
 
-const openMoviesBtn = document.getElementById('movies')
 
-openMoviesBtn.addEventListener('click', changeForeground)
+const openBooksBtn = document.getElementById('books')
 
-function changeForeground () {
+openBooksBtn.addEventListener('click', changeForegroundBooks)
+
+function changeForegroundBooks () {
   foregroundDiv.removeAttribute('hidden')
-  fetchMovieData()
+  fetchBookData()
 }
 
-const foregroundDiv = document.getElementById('foregroundDiv')
-
-async function fetchMovieData() {
-  const response = await fetch('http://localhost:8080/moviewatchlist')
+async function fetchBookData() {
+  const response = await fetch('http://localhost:8080/booklist')
   const data = await response.json()
-  generateMovie(data)
+  generateBooks(data)
 }
 
-function generateMovie(dataToRender) {
+function generateBooks(dataToRender) {
   foregroundDiv.innerHTML = ''
   console.log(dataToRender)
 
   for (let i = 0; i < dataToRender.rows.length; i++) {
-    const moviesContainer = document.createElement('div')
-    const movieDiv = document.createElement('div')
-    const movieName = document.createElement('p')
-    const movieGenre = document.createElement('p')
-    const movieLanguage = document.createElement('p')
+    const booksContainer = document.createElement('div')
+    const booksDiv = document.createElement('div')
+    const bookName = document.createElement('p')
+    const bookGenre = document.createElement('p')
+    const bookAuthor = document.createElement('p')
+    const deleteBook = document.createElement('button')
+
+    bookName.innerText = dataToRender.rows[i].name
+    bookGenre.innerText = dataToRender.rows[i].genre
+    bookAuthor.innerText = dataToRender.rows[i].author
+    deleteBook.innerText = 'x'
+
+    bookName.setAttribute('class', 'bookName')
+    bookGenre.setAttribute('class', 'bookGenre')
+    bookAuthor.setAttribute('class', 'bookLanguage')
+    deleteBook.setAttribute('class', 'deleteBook')
     
-    const deleteMovie = document.createElement('button')
+    booksDiv.appendChild(bookName)
+    booksDiv.appendChild(bookGenre)
+    booksDiv.appendChild(bookAuthor)
+    booksDiv.appendChild(deleteBook)
+    booksContainer.appendChild(booksDiv)
+    foregroundDiv.appendChild(booksContainer)
 
-    movieName.innerText = dataToRender.rows[i].moviename
-    movieGenre.innerText = dataToRender.rows[i].moviegenre
-    movieLanguage.innerText = dataToRender.rows[i].movielanguage
-    deleteMovie.innerText = 'x'
-
-    movieName.setAttribute('class', 'movieName')
-    movieGenre.setAttribute('class', 'movieGenre')
-    movieLanguage.setAttribute('class', 'movieLanguage')
-    deleteMovie.setAttribute('class', 'deleteMovie')
-    
-    movieDiv.appendChild(movieName)
-    movieDiv.appendChild(movieGenre)
-    movieDiv.appendChild(movieLanguage)
-    movieDiv.appendChild(deleteMovie)
-    moviesContainer.appendChild(movieDiv)
-    foregroundDiv.appendChild(moviesContainer)
-
-    deleteMovie.addEventListener('click', () => {
+    deleteBook.addEventListener('click', () => {
       handleDelete(dataToRender[i].id)
     })
   
     async function handleDelete(id) {
-      const response = await fetch (`http://localhost:8080/moviewatchlist/${id}`, {
+      const response = await fetch (`http://localhost:8080/booklist/${id}`, {
         method: 'DELETE'
       })
       if (response.ok) {
-        fetchMovieData()
+        fetchBookData()
+      }
+    }
+  }
+}
+
+
+
+
+const openMoviesBtn = document.getElementById('movies')
+
+
+openMoviesBtn.addEventListener("click", changeForeground);
+
+function changeForeground() {
+  foregroundDiv.removeAttribute("hidden");
+  fetchMovieData();
+}
+
+const foregroundDiv = document.getElementById("foregroundDiv");
+
+async function fetchMovieData() {
+  const response = await fetch("http://localhost:8080/moviewatchlist");
+  const data = await response.json();
+  generateMovie(data);
+}
+
+function generateMovie(dataToRender) {
+  foregroundDiv.innerHTML = "";
+  console.log(dataToRender);
+
+  for (let i = 0; i < dataToRender.rows.length; i++) {
+    const moviesContainer = document.createElement("div");
+    const movieDiv = document.createElement("div");
+    const movieName = document.createElement("p");
+    const movieGenre = document.createElement("p");
+    const movieLanguage = document.createElement("p");
+
+    const deleteMovie = document.createElement("button");
+
+    movieName.innerText = dataToRender.rows[i].moviename;
+    movieGenre.innerText = dataToRender.rows[i].moviegenre;
+    movieLanguage.innerText = dataToRender.rows[i].movielanguage;
+    deleteMovie.innerText = "x";
+
+    movieName.setAttribute("class", "movieName");
+    movieGenre.setAttribute("class", "movieGenre");
+    movieLanguage.setAttribute("class", "movieLanguage");
+    deleteMovie.setAttribute("class", "deleteMovie");
+
+    movieDiv.appendChild(movieName);
+    movieDiv.appendChild(movieGenre);
+    movieDiv.appendChild(movieLanguage);
+    movieDiv.appendChild(deleteMovie);
+    moviesContainer.appendChild(movieDiv);
+    foregroundDiv.appendChild(moviesContainer);
+
+    deleteMovie.addEventListener("click", () => {
+      handleDelete(dataToRender[i].id);
+    });
+
+    async function handleDelete(id) {
+      const response = await fetch(
+        `http://localhost:8080/moviewatchlist/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (response.ok) {
+        fetchMovieData();
       }
     }
   }

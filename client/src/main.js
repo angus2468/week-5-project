@@ -419,3 +419,64 @@ async function getLatestBook() {
 }
 getLatestBook();
 
+const openMoviesBtn = document.getElementById('movies')
+
+openMoviesBtn.addEventListener('click', changeForeground)
+
+function changeForeground () {
+  foregroundDiv.removeAttribute('hidden')
+  fetchMovieData()
+}
+
+const foregroundDiv = document.getElementById('foregroundDiv')
+
+async function fetchMovieData() {
+  const response = await fetch('http://localhost:8080/moviewatchlist')
+  const data = await response.json()
+  generateMovie(data)
+}
+
+function generateMovie(dataToRender) {
+  foregroundDiv.innerHTML = ''
+  console.log(dataToRender)
+
+  for (let i = 0; i < dataToRender.rows.length; i++) {
+    const moviesContainer = document.createElement('div')
+    const movieDiv = document.createElement('div')
+    const movieName = document.createElement('p')
+    const movieGenre = document.createElement('p')
+    const movieLanguage = document.createElement('p')
+    
+    const deleteMovie = document.createElement('button')
+
+    movieName.innerText = dataToRender.rows[i].moviename
+    movieGenre.innerText = dataToRender.rows[i].moviegenre
+    movieLanguage.innerText = dataToRender.rows[i].movielanguage
+    deleteMovie.innerText = 'x'
+
+    movieName.setAttribute('class', 'movieName')
+    movieGenre.setAttribute('class', 'movieGenre')
+    movieLanguage.setAttribute('class', 'movieLanguage')
+    deleteMovie.setAttribute('class', 'deleteMovie')
+    
+    movieDiv.appendChild(movieName)
+    movieDiv.appendChild(movieGenre)
+    movieDiv.appendChild(movieLanguage)
+    movieDiv.appendChild(deleteMovie)
+    moviesContainer.appendChild(movieDiv)
+    foregroundDiv.appendChild(moviesContainer)
+
+    deleteMovie.addEventListener('click', () => {
+      handleDelete(dataToRender[i].id)
+    })
+  
+    async function handleDelete(id) {
+      const response = await fetch (`http://localhost:8080/moviewatchlist/${id}`, {
+        method: 'DELETE'
+      })
+      if (response.ok) {
+        fetchChecklistData()
+      }
+    }
+  }
+}

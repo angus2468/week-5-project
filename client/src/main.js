@@ -294,8 +294,6 @@ userForm.addEventListener("submit", (event) => {
   submitUser(event);
 });
 
-userForm.addEventListener("submit", submitUser);
-
 //create new task
 
 //setting current date for the task

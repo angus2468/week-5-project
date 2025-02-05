@@ -26,38 +26,36 @@ function handleCreate() {
 addChecklist.addEventListener("click", checklistForm);
 
 function checklistForm() {
+  const formDiv = document.createElement("div");
+  const createForm = document.createElement("form");
+  const taskLabel = document.createElement("label");
+  const taskInput = document.createElement("input");
+  const submitButton = document.createElement("button");
 
-  const formDiv = document.createElement('div')
-  const createForm = document.createElement('form')
-  const taskLabel = document.createElement('label')
-  const taskInput = document.createElement('input')
-  const submitButton = document.createElement('button')
+  createForm.setAttribute("class", "checklistForm");
+  taskLabel.setAttribute("for", "task");
+  taskInput.setAttribute("name", "task");
+  taskInput.setAttribute("type", "text");
+  submitButton.setAttribute("type", "submit");
 
-  createForm.setAttribute('class', 'checklistForm')
-  taskLabel.setAttribute('for', 'task')
-  taskInput.setAttribute('name', 'task')
-  taskInput.setAttribute('type', 'text')
-  submitButton.setAttribute('type', 'submit')
+  formDiv.appendChild(createForm);
+  formDiv.appendChild(taskLabel);
+  formDiv.appendChild(taskInput);
+  formDiv.appendChild(submitButton);
 
-  formDiv.appendChild(createForm)
-  formDiv.appendChild(taskLabel)
-  formDiv.appendChild(taskInput)
-  formDiv.appendChild(submitButton)
+  taskLabel.innerText = "Item:";
+  submitButton.innerText = "Add";
 
-  taskLabel.innerText = 'Item:'
-  submitButton.innerText = 'Add'
+  createNav.appendChild(formDiv);
 
-  createNav.appendChild(formDiv)
-  
-  createForm.addEventListener('submit', (event) => {
-    handleSubmit(event)
-  })
+  createForm.addEventListener("submit", (event) => {
+    handleSubmit(event);
+  });
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.innerHTML = ''
+    createNav.innerHTML = "";
   }
-
 }
 
 addChecklist.addEventListener("click", checklistForm);
@@ -75,23 +73,21 @@ function checklistForm() {
   taskInput.setAttribute("type", "text");
   submitButton.setAttribute("type", "submit");
 
+  createForm.appendChild(taskLabel);
+  createForm.appendChild(taskInput);
+  createForm.appendChild(submitButton);
   formDiv.appendChild(createForm);
-  formDiv.appendChild(taskLabel);
-  formDiv.appendChild(taskInput);
 
   taskLabel.innerText = "Item:";
   submitButton.innerText = "Add";
 
   createNav.appendChild(formDiv);
-
   createForm.addEventListener("submit", (event) => {
     handleSubmit(event);
   });
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.innerHTML = ''
-
     const taskFormData = new FormData(createForm);
     const taskData = Object.fromEntries(taskFormData);
     fetch(`http://localhost:8080/checklist`, {
@@ -100,8 +96,8 @@ function checklistForm() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(taskData),
-  });
-
+    });
+    createForm.innerHTML = "";
   }
 }
 
@@ -149,8 +145,6 @@ function bookForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.innerHTML = '';
-
     const bookFormData = new FormData(bookForm);
     const bookData = Object.fromEntries(bookFormData);
     fetch(`http://localhost:8080/booklist`, {
@@ -159,11 +153,10 @@ function bookForm() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(bookData),
-  });
-
-
+    });
+    bookForm.innerHTML = "";
   }
-}
+  }
 
 addMovies.addEventListener("click", moviesForm);
 
@@ -181,12 +174,12 @@ function moviesForm() {
 
   const submitButton = document.createElement("button");
 
-  nameInput.setAttribute("name", "moviename");
-  genreInput.setAttribute("name", "moviegenre");
-  languageInput.setAttribute("name", "movielanguage");
-  nameLabel.setAttribute("for", "moviename");
-  genreLabel.setAttribute("for", "moviegenre");
-  languageLabel.setAttribute("for", "movielanguage");
+  nameInput.setAttribute("name", "name");
+  genreInput.setAttribute("name", "genre");
+  languageInput.setAttribute("name", "language");
+  nameLabel.setAttribute("for", "name");
+  genreLabel.setAttribute("for", "genre");
+  languageLabel.setAttribute("for", "language");
 
   nameInput.setAttribute("type", "text");
   genreInput.setAttribute("type", "text");
@@ -198,24 +191,23 @@ function moviesForm() {
   languageLabel.innerText = "Language:";
   submitButton.innerText = "Add";
 
-  formDiv.appendChild(nameLabel);
-  formDiv.appendChild(nameInput);
-  formDiv.appendChild(genreLabel);
-  formDiv.appendChild(genreInput);
-  formDiv.appendChild(languageLabel);
-  formDiv.appendChild(languageInput);
-  formDiv.appendChild(submitButton);
+  createForm.appendChild(nameLabel);
+  createForm.appendChild(nameInput);
+  createForm.appendChild(genreLabel);
+  createForm.appendChild(genreInput);
+  createForm.appendChild(languageLabel);
+  createForm.appendChild(languageInput);
+  createForm.appendChild(submitButton);
+  formDiv.appendChild(createForm);
 
   createNav.appendChild(formDiv);
 
   createForm.addEventListener("submit", (event) => {
-    movieHandleSubmit(event);
+    handleSubmit(event);
   });
 
-  function movieHandleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-    createNav.innerHTML = '';
-
     const movieFormData = new FormData(createForm);
     const movieData = Object.fromEntries(movieFormData);
     fetch(`http://localhost:8080/moviewatchlist`, {
@@ -224,7 +216,8 @@ function moviesForm() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(movieData),
-  });
+    });
+    createForm.innerHTML = "";
   }
 }
 
@@ -238,16 +231,16 @@ function reminderForm() {
   const reminderDateData = document.createElement("input");
   const reminderBtn = document.createElement("button");
 
-  reminderTask.setAttribute("for", "reminder");
-  reminderTaskData.setAttribute("name", "reminder");
-  reminderDate.setAttribute("for", "reminderdate");
-  reminderDateData.setAttribute("name", "reminderdate");
+  reminderTask.setAttribute("for", "reminderTask");
+  reminderTaskData.setAttribute("name", "reminderTask");
+  reminderDate.setAttribute("for", "reminderDate");
+  reminderDateData.setAttribute("name", "reminderDate");
 
   reminderTaskData.setAttribute("type", "text");
   reminderDateData.setAttribute("type", "date");
   reminderBtn.setAttribute("type", "submit");
 
-  reminderTask.innerText = "Task:";
+  reminderTask.innerText = "Reminder:";
   reminderDate.innerText = "Date:";
   reminderBtn.innerText = "Add";
 
@@ -265,8 +258,6 @@ function reminderForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.innerHTML = ''
-
     const reminderFormData = new FormData(reminderForm);
     const reminderData = Object.fromEntries(reminderFormData);
     fetch(`http://localhost:8080/reminders`, {
@@ -275,7 +266,8 @@ function reminderForm() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(reminderData),
-  });
+    });
+    reminderForm.innerHTML = "";
   }
 }
 
@@ -319,41 +311,53 @@ function setDateValue() {
 
 async function fetchBookData(book) {
   const response = await fetch(
-    `https://www.googleapis.com/books/v1/volumes?q=${book.name}&key=${GOOGLE_API_KEY}`
+    `https://www.googleapis.com/books/v1/volumes?q=${book}&key=AIzaSyABiSCRECheWyoruOwQs0AN81RKWe3-gsU`
   );
   const data = await response.json();
-  const bookContainer = document.createAttribute("section");
-  const bookTitle = document.createAttribute("p");
+  const bookContainer = document.createElement("section");
+  const bookTitle = document.createElement("p");
   bookTitle.innerText = data.items[1].volumeInfo.title;
   bookContainer.appendChild(bookTitle);
-  const bookDate = document.createAttribute("p");
+  const bookDate = document.createElement("p");
   bookDate.innerText = data.items[1].volumeInfo.publishedDate;
   bookContainer.appendChild(bookDate);
-  const bookDescription = document.createAttribute("p");
+  const bookDescription = document.createElement("p");
   bookDescription.innerText = data.items[1].volumeInfo.description;
   bookContainer.appendChild(bookDescription);
-  const bookCover = document.createAttribute("img");
+  const bookCover = document.createElement("img");
   bookCover.src = data.items[1].volumeInfo.imageLinks.smallThumbnail;
   bookContainer.appendChild(bookCover);
+  const calenderSection = document.getElementById("calenderSection");
+  calenderSection.appendChild(bookContainer);
 }
 
 async function displayChecklist() {
   const response = await fetch(`${API_URL}checklist`);
   const data = await response.json();
+  const checklistElement = document.getElementById("checklistSection");
+  checklistElement.innerHTML = "";
   data.rows.forEach((element) => {
     const checklistContainer = document.createElement("div");
     const checklistTask = document.createElement("p");
     checklistTask.innerText = " - " + element.task;
     const checklistbutton = document.createElement("button");
     checklistbutton.innerText = "X";
+    checklistbutton.addEventListener("click", async () => {
+      await fetch(`${API_URL}checklist/${element.id}`, {
+        method: "DELETE",
+      });
+      checklistElement.innerHTML = "";
+      displayChecklist();
+    });
     checklistContainer.appendChild(checklistTask);
     checklistContainer.appendChild(checklistbutton);
-    const checklistElement = document.getElementById("checklistSection");
+
     checklistElement.appendChild(checklistContainer);
   });
 }
 
 displayChecklist();
+
 
 async function displayMovies(movie){
   const response = await fetch(`http://www.omdbapi.com/?t=${movie}&apikey=72bf2de2`);
@@ -405,3 +409,13 @@ async function displayWeather(weather){
 }
 
 displayWeather();
+
+async function getLatestBook() {
+  const response = await fetch(`http://localhost:8080/booklist`);
+  const data = await response.json();
+  const latestBook = data.rows[data.rows.length - 1].name;
+  console.log(latestBook);
+  fetchBookData(latestBook);
+}
+getLatestBook();
+

@@ -502,7 +502,7 @@ function changeForegroundBooks() {
   fetchBookData();
 }
 
-async function fetchBookData() {
+async function fetchBookPageData() {
   const response = await fetch("http://localhost:8080/booklist");
   const data = await response.json();
   generateBooks(data);

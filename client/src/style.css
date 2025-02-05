@@ -190,3 +190,11 @@ input:not(:placeholder-shown) + .label {
 .userForm {
   gap: 5px;
 } */
+
+
+#foregroundDiv {
+  width: 100vw;
+  height: 100vh;
+  background-color: green;
+  position: absolute;
+}

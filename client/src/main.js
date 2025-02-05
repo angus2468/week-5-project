@@ -388,6 +388,7 @@ function generateChecklist(dataToRender) {
 
     listItem.setAttribute("class", "listItem");
     deleteListItem.setAttribute("class", "deleteListItem");
+    checklistContainer.setAttribute('class', 'checklistPageItem')
 
     itemDiv.appendChild(deleteListItem);
     itemDiv.appendChild(listItem);
@@ -448,6 +449,7 @@ function generateBooks(dataToRender) {
     bookGenre.setAttribute("class", "bookGenre");
     bookAuthor.setAttribute("class", "bookLanguage");
     deleteBook.setAttribute("class", "deleteBook");
+    booksContainer.setAttribute('class', 'bookPageItem')
 
     booksDiv.appendChild(deleteBook);
     booksDiv.appendChild(bookName);
@@ -511,6 +513,7 @@ function generateMovie(dataToRender) {
     movieGenre.setAttribute("class", "movieGenre");
     movieLanguage.setAttribute("class", "movieLanguage");
     deleteMovie.setAttribute("class", "deleteMovie");
+    moviesContainer.setAttribute('class', 'moviePageItem')
 
     movieDiv.appendChild(deleteMovie);
     movieDiv.appendChild(movieName);

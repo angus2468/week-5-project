@@ -9,7 +9,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/*THIS IS THE START*/
+/*THIS IS THE START OF NEW MAIN PAGE GRID LAYOUT*/
 
 .mainContainer {
   display: grid;
@@ -117,7 +117,7 @@ html {
    }
  }
 
- /* THIS IS THE END*/
+ /* THIS IS THE END OF NEW MAIN PAGE GRID LAYOUT*/
 
 header {
   background-color: goldenrod;
@@ -132,6 +132,7 @@ header {
   align-items: center;
   justify-self: center;
   padding-top: 15px;
+  height: 5vh;
 }
 
 .mainNav div {
@@ -322,7 +323,7 @@ header {
 
 #checklistPageDiv {
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   background-color: purple;
   position: absolute;
 }
@@ -340,3 +341,41 @@ header {
   background-color: rgb(0, 204, 255);
   position: absolute;
 }
+
+/*START OF NAV BAR PAGE STYLING*/
+
+.checklistPageItem {
+  background-color: #d18fc0;
+  margin: 5px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-top: 10px;
+
+}
+
+.bookPageItem {
+  background-color: rgb(44, 162, 44);
+  margin: 5px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.moviePageItem {
+  background-color: rgb(78, 201, 231);
+  margin: 5px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/*END OF NAV BAR PAGE STYLING*/

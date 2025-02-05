@@ -32,16 +32,17 @@
     <main>
       <div hidden id="foregroundDiv"></div>
       <div id="loginContainer">
-        <div class="toggle"></div>
-        <div class="btn">
-          <button class="login">Login</button>
-          <button class="signup">Sign Up</button>
+        <div class="toggle" id="toggle"></div>
+        <div class="btn" id="toggle">
+          <button class="login" id="login">Login</button>
+          <button class="signup" id="signup">Sign Up</button>
         </div>
-        <div class="form-section-sl">
-          <form class="loginForm">
+        <div class="form-section-sl" id="form-section-sl">
+          <form class="loginForm" id="loginForm">
             <div class="inputContainer">
               <input
                 class="username input"
+                id="username"
                 type="text"
                 name="username"
                 placeholder="a"
@@ -51,18 +52,20 @@
             <div class="inputContainer">
               <input
                 class="password input ele"
+                id="password"
                 type="text"
                 name="password"
                 placeholder="a"
               />
               <label class="label" for="password">Password:</label>
             </div>
-            <button type="button" class="loginBtn">Login</button>
+            <button type="button" class="loginBtn" id="loginBtn">Login</button>
           </form>
-          <form class="signupForm">
+          <form class="signupForm" id="signupForm">
             <div class="inputContainer">
               <input
                 class="firstName input ele"
+                id="firstName"
                 name="firstName"
                 type="text"
                 placeholder="a"
@@ -72,6 +75,7 @@
             <div class="inputContainer">
               <input
                 class="lastName input ele"
+                id="lastName"
                 name="lastName"
                 type="text"
                 placeholder="a"
@@ -81,6 +85,7 @@
             <div class="inputContainer">
               <input
                 class="userName input ele"
+                id="userName"
                 name="userName"
                 type="text"
                 placeholder="a"
@@ -90,13 +95,16 @@
             <div class="inputContainer">
               <input
                 class="passWord input ele"
+                id="password"
                 name="passWord"
                 type="password"
                 placeholder="a"
               />
               <label class="label" for="passWord">Password:</label>
             </div>
-            <button type="submit" class="signUpBtn">Sign Up</button>
+            <button type="submit" class="signUpBtn" id="signUpBtn">
+              Sign Up
+            </button>
           </form>
         </div>
       </div>

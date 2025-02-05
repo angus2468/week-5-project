@@ -90,12 +90,12 @@ header {
 }
 /* css for sign up form */
 #loginContainer {
-  left: 55vh;
+  left: 80vh;
   top: 15vh;
   height: 600px;
   width: 500px;
   background-color: white;
-  box-shadow: 8px 8px 20px rgba(128, 128, 128, 0.5);
+  box-shadow: 8px 8px 20px rgba(209, 143, 193, 0.5);
   position: relative;
   overflow: hidden;
 }

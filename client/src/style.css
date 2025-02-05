@@ -89,11 +89,67 @@ header {
   align-items: center;
 }
 /* css for sign up form */
-/* #sign-up {
+#loginContainer {
+  left: 55vh;
+  top: 15vh;
+  height: 600px;
+  width: 500px;
+  background-color: white;
+  box-shadow: 8px 8px 20px rgba(128, 128, 128, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+.btn {
+  height: 60px;
+  width: 300px;
+  margin: 20px auto;
+  box-shadow: 10px 10px 30px rgba(209, 143, 193, 0.5);
+  border-radius: 6px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  height: 100vh;
+  cursor: pointer;
+}
+.login,
+.signup {
+  position: relative;
+  display: block;
+  padding: 10px 25px;
+  border: none;
+  background-color: #a35f92;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 3px;
+}
+.toggle {
+  height: 60px;
+  width: 150px;
+  border-radius: 6px;
+  background-image: linear-gradient(
+    to right rgb(209, 143, 193),
+    rgb(223, 218, 224)
+  );
+  position: absolute;
+  top: 20px;
+  left: 100px;
+  transition: all 0.5s ease-in-out;
+}
+.moveslider {
+  left: 250px;
+}
+.form-section-sl {
+  height: 500px;
+  width: 1000px;
+  padding: 20px 0;
+  display: flex;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+  left: 0px;
+}
+.form-section-move {
+  left: -500px;
 }
 .userForm {
   background-color: white;
@@ -102,17 +158,14 @@ header {
   padding: 20px 40px;
   box-shadow: 0 10px 25px rgba(92, 99, 105, 0.2);
 }
-.title {
-  font-size: 50px;
-  margin-bottom: 50px;
-}
+
 .inputContainer {
   position: relative;
   height: 45px;
   width: 90%;
   margin-bottom: 15px;
 }
-input {
+.input {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -140,7 +193,8 @@ input {
   transition: 0.5s;
   z-index: 0;
 }
-.signUpBtn {
+.signUpBtn,
+.loginBtn {
   display: block;
   margin-left: auto;
   padding: 15px 30px;
@@ -151,12 +205,18 @@ input {
   cursor: pointer;
   font-size: 16px;
   margin-top: 30px;
+  cursor: pointer;
 }
 .signUpBtn:hover {
   background-color: #d18fc0;
   transform: translateY(-2px);
 }
-input:focus + .label {
+
+.loginBtn:hover {
+  background-color: #d18fc0;
+  transform: translateY(-2px);
+}
+.input:focus + .label {
   top: -7px;
   left: 3px;
   z-index: 10;
@@ -164,33 +224,34 @@ input:focus + .label {
   font-weight: 600;
   color: #a35f92;
 }
-input:focus {
+.input:focus {
   border: 2px solid #a35f92;
 }
 
-input:not(:placeholder-shown) + .label {
+.input:not(:placeholder-shown) + .label {
   top: -7px;
   left: 3px;
   z-index: 10;
   font-size: 14px;
   font-weight: 600;
 }
-
-.hiddenNav {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  gap: 3px;
+#loginForm {
+  gap: 50px;
 }
 
-.createButton {
-  width: 135px;
+#signupForm {
+  gap: 30px;
 }
-
-.userForm {
-  gap: 5px;
-} */
-
+.loginForm,
+.signupForm {
+  height: 100%;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 40px;
+}
 
 #foregroundDiv {
   width: 100vw;

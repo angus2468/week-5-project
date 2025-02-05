@@ -3,6 +3,21 @@ const API_URL = "http://localhost:8080/";
 //hamburger/drop down menu for creation of reminders
 
 //UI updates
+//UI for signin/signup
+let signup = document.querySelector(".signup");
+let login = document.querySelector(".login");
+let toggle = document.querySelector(".toggle");
+let formSection = document.querySelector(".form-section-sl");
+
+signup.addEventListener("click", () => {
+  toggle.classList.add("moveslider");
+  formSection.classList.add("form-section-move");
+});
+
+login.addEventListener("click", () => {
+  toggle.classList.remove("moveslider");
+  formSection.classList.remove("form-section-move");
+});
 
 //post to server updates based on reminders, watch history etc
 const createNav = document.getElementById("createNav");
@@ -360,54 +375,57 @@ async function displayChecklist() {
 
 displayChecklist();
 
+async function displayMovies(movie) {
+  const response = await fetch(
+    `http://www.omdbapi.com/?t=${movie}&apikey=72bf2de2`
+  );
 
-async function displayMovies(movie){
-  const response = await fetch(`http://www.omdbapi.com/?t=${movie}&apikey=72bf2de2`);
-
-    const data = await response.json();
-      const movieContainer = document.createElement("div");
-      const movieName = document.createElement("h1");
-      movieName.innerText = data.Title;
-      const movieGenre = document.createElement("p");
-      movieGenre.innerText = " - " + data.Genre;
-      const moviebutton = document.createElement("button");
-      moviebutton.innerText = "X";
-      const movieLanguage = document.createElement("p");
-      movieLanguage.innerText = " - " + data.Language;
-      const moviePlot = document.createElement("p");
-      moviePlot.innerText = " - " + data.Plot;
-      movieContainer.appendChild(movieName);
-      movieContainer.appendChild(movieGenre);
-      movieContainer.appendChild(movieLanguage);
-      movieContainer.appendChild(moviePlot);
-      movieContainer.appendChild(moviebutton);
-      const movieElement = document.getElementById("moviesSection");
-      movieElement.appendChild(movieContainer);
-      console.log(movieContainer);
+  const data = await response.json();
+  const movieContainer = document.createElement("div");
+  const movieName = document.createElement("h1");
+  movieName.innerText = data.Title;
+  const movieGenre = document.createElement("p");
+  movieGenre.innerText = " - " + data.Genre;
+  const moviebutton = document.createElement("button");
+  moviebutton.innerText = "X";
+  const movieLanguage = document.createElement("p");
+  movieLanguage.innerText = " - " + data.Language;
+  const moviePlot = document.createElement("p");
+  moviePlot.innerText = " - " + data.Plot;
+  movieContainer.appendChild(movieName);
+  movieContainer.appendChild(movieGenre);
+  movieContainer.appendChild(movieLanguage);
+  movieContainer.appendChild(moviePlot);
+  movieContainer.appendChild(moviebutton);
+  const movieElement = document.getElementById("moviesSection");
+  movieElement.appendChild(movieContainer);
+  console.log(movieContainer);
 }
 
 displayMovies();
 
-async function displayWeather(weather){
-  const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=2d89413830e24b93bab110358250502&q=London`);
+async function displayWeather(weather) {
+  const response = await fetch(
+    `http://api.weatherapi.com/v1/current.json?key=2d89413830e24b93bab110358250502&q=London`
+  );
 
   const data = await response.json();
   const weatherContainer = document.createElement("div");
-      const myLocation = document.createElement("h3");
-      myLocation.innerText = data.location.name;
-      const currentWeather = document.createElement("h1");
-      currentWeather.innerText = data.current.condition.text;
-      const weatherImg = document.createElement("img");
-      weatherImg.src = data.current.condition.icon;
-      const currentTemp = document.createElement("p");
-      currentTemp.innerText = data.current.temp_c + "°C";
-      weatherContainer.appendChild(myLocation);
-      weatherContainer.appendChild(currentTemp);
-      weatherContainer.appendChild(currentWeather);
-      weatherContainer.appendChild(weatherImg)
-      const weatherSection = document.getElementById("remindersSection");
-      weatherSection.appendChild(weatherContainer);
-      console.log
+  const myLocation = document.createElement("h3");
+  myLocation.innerText = data.location.name;
+  const currentWeather = document.createElement("h1");
+  currentWeather.innerText = data.current.condition.text;
+  const weatherImg = document.createElement("img");
+  weatherImg.src = data.current.condition.icon;
+  const currentTemp = document.createElement("p");
+  currentTemp.innerText = data.current.temp_c + "°C";
+  weatherContainer.appendChild(myLocation);
+  weatherContainer.appendChild(currentTemp);
+  weatherContainer.appendChild(currentWeather);
+  weatherContainer.appendChild(weatherImg);
+  const weatherSection = document.getElementById("remindersSection");
+  weatherSection.appendChild(weatherContainer);
+  console.log;
 }
 
 displayWeather();
@@ -421,63 +439,66 @@ async function getLatestBook() {
 }
 getLatestBook();
 
-const openMoviesBtn = document.getElementById('movies')
+const openMoviesBtn = document.getElementById("movies");
 
-openMoviesBtn.addEventListener('click', changeForeground)
+openMoviesBtn.addEventListener("click", changeForeground);
 
-function changeForeground () {
-  foregroundDiv.removeAttribute('hidden')
-  fetchMovieData()
+function changeForeground() {
+  foregroundDiv.removeAttribute("hidden");
+  fetchMovieData();
 }
 
-const foregroundDiv = document.getElementById('foregroundDiv')
+const foregroundDiv = document.getElementById("foregroundDiv");
 
 async function fetchMovieData() {
-  const response = await fetch('http://localhost:8080/moviewatchlist')
-  const data = await response.json()
-  generateMovie(data)
+  const response = await fetch("http://localhost:8080/moviewatchlist");
+  const data = await response.json();
+  generateMovie(data);
 }
 
 function generateMovie(dataToRender) {
-  foregroundDiv.innerHTML = ''
-  console.log(dataToRender)
+  foregroundDiv.innerHTML = "";
+  console.log(dataToRender);
 
   for (let i = 0; i < dataToRender.rows.length; i++) {
-    const moviesContainer = document.createElement('div')
-    const movieDiv = document.createElement('div')
-    const movieName = document.createElement('p')
-    const movieGenre = document.createElement('p')
-    const movieLanguage = document.createElement('p')
-    
-    const deleteMovie = document.createElement('button')
+    const moviesContainer = document.createElement("div");
+    const movieDiv = document.createElement("div");
+    const movieName = document.createElement("p");
+    const movieGenre = document.createElement("p");
+    const movieLanguage = document.createElement("p");
 
-    movieName.innerText = dataToRender.rows[i].moviename
-    movieGenre.innerText = dataToRender.rows[i].moviegenre
-    movieLanguage.innerText = dataToRender.rows[i].movielanguage
-    deleteMovie.innerText = 'x'
+    const deleteMovie = document.createElement("button");
 
-    movieName.setAttribute('class', 'movieName')
-    movieGenre.setAttribute('class', 'movieGenre')
-    movieLanguage.setAttribute('class', 'movieLanguage')
-    deleteMovie.setAttribute('class', 'deleteMovie')
-    
-    movieDiv.appendChild(movieName)
-    movieDiv.appendChild(movieGenre)
-    movieDiv.appendChild(movieLanguage)
-    movieDiv.appendChild(deleteMovie)
-    moviesContainer.appendChild(movieDiv)
-    foregroundDiv.appendChild(moviesContainer)
+    movieName.innerText = dataToRender.rows[i].moviename;
+    movieGenre.innerText = dataToRender.rows[i].moviegenre;
+    movieLanguage.innerText = dataToRender.rows[i].movielanguage;
+    deleteMovie.innerText = "x";
 
-    deleteMovie.addEventListener('click', () => {
-      handleDelete(dataToRender[i].id)
-    })
-  
+    movieName.setAttribute("class", "movieName");
+    movieGenre.setAttribute("class", "movieGenre");
+    movieLanguage.setAttribute("class", "movieLanguage");
+    deleteMovie.setAttribute("class", "deleteMovie");
+
+    movieDiv.appendChild(movieName);
+    movieDiv.appendChild(movieGenre);
+    movieDiv.appendChild(movieLanguage);
+    movieDiv.appendChild(deleteMovie);
+    moviesContainer.appendChild(movieDiv);
+    foregroundDiv.appendChild(moviesContainer);
+
+    deleteMovie.addEventListener("click", () => {
+      handleDelete(dataToRender[i].id);
+    });
+
     async function handleDelete(id) {
-      const response = await fetch (`http://localhost:8080/moviewatchlist/${id}`, {
-        method: 'DELETE'
-      })
+      const response = await fetch(
+        `http://localhost:8080/moviewatchlist/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
       if (response.ok) {
-        fetchMovieData()
+        fetchMovieData();
       }
     }
   }

@@ -6,21 +6,13 @@ CREATE TABLE IF NOT exists userInfo (
     lastName TEXT
 );
 
-
 INSERT INTO userInfo (userName, password, firstName, lastName) VALUES
 ('Testing123',
 'Password123',
 'John',
 'Doe');
 
-CREATE TABLE IF NOT EXISTS reminders (
-    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    reminder TEXT,
-    reminderdate DATE
-);
 
-INSERT INTO reminders (reminder, reminderdate) VALUES
-('Go buy more eggs', '2025-02-04')
 
 CREATE TABLE IF NOT EXISTS moviewatchlist (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -32,6 +24,8 @@ CREATE TABLE IF NOT EXISTS moviewatchlist (
 INSERT INTO moviewatchlist (movieName, movieGenre, movieLanguage) VALUES
 ('Forgotten', 'Thriller/Mystery', 'Korean')
 
+
+
 CREATE TABLE IF NOT EXISTS checklist(
  id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
  task TEXT,
@@ -40,6 +34,8 @@ CREATE TABLE IF NOT EXISTS checklist(
 
 INSERT INTO checklist (task, completed) VALUES 
 ('to create a checklist', 'pending')
+
+
 
 CREATE TABLE IF NOT EXISTS booksList (
   id INT PRIMARY KEY GENERATED ALWAYS AS identity,
@@ -52,12 +48,12 @@ INSERT INTO booksList (name, genre, author) VALUES
 ('A Court of Thorns & Roses', 'Fantasy', 'Sarah J Maas'),
 ('The subtle art of not giving a f*ck', 'Self Help', 'Mark Manson');
 
-CREATE TABLE IF NOT EXISTS moviewatchlist (
-    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    movieName TEXT,
-    movieGenre TEXT,
-    movieLanguage TEXT
+
+CREATE TABLE IF NOT EXISTS weather(
+  id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+ location TEXT,
+ country TEXT
 );
 
-INSERT INTO moviewatchlist (movieName, movieGenre, movieLanguage) VALUES
-('Forgotten', 'Thriller/Mystery', 'Korean')
+INSERT INTO weather (location, country) VALUES
+('Kingston Upon Hull', 'United Kingdom')

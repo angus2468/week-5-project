@@ -353,9 +353,23 @@ header {
   padding: 0px 40px;
 }
 
-#foregroundDiv {
+#checklistPageDiv {
+  width: 100vw;
+  height: 100vh;
+  background-color: purple;
+  position: absolute;
+}
+
+#bookPageDiv {
   width: 100vw;
   height: 100vh;
   background-color: green;
+  position: absolute;
+}
+
+#moviePageDiv {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0, 204, 255);
   position: absolute;
 }

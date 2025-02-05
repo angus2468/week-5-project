@@ -389,8 +389,8 @@ function generateChecklist(dataToRender) {
     listItem.setAttribute("class", "listItem");
     deleteListItem.setAttribute("class", "deleteListItem");
 
-    itemDiv.appendChild(listItem);
     itemDiv.appendChild(deleteListItem);
+    itemDiv.appendChild(listItem);
     checklistContainer.appendChild(itemDiv);
     checklistPageDiv.appendChild(checklistContainer);
     
@@ -449,10 +449,10 @@ function generateBooks(dataToRender) {
     bookAuthor.setAttribute("class", "bookLanguage");
     deleteBook.setAttribute("class", "deleteBook");
 
+    booksDiv.appendChild(deleteBook);
     booksDiv.appendChild(bookName);
     booksDiv.appendChild(bookGenre);
     booksDiv.appendChild(bookAuthor);
-    booksDiv.appendChild(deleteBook);
     booksContainer.appendChild(booksDiv);
     bookPageDiv.appendChild(booksContainer);
 
@@ -512,10 +512,10 @@ function generateMovie(dataToRender) {
     movieLanguage.setAttribute("class", "movieLanguage");
     deleteMovie.setAttribute("class", "deleteMovie");
 
+    movieDiv.appendChild(deleteMovie);
     movieDiv.appendChild(movieName);
     movieDiv.appendChild(movieGenre);
     movieDiv.appendChild(movieLanguage);
-    movieDiv.appendChild(deleteMovie);
     moviesContainer.appendChild(movieDiv);
     moviePageDiv.appendChild(moviesContainer);
 

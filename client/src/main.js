@@ -53,41 +53,6 @@ function checklistForm() {
   taskInput.setAttribute("type", "text");
   submitButton.setAttribute("type", "submit");
 
-  formDiv.appendChild(createForm);
-  formDiv.appendChild(taskLabel);
-  formDiv.appendChild(taskInput);
-  formDiv.appendChild(submitButton);
-
-  taskLabel.innerText = "Item:";
-  submitButton.innerText = "Add";
-
-  createNav.appendChild(formDiv);
-
-  createForm.addEventListener("submit", (event) => {
-    handleSubmit(event);
-  });
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    createNav.innerHTML = "";
-  }
-}
-
-addChecklist.addEventListener("click", checklistForm);
-
-function checklistForm() {
-  const formDiv = document.createElement("div");
-  const createForm = document.createElement("form");
-  const taskLabel = document.createElement("label");
-  const taskInput = document.createElement("input");
-  const submitButton = document.createElement("button");
-
-  createForm.setAttribute("class", "checklistForm");
-  taskLabel.setAttribute("for", "task");
-  taskInput.setAttribute("name", "task");
-  taskInput.setAttribute("type", "text");
-  submitButton.setAttribute("type", "submit");
-
   createForm.appendChild(taskLabel);
   createForm.appendChild(taskInput);
   createForm.appendChild(submitButton);
@@ -190,9 +155,9 @@ function moviesForm() {
 
   const submitButton = document.createElement("button");
 
-  nameInput.setAttribute("name", "name");
-  genreInput.setAttribute("name", "genre");
-  languageInput.setAttribute("name", "language");
+  nameInput.setAttribute("name", "moviename");
+  genreInput.setAttribute("name", "moviegenre");
+  languageInput.setAttribute("name", "movielanguage");
   nameLabel.setAttribute("for", "name");
   genreLabel.setAttribute("for", "genre");
   languageLabel.setAttribute("for", "language");

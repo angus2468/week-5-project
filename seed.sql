@@ -16,7 +16,8 @@ INSERT INTO userInfo (userName, password, firstName, lastName) VALUES
 CREATE TABLE IF NOT EXISTS reminders (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     reminder TEXT,
-    reminderdate DATE
+    reminderdate DATE,
+    userName TEXT
 );
 
 INSERT INTO reminders (reminder, reminderdate) VALUES
@@ -26,7 +27,8 @@ CREATE TABLE IF NOT EXISTS moviewatchlist (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     movieName TEXT,
     movieGenre TEXT,
-    movieLanguage TEXT
+    movieLanguage TEXT,
+    userName TEXT
 );
 
 INSERT INTO moviewatchlist (movieName, movieGenre, movieLanguage) VALUES
@@ -35,7 +37,8 @@ INSERT INTO moviewatchlist (movieName, movieGenre, movieLanguage) VALUES
 CREATE TABLE IF NOT EXISTS checklist(
  id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
  task TEXT,
- completed TEXT
+ completed TEXT,
+    userName TEXT
 );
 
 INSERT INTO checklist (task, completed) VALUES 
@@ -56,7 +59,8 @@ CREATE TABLE IF NOT EXISTS moviewatchlist (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     movieName TEXT,
     movieGenre TEXT,
-    movieLanguage TEXT
+    movieLanguage TEXT,
+    userName TEXT
 );
 
 INSERT INTO moviewatchlist (movieName, movieGenre, movieLanguage) VALUES

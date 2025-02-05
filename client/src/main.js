@@ -237,56 +237,6 @@ function moviesForm() {
   }
 }
 
-addReminders.addEventListener("click", reminderForm);
-function reminderForm() {
-  const reminderDiv = document.createElement("div");
-  const reminderForm = document.createElement("form");
-  const reminderTask = document.createElement("label");
-  const reminderTaskData = document.createElement("input");
-  const reminderDate = document.createElement("label");
-  const reminderDateData = document.createElement("input");
-  const reminderBtn = document.createElement("button");
-
-  reminderTask.setAttribute("for", "reminderTask");
-  reminderTaskData.setAttribute("name", "reminderTask");
-  reminderDate.setAttribute("for", "reminderDate");
-  reminderDateData.setAttribute("name", "reminderDate");
-
-  reminderTaskData.setAttribute("type", "text");
-  reminderDateData.setAttribute("type", "date");
-  reminderBtn.setAttribute("type", "submit");
-
-  reminderTask.innerText = "Reminder:";
-  reminderDate.innerText = "Date:";
-  reminderBtn.innerText = "Add";
-
-  reminderForm.appendChild(reminderTask);
-  reminderForm.appendChild(reminderTaskData);
-  reminderForm.appendChild(reminderDate);
-  reminderForm.appendChild(reminderDateData);
-  reminderForm.appendChild(reminderBtn);
-  reminderDiv.appendChild(reminderForm);
-  createNav.appendChild(reminderDiv);
-
-  reminderForm.addEventListener("submit", (event) => {
-    handleSubmit(event);
-  });
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const reminderFormData = new FormData(reminderForm);
-    const reminderData = Object.fromEntries(reminderFormData);
-    fetch(`http://localhost:8080/reminders`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(reminderData),
-    });
-    reminderForm.innerHTML = "";
-  }
-}
-
 //requests for API information and display
 
 //retrieve form data + add to database
@@ -499,7 +449,7 @@ openBooksBtn.addEventListener("click", changeForegroundBooks);
 
 function changeForegroundBooks() {
   foregroundDiv.removeAttribute("hidden");
-  fetchBookData();
+  fetchBookPageData();
 }
 
 async function fetchBookPageData() {

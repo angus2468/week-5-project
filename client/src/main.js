@@ -26,38 +26,36 @@ function handleCreate() {
 addChecklist.addEventListener("click", checklistForm);
 
 function checklistForm() {
+  const formDiv = document.createElement("div");
+  const createForm = document.createElement("form");
+  const taskLabel = document.createElement("label");
+  const taskInput = document.createElement("input");
+  const submitButton = document.createElement("button");
 
-  const formDiv = document.createElement('div')
-  const createForm = document.createElement('form')
-  const taskLabel = document.createElement('label')
-  const taskInput = document.createElement('input')
-  const submitButton = document.createElement('button')
+  createForm.setAttribute("class", "checklistForm");
+  taskLabel.setAttribute("for", "task");
+  taskInput.setAttribute("name", "task");
+  taskInput.setAttribute("type", "text");
+  submitButton.setAttribute("type", "submit");
 
-  createForm.setAttribute('class', 'checklistForm')
-  taskLabel.setAttribute('for', 'task')
-  taskInput.setAttribute('name', 'task')
-  taskInput.setAttribute('type', 'text')
-  submitButton.setAttribute('type', 'submit')
+  formDiv.appendChild(createForm);
+  formDiv.appendChild(taskLabel);
+  formDiv.appendChild(taskInput);
+  formDiv.appendChild(submitButton);
 
-  formDiv.appendChild(createForm)
-  formDiv.appendChild(taskLabel)
-  formDiv.appendChild(taskInput)
-  formDiv.appendChild(submitButton)
+  taskLabel.innerText = "Item:";
+  submitButton.innerText = "Add";
 
-  taskLabel.innerText = 'Item:'
-  submitButton.innerText = 'Add'
+  createNav.appendChild(formDiv);
 
-  createNav.appendChild(formDiv)
-  
-  createForm.addEventListener('submit', (event) => {
-    handleSubmit(event)
-  })
+  createForm.addEventListener("submit", (event) => {
+    handleSubmit(event);
+  });
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.innerHTML = ''
+    createNav.innerHTML = "";
   }
-
 }
 
 addChecklist.addEventListener("click", checklistForm);
@@ -91,6 +89,7 @@ function checklistForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
     createForm.innerHTML = ''
 
     const taskFormData = new FormData(createForm);
@@ -118,12 +117,12 @@ function bookForm() {
   const bookAuthorData = document.createElement("input");
   const bookBtn = document.createElement("button");
 
-  bookName.setAttribute("for", "name");
-  bookNameData.setAttribute("name", "name");
-  bookGenre.setAttribute("for", "genre");
-  bookGenreData.setAttribute("name", "genre");
-  bookAuthor.setAttribute("for", "author");
-  bookAuthorData.setAttribute("name", "author");
+  bookName.setAttribute("for", "bookName");
+  bookNameData.setAttribute("name", "bookName");
+  bookGenre.setAttribute("for", "bookGenre");
+  bookGenreData.setAttribute("name", "bookGenre");
+  bookAuthor.setAttribute("for", "bookAuthor");
+  bookAuthorData.setAttribute("name", "bookAuthor");
   bookNameData.setAttribute("type", "text");
   bookGenreData.setAttribute("type", "text");
   bookAuthorData.setAttribute("type", "text");
@@ -150,6 +149,7 @@ function bookForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
     bookForm.innerHTML = '';
 
     const bookFormData = new FormData(bookForm);
@@ -161,8 +161,6 @@ function bookForm() {
     },
     body: JSON.stringify(bookData),
   });
-
-
   }
 }
 
@@ -182,12 +180,12 @@ function moviesForm() {
 
   const submitButton = document.createElement("button");
 
-  nameInput.setAttribute("name", "moviename");
-  genreInput.setAttribute("name", "moviegenre");
-  languageInput.setAttribute("name", "movielanguage");
-  nameLabel.setAttribute("for", "moviename");
-  genreLabel.setAttribute("for", "moviegenre");
-  languageLabel.setAttribute("for", "movielanguage");
+  nameInput.setAttribute("name", "name");
+  genreInput.setAttribute("name", "genre");
+  languageInput.setAttribute("name", "language");
+  nameLabel.setAttribute("for", "name");
+  genreLabel.setAttribute("for", "genre");
+  languageLabel.setAttribute("for", "language");
 
   nameInput.setAttribute("type", "text");
   genreInput.setAttribute("type", "text");
@@ -211,10 +209,10 @@ function moviesForm() {
   createNav.appendChild(formDiv);
 
   createForm.addEventListener("submit", (event) => {
-    movieHandleSubmit(event);
+    handleSubmit(event);
   });
 
-  function movieHandleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
     createForm.innerHTML = '';
 
@@ -240,10 +238,10 @@ function reminderForm() {
   const reminderDateData = document.createElement("input");
   const reminderBtn = document.createElement("button");
 
-  reminderTask.setAttribute("for", "reminder");
-  reminderTaskData.setAttribute("name", "reminder");
-  reminderDate.setAttribute("for", "reminderdate");
-  reminderDateData.setAttribute("name", "reminderdate");
+  reminderTask.setAttribute("for", "reminderTask");
+  reminderTaskData.setAttribute("name", "reminderTask");
+  reminderDate.setAttribute("for", "reminderDate");
+  reminderDateData.setAttribute("name", "reminderDate");
 
   reminderTaskData.setAttribute("type", "text");
   reminderDateData.setAttribute("type", "date");
@@ -267,6 +265,7 @@ function reminderForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
     reminderForm.innerHTML = ''
 
     const reminderFormData = new FormData(reminderForm);
@@ -321,22 +320,24 @@ function setDateValue() {
 
 async function fetchBookData(book) {
   const response = await fetch(
-    `https://www.googleapis.com/books/v1/volumes?q=${book.name}&key=${GOOGLE_API_KEY}`
+    `https://www.googleapis.com/books/v1/volumes?q=${book}&key=AIzaSyABiSCRECheWyoruOwQs0AN81RKWe3-gsU`
   );
   const data = await response.json();
-  const bookContainer = document.createAttribute("section");
-  const bookTitle = document.createAttribute("p");
+  const bookContainer = document.createElement("section");
+  const bookTitle = document.createElement("p");
   bookTitle.innerText = data.items[1].volumeInfo.title;
   bookContainer.appendChild(bookTitle);
-  const bookDate = document.createAttribute("p");
+  const bookDate = document.createElement("p");
   bookDate.innerText = data.items[1].volumeInfo.publishedDate;
   bookContainer.appendChild(bookDate);
-  const bookDescription = document.createAttribute("p");
+  const bookDescription = document.createElement("p");
   bookDescription.innerText = data.items[1].volumeInfo.description;
   bookContainer.appendChild(bookDescription);
-  const bookCover = document.createAttribute("img");
+  const bookCover = document.createElement("img");
   bookCover.src = data.items[1].volumeInfo.imageLinks.smallThumbnail;
   bookContainer.appendChild(bookCover);
+  const calenderSection = document.getElementById("calenderSection");
+  calenderSection.appendChild(bookContainer);
 }
 
 async function displayChecklist() {
@@ -357,45 +358,11 @@ async function displayChecklist() {
 
 displayChecklist();
 
-async function fetchMovieData(movie){
-  const response = await fetch(`http://www.omdbapi.com/?t=${movie.name}&apikey=72bf2de2`)
-
+async function getLatestBook() {
+  const response = await fetch(`http://localhost:8080/booklist`);
   const data = await response.json();
-  const movieContainer = document.createAttribute("section");
-  const movieName = document.createAttribute("p");
-  movieName.InnerText = data.Title;
-  movieContainer.appendChild(movieName);
-  const movieType = document.createAttribute("p");
-  movieType.innerText = data.Genre;
-  movieContainer.appendChild(movieType);
-  const movieLang = document.createAttribute("p");
-  movieLang.innerText = data.Language;
-  movieContainer.appendChild(movieLang);
+  const latestBook = data.rows[data.rows.length - 1].name;
+  console.log(latestBook);
+  fetchBookData(latestBook);
 }
-
-async function displayMovies(){
-  const response = await fetch('http://www.omdbapi.com/?i=tt3896198&apikey=72bf2de2');
-
-    const data = await response.json();
-      const movieContainer = document.createElement("div");
-      const movieName = document.createElement("h1");
-      movieName.innerText = data.Title;
-      const movieGenre = document.createElement("p");
-      movieGenre.innerText = " - " + data.Genre;
-      const moviebutton = document.createElement("button");
-      moviebutton.innerText = "X";
-      const movieLanguage = document.createElement("p");
-      movieLanguage.innerText = " - " + data.Language;
-      const moviePlot = document.createElement("p");
-      moviePlot.innerText = " - " + data.Plot;
-      movieContainer.appendChild(movieName);
-      movieContainer.appendChild(movieGenre);
-      movieContainer.appendChild(movieLanguage);
-      movieContainer.appendChild(moviePlot);
-      movieContainer.appendChild(moviebutton);
-      const movieElement = document.getElementById("moviesSection");
-      movieElement.appendChild(movieContainer);;
-      console.log(movieContainer);
-}
-
-displayMovies();
+getLatestBook();

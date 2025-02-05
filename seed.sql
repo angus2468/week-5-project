@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS reminders (
     userName TEXT
 );
 
-INSERT INTO reminders (reminder, reminderdate) VALUES
-('Go buy more eggs', '2025-02-04')
+INSERT INTO reminders (reminder, reminderdate, userName) VALUES
+('Go buy more eggs', '2025-02-04', 'Testing123')
 
 CREATE TABLE IF NOT EXISTS moviewatchlist (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -31,29 +31,30 @@ CREATE TABLE IF NOT EXISTS moviewatchlist (
     userName TEXT
 );
 
-INSERT INTO moviewatchlist (movieName, movieGenre, movieLanguage) VALUES
-('Forgotten', 'Thriller/Mystery', 'Korean')
+INSERT INTO moviewatchlist (movieName, movieGenre, movieLanguage, userName) VALUES
+('Forgotten', 'Thriller/Mystery', 'Korean', 'Testing123')
 
 CREATE TABLE IF NOT EXISTS checklist(
  id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
  task TEXT,
  completed TEXT,
-    userName TEXT
+ userName TEXT
 );
 
-INSERT INTO checklist (task, completed) VALUES 
-('to create a checklist', 'pending')
+INSERT INTO checklist (task, completed, userName) VALUES 
+('to create a checklist', 'pending', 'Testing123')
 
 CREATE TABLE IF NOT EXISTS booksList (
   id INT PRIMARY KEY GENERATED ALWAYS AS identity,
   name VARCHAR(40),
   genre TEXT,
-  author TEXT
+  author TEXT,
+  userName TEXT
 );
 
 INSERT INTO booksList (name, genre, author) VALUES 
-('A Court of Thorns & Roses', 'Fantasy', 'Sarah J Maas'),
-('The subtle art of not giving a f*ck', 'Self Help', 'Mark Manson');
+('A Court of Thorns & Roses', 'Fantasy', 'Sarah J Maas', 'Testing123'),
+('The subtle art of not giving a f*ck', 'Self Help', 'Mark Manson', 'Testing123');
 
 CREATE TABLE IF NOT EXISTS moviewatchlist (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -63,5 +64,5 @@ CREATE TABLE IF NOT EXISTS moviewatchlist (
     userName TEXT
 );
 
-INSERT INTO moviewatchlist (movieName, movieGenre, movieLanguage) VALUES
-('Forgotten', 'Thriller/Mystery', 'Korean')
+INSERT INTO moviewatchlist (movieName, movieGenre, movieLanguage, userName) VALUES
+('Forgotten', 'Thriller/Mystery', 'Korean', 'Testing123')

@@ -75,9 +75,10 @@ function checklistForm() {
   taskInput.setAttribute("type", "text");
   submitButton.setAttribute("type", "submit");
 
+  createForm.appendChild(taskLabel);
+  createForm.appendChild(taskInput);
+  createForm.appendChild(submitButton)
   formDiv.appendChild(createForm);
-  formDiv.appendChild(taskLabel);
-  formDiv.appendChild(taskInput);
 
   taskLabel.innerText = "Item:";
   submitButton.innerText = "Add";
@@ -90,7 +91,7 @@ function checklistForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.innerHTML = ''
+    createForm.innerHTML = ''
 
     const taskFormData = new FormData(createForm);
     const taskData = Object.fromEntries(taskFormData);
@@ -149,7 +150,7 @@ function bookForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.innerHTML = '';
+    bookForm.innerHTML = '';
 
     const bookFormData = new FormData(bookForm);
     const bookData = Object.fromEntries(bookFormData);
@@ -198,13 +199,14 @@ function moviesForm() {
   languageLabel.innerText = "Language:";
   submitButton.innerText = "Add";
 
-  formDiv.appendChild(nameLabel);
-  formDiv.appendChild(nameInput);
-  formDiv.appendChild(genreLabel);
-  formDiv.appendChild(genreInput);
-  formDiv.appendChild(languageLabel);
-  formDiv.appendChild(languageInput);
-  formDiv.appendChild(submitButton);
+  createForm.appendChild(nameLabel);
+  createForm.appendChild(nameInput);
+  createForm.appendChild(genreLabel);
+  createForm.appendChild(genreInput);
+  createForm.appendChild(languageLabel);
+  createForm.appendChild(languageInput);
+  createForm.appendChild(submitButton);
+  formDiv.appendChild(createForm)
 
   createNav.appendChild(formDiv);
 
@@ -214,7 +216,7 @@ function moviesForm() {
 
   function movieHandleSubmit(event) {
     event.preventDefault();
-    createNav.innerHTML = '';
+    createForm.innerHTML = '';
 
     const movieFormData = new FormData(createForm);
     const movieData = Object.fromEntries(movieFormData);
@@ -265,7 +267,7 @@ function reminderForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createNav.innerHTML = ''
+    reminderForm.innerHTML = ''
 
     const reminderFormData = new FormData(reminderForm);
     const reminderData = Object.fromEntries(reminderFormData);

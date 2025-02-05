@@ -89,9 +89,6 @@ function checklistForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    createForm.innerHTML = ''
-
     const taskFormData = new FormData(createForm);
     const taskData = Object.fromEntries(taskFormData);
     fetch(`http://localhost:8080/checklist`, {
@@ -100,8 +97,8 @@ function checklistForm() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(taskData),
-  });
-
+    });
+    createForm.innerHTML = ''
   }
 }
 
@@ -149,9 +146,6 @@ function bookForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    bookForm.innerHTML = '';
-
     const bookFormData = new FormData(bookForm);
     const bookData = Object.fromEntries(bookFormData);
     fetch(`http://localhost:8080/booklist`, {
@@ -160,6 +154,9 @@ function bookForm() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(bookData),
+
+    });
+    bookForm.innerHTML = '';
   });
   }
 }
@@ -214,8 +211,6 @@ function moviesForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    createForm.innerHTML = '';
-
     const movieFormData = new FormData(createForm);
     const movieData = Object.fromEntries(movieFormData);
     fetch(`http://localhost:8080/moviewatchlist`, {
@@ -224,7 +219,8 @@ function moviesForm() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(movieData),
-  });
+    });
+    createForm.innerHTML = '';
   }
 }
 
@@ -247,7 +243,7 @@ function reminderForm() {
   reminderDateData.setAttribute("type", "date");
   reminderBtn.setAttribute("type", "submit");
 
-  reminderTask.innerText = "Task:";
+  reminderTask.innerText = "Reminder:";
   reminderDate.innerText = "Date:";
   reminderBtn.innerText = "Add";
 
@@ -265,9 +261,6 @@ function reminderForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    reminderForm.innerHTML = ''
-
     const reminderFormData = new FormData(reminderForm);
     const reminderData = Object.fromEntries(reminderFormData);
     fetch(`http://localhost:8080/reminders`, {
@@ -276,7 +269,8 @@ function reminderForm() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(reminderData),
-  });
+    });
+    reminderForm.innerHTML = '';
   }
 }
 

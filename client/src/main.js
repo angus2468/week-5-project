@@ -421,6 +421,57 @@ async function getLatestBook() {
 }
 getLatestBook();
 
+const openChecklistBtn = document.getElementById('checklist')
+
+openChecklistBtn.addEventListener('click', changeForegroundChecklist)
+
+function changeForegroundChecklist () {
+  foregroundDiv.removeAttribute('hidden')
+  fetchChecklistData()
+}
+
+async function fetchChecklistData() {
+  const response = await fetch('http://localhost:8080/checklist')
+  const data = await response.json()
+  generateChecklist(data)
+}
+
+function generateChecklist(dataToRender) {
+  foregroundDiv.innerHTML = ''
+
+  for (let i = 0; i < dataToRender.rows.length; i++) {
+    const checklistContainer = document.createElement('div')
+    const itemDiv = document.createElement('div')
+    const listItem = document.createElement('p')
+    const deleteListItem = document.createElement('button')
+
+    listItem.innerText = dataToRender.rows[i].task
+    deleteListItem.innerText = 'x'
+
+    listItem.setAttribute('class', 'listItem')
+    deleteListItem.setAttribute('class', 'deleteListItem')
+    
+    itemDiv.appendChild(listItem)
+    itemDiv.appendChild(deleteListItem)
+    checklistContainer.appendChild(itemDiv)
+    foregroundDiv.appendChild(checklistContainer)
+  }
+  
+  deleteListItem.addEventListener('click', () => {
+      handleDelete(dataToRender[i].id)
+    })
+
+    async function handleDelete(id) {
+      const response = await fetch (`http://localhost:8080/checklist/${id}`, {
+        method: 'DELETE'
+      })
+      if (response.ok) {
+        fetchChecklistData()
+    }
+  }
+}
+
+
 const openMoviesBtn = document.getElementById('movies')
 
 openMoviesBtn.addEventListener('click', changeForeground)
@@ -482,3 +533,4 @@ function generateMovie(dataToRender) {
     }
   }
 }
+

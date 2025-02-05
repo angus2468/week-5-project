@@ -318,14 +318,18 @@ async function fetchBookData(book) {
   const calenderSection = document.getElementById("calenderSection");
   calenderSection.innerHTML = "";
   const bookContainer = document.createElement("section");
+  bookContainer.setAttribute("class", "bookContainer");
+  const h2Title = document.createElement("h2");
+  h2Title.innerText = `Your current book!`;
+  bookContainer.appendChild(h2Title);
   const bookTitle = document.createElement("p");
-  bookTitle.innerText = data.items[1].volumeInfo.title;
+  bookTitle.innerText = `Title: ${data.items[1].volumeInfo.title}`;
   bookContainer.appendChild(bookTitle);
   const bookDate = document.createElement("p");
-  bookDate.innerText = data.items[1].volumeInfo.publishedDate;
+  bookDate.innerText = `Date published: ${data.items[1].volumeInfo.publishedDate}`;
   bookContainer.appendChild(bookDate);
   const bookDescription = document.createElement("p");
-  bookDescription.innerText = data.items[1].volumeInfo.description;
+  bookDescription.innerText = `Description: ${data.items[1].volumeInfo.description}`;
   bookContainer.appendChild(bookDescription);
   const bookCover = document.createElement("img");
   bookCover.src = data.items[1].volumeInfo.imageLinks.smallThumbnail;
@@ -340,6 +344,7 @@ async function displayChecklist() {
   checklistElement.innerHTML = "";
   data.rows.forEach((element) => {
     const checklistContainer = document.createElement("div");
+    checklistContainer.setAttribute("class", "checklistItem");
     const checklistTask = document.createElement("p");
     checklistTask.innerText = " - " + element.task;
     const checklistbutton = document.createElement("button");
@@ -360,54 +365,57 @@ async function displayChecklist() {
 
 displayChecklist();
 
+async function displayMovies(movie) {
+  const response = await fetch(
+    `http://www.omdbapi.com/?t=${movie}&apikey=72bf2de2`
+  );
 
-async function displayMovies(movie){
-  const response = await fetch(`http://www.omdbapi.com/?t=${movie}&apikey=72bf2de2`);
-
-    const data = await response.json();
-      const movieContainer = document.createElement("div");
-      const movieName = document.createElement("h1");
-      movieName.innerText = data.Title;
-      const movieGenre = document.createElement("p");
-      movieGenre.innerText = " - " + data.Genre;
-      const moviebutton = document.createElement("button");
-      moviebutton.innerText = "X";
-      const movieLanguage = document.createElement("p");
-      movieLanguage.innerText = " - " + data.Language;
-      const moviePlot = document.createElement("p");
-      moviePlot.innerText = " - " + data.Plot;
-      movieContainer.appendChild(movieName);
-      movieContainer.appendChild(movieGenre);
-      movieContainer.appendChild(movieLanguage);
-      movieContainer.appendChild(moviePlot);
-      movieContainer.appendChild(moviebutton);
-      const movieElement = document.getElementById("moviesSection");
-      movieElement.appendChild(movieContainer);
-      console.log(movieContainer);
+  const data = await response.json();
+  const movieContainer = document.createElement("div");
+  const movieName = document.createElement("h1");
+  movieName.innerText = data.Title;
+  const movieGenre = document.createElement("p");
+  movieGenre.innerText = " - " + data.Genre;
+  const moviebutton = document.createElement("button");
+  moviebutton.innerText = "X";
+  const movieLanguage = document.createElement("p");
+  movieLanguage.innerText = " - " + data.Language;
+  const moviePlot = document.createElement("p");
+  moviePlot.innerText = " - " + data.Plot;
+  movieContainer.appendChild(movieName);
+  movieContainer.appendChild(movieGenre);
+  movieContainer.appendChild(movieLanguage);
+  movieContainer.appendChild(moviePlot);
+  movieContainer.appendChild(moviebutton);
+  const movieElement = document.getElementById("moviesSection");
+  movieElement.appendChild(movieContainer);
+  console.log(movieContainer);
 }
 
 displayMovies();
 
-async function displayWeather(weather){
-  const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=2d89413830e24b93bab110358250502&q=London`);
+async function displayWeather(weather) {
+  const response = await fetch(
+    `http://api.weatherapi.com/v1/current.json?key=2d89413830e24b93bab110358250502&q=London`
+  );
 
   const data = await response.json();
   const weatherContainer = document.createElement("div");
-      const myLocation = document.createElement("h3");
-      myLocation.innerText = data.location.name;
-      const currentWeather = document.createElement("h1");
-      currentWeather.innerText = data.current.condition.text;
-      const weatherImg = document.createElement("img");
-      weatherImg.src = data.current.condition.icon;
-      const currentTemp = document.createElement("p");
-      currentTemp.innerText = data.current.temp_c + "°C";
-      weatherContainer.appendChild(myLocation);
-      weatherContainer.appendChild(currentTemp);
-      weatherContainer.appendChild(currentWeather);
-      weatherContainer.appendChild(weatherImg)
-      const weatherSection = document.getElementById("remindersSection");
-      weatherSection.appendChild(weatherContainer);
-      console.log
+  const myLocation = document.createElement("h3");
+  myLocation.innerText = data.location.name;
+  const currentWeather = document.createElement("h1");
+  currentWeather.innerText = data.current.condition.text;
+  const weatherImg = document.createElement("img");
+  weatherImg.src = data.current.condition.icon;
+  const currentTemp = document.createElement("p");
+  currentTemp.innerText = data.current.temp_c + "°C";
+  weatherContainer.appendChild(myLocation);
+  weatherContainer.appendChild(currentTemp);
+  weatherContainer.appendChild(currentWeather);
+  weatherContainer.appendChild(weatherImg);
+  const weatherSection = document.getElementById("remindersSection");
+  weatherSection.appendChild(weatherContainer);
+  console.log;
 }
 
 displayWeather();
@@ -533,4 +541,3 @@ function generateMovie(dataToRender) {
     }
   }
 }
-

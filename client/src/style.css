@@ -75,6 +75,19 @@ header {
   flex-direction: column;
 }
 
+.checklistItem {
+  display: flex;
+  gap: 5px;
+  padding: 10px;
+}
+
+.bookContainer {
+  padding: 15px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 /* css for sign up form */
 /* #sign-up {
   display: flex;

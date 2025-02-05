@@ -359,11 +359,12 @@ async function getLatestBook() {
 getLatestBook();
 
 const openChecklistBtn = document.getElementById("checklist");
+const checklistPageDiv = document.getElementById("checklistPageDiv")
 
 openChecklistBtn.addEventListener("click", changeForegroundChecklist);
 
 function changeForegroundChecklist() {
-  foregroundDiv.removeAttribute("hidden");
+  checklistPageDiv.removeAttribute("hidden");
   fetchChecklistData();
 }
 
@@ -374,7 +375,7 @@ async function fetchChecklistData() {
 }
 
 function generateChecklist(dataToRender) {
-  foregroundDiv.innerHTML = "";
+  checklistPageDiv.innerHTML = "";
 
   for (let i = 0; i < dataToRender.rows.length; i++) {
     const checklistContainer = document.createElement("div");
@@ -391,7 +392,8 @@ function generateChecklist(dataToRender) {
     itemDiv.appendChild(listItem);
     itemDiv.appendChild(deleteListItem);
     checklistContainer.appendChild(itemDiv);
-    foregroundDiv.appendChild(checklistContainer);
+    checklistPageDiv.appendChild(checklistContainer);
+    
     deleteListItem.addEventListener("click", () => {
       handleDelete(dataToRender[i].id);
     });
@@ -408,11 +410,14 @@ function generateChecklist(dataToRender) {
 }
 
 const openBooksBtn = document.getElementById("books");
+const bookPageDiv = document.getElementById('bookPageDiv')
 
 openBooksBtn.addEventListener("click", changeForegroundBooks);
 
 function changeForegroundBooks() {
-  foregroundDiv.removeAttribute("hidden");
+  bookPageDiv.removeAttribute("hidden");
+  checklistPageDiv.setAttribute('hidden', '')
+  moviePageDiv.setAttribute('hidden', '')
   fetchBookPageData();
 }
 
@@ -423,7 +428,7 @@ async function fetchBookPageData() {
 }
 
 function generateBooks(dataToRender) {
-  foregroundDiv.innerHTML = "";
+  bookPageDiv.innerHTML = "";
   console.log(dataToRender);
 
   for (let i = 0; i < dataToRender.rows.length; i++) {
@@ -449,7 +454,7 @@ function generateBooks(dataToRender) {
     booksDiv.appendChild(bookAuthor);
     booksDiv.appendChild(deleteBook);
     booksContainer.appendChild(booksDiv);
-    foregroundDiv.appendChild(booksContainer);
+    bookPageDiv.appendChild(booksContainer);
 
     deleteBook.addEventListener("click", () => {
       handleDelete(dataToRender[i].id);
@@ -467,11 +472,12 @@ function generateBooks(dataToRender) {
 }
 
 const openMoviesBtn = document.getElementById("movies");
+const moviePageDiv = document.getElementById("moviePageDiv")
 
 openMoviesBtn.addEventListener("click", changeForeground);
 
 function changeForeground() {
-  foregroundDiv.removeAttribute("hidden");
+  moviePageDiv.removeAttribute("hidden");
   fetchMovieData();
 }
 
@@ -484,7 +490,7 @@ async function fetchMovieData() {
 }
 
 function generateMovie(dataToRender) {
-  foregroundDiv.innerHTML = "";
+  moviePageDiv.innerHTML = "";
   console.log(dataToRender);
 
   for (let i = 0; i < dataToRender.rows.length; i++) {
@@ -511,7 +517,7 @@ function generateMovie(dataToRender) {
     movieDiv.appendChild(movieLanguage);
     movieDiv.appendChild(deleteMovie);
     moviesContainer.appendChild(movieDiv);
-    foregroundDiv.appendChild(moviesContainer);
+    moviePageDiv.appendChild(moviesContainer);
 
     deleteMovie.addEventListener("click", () => {
       handleDelete(dataToRender[i].id);

@@ -54,11 +54,6 @@ app.get("/moviewatchlist", async (req, res) => {
   res.json(result);
 });
 
-app.get("/reminders", async (req, res) => {
-  const result = await db.query("SELECT * FROM reminders");
-  res.json(result);
-});
-
 app.get("/booklist", async (req, res) => {
   const result = await db.query("SELECT * FROM bookslist");
   res.json(result);

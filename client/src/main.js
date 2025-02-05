@@ -75,14 +75,13 @@ function checklistForm() {
 
   createForm.appendChild(taskLabel);
   createForm.appendChild(taskInput);
-  createForm.appendChild(submitButton)
+  createForm.appendChild(submitButton);
   formDiv.appendChild(createForm);
 
   taskLabel.innerText = "Item:";
   submitButton.innerText = "Add";
 
   createNav.appendChild(formDiv);
-
   createForm.addEventListener("submit", (event) => {
     handleSubmit(event);
   });
@@ -92,13 +91,13 @@ function checklistForm() {
     const taskFormData = new FormData(createForm);
     const taskData = Object.fromEntries(taskFormData);
     fetch(`http://localhost:8080/checklist`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(taskData),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(taskData),
     });
-    createForm.innerHTML = ''
+    createForm.innerHTML = "";
   }
 }
 
@@ -149,15 +148,13 @@ function bookForm() {
     const bookFormData = new FormData(bookForm);
     const bookData = Object.fromEntries(bookFormData);
     fetch(`http://localhost:8080/booklist`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(bookData),
-
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bookData),
     });
-    bookForm.innerHTML = '';
-  });
+    bookForm.innerHTML = "";
   }
 }
 
@@ -201,7 +198,7 @@ function moviesForm() {
   createForm.appendChild(languageLabel);
   createForm.appendChild(languageInput);
   createForm.appendChild(submitButton);
-  formDiv.appendChild(createForm)
+  formDiv.appendChild(createForm);
 
   createNav.appendChild(formDiv);
 
@@ -214,13 +211,13 @@ function moviesForm() {
     const movieFormData = new FormData(createForm);
     const movieData = Object.fromEntries(movieFormData);
     fetch(`http://localhost:8080/moviewatchlist`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(movieData),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(movieData),
     });
-    createForm.innerHTML = '';
+    createForm.innerHTML = "";
   }
 }
 
@@ -264,13 +261,13 @@ function reminderForm() {
     const reminderFormData = new FormData(reminderForm);
     const reminderData = Object.fromEntries(reminderFormData);
     fetch(`http://localhost:8080/reminders`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(reminderData),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reminderData),
     });
-    reminderForm.innerHTML = '';
+    reminderForm.innerHTML = "";
   }
 }
 
@@ -337,15 +334,24 @@ async function fetchBookData(book) {
 async function displayChecklist() {
   const response = await fetch(`${API_URL}checklist`);
   const data = await response.json();
+  const checklistElement = document.getElementById("checklistSection");
+  checklistElement.innerHTML = "";
   data.rows.forEach((element) => {
     const checklistContainer = document.createElement("div");
     const checklistTask = document.createElement("p");
     checklistTask.innerText = " - " + element.task;
     const checklistbutton = document.createElement("button");
     checklistbutton.innerText = "X";
+    checklistbutton.addEventListener("click", async () => {
+      await fetch(`${API_URL}checklist/${element.id}`, {
+        method: "DELETE",
+      });
+      checklistElement.innerHTML = "";
+      displayChecklist();
+    });
     checklistContainer.appendChild(checklistTask);
     checklistContainer.appendChild(checklistbutton);
-    const checklistElement = document.getElementById("checklistSection");
+
     checklistElement.appendChild(checklistContainer);
   });
 }

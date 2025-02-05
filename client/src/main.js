@@ -477,7 +477,7 @@ function generateMovie(dataToRender) {
         method: 'DELETE'
       })
       if (response.ok) {
-        fetchChecklistData()
+        fetchMovieData()
       }
     }
   }

@@ -70,13 +70,6 @@ header {
   text-decoration: underline;
 }
 
-/*.createButton {}*/
-
-#createButton {
-  display: flex;
-  align-items: right;
-}
-
 .hiddenForm {
   position: relative;
   flex-direction: column;
@@ -171,9 +164,6 @@ input:not(:placeholder-shown) + .label {
 }
 
 .hiddenNav {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
   position: absolute;
   right: 5px;
   top: 5px;

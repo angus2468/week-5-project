@@ -463,9 +463,7 @@ function generateChecklist(dataToRender) {
     itemDiv.appendChild(deleteListItem)
     checklistContainer.appendChild(itemDiv)
     foregroundDiv.appendChild(checklistContainer)
-  }
-  
-  deleteListItem.addEventListener('click', () => {
+    deleteListItem.addEventListener('click', () => {
       handleDelete(dataToRender[i].id)
     })
 
@@ -478,6 +476,71 @@ function generateChecklist(dataToRender) {
     }
   }
 }
+}
+  
+
+
+
+const openBooksBtn = document.getElementById('books')
+
+openBooksBtn.addEventListener('click', changeForegroundBooks)
+
+function changeForegroundBooks () {
+  foregroundDiv.removeAttribute('hidden')
+  fetchBookData()
+}
+
+async function fetchBookData() {
+  const response = await fetch('http://localhost:8080/booklist')
+  const data = await response.json()
+  generateBooks(data)
+}
+
+function generateBooks(dataToRender) {
+  foregroundDiv.innerHTML = ''
+  console.log(dataToRender)
+
+  for (let i = 0; i < dataToRender.rows.length; i++) {
+    const booksContainer = document.createElement('div')
+    const booksDiv = document.createElement('div')
+    const bookName = document.createElement('p')
+    const bookGenre = document.createElement('p')
+    const bookAuthor = document.createElement('p')
+    const deleteBook = document.createElement('button')
+
+    bookName.innerText = dataToRender.rows[i].name
+    bookGenre.innerText = dataToRender.rows[i].genre
+    bookAuthor.innerText = dataToRender.rows[i].author
+    deleteBook.innerText = 'x'
+
+    bookName.setAttribute('class', 'bookName')
+    bookGenre.setAttribute('class', 'bookGenre')
+    bookAuthor.setAttribute('class', 'bookLanguage')
+    deleteBook.setAttribute('class', 'deleteBook')
+    
+    booksDiv.appendChild(bookName)
+    booksDiv.appendChild(bookGenre)
+    booksDiv.appendChild(bookAuthor)
+    booksDiv.appendChild(deleteBook)
+    booksContainer.appendChild(booksDiv)
+    foregroundDiv.appendChild(booksContainer)
+
+    deleteBook.addEventListener('click', () => {
+      handleDelete(dataToRender[i].id)
+    })
+  
+    async function handleDelete(id) {
+      const response = await fetch (`http://localhost:8080/booklist/${id}`, {
+        method: 'DELETE'
+      })
+      if (response.ok) {
+        fetchBookData()
+      }
+    }
+  }
+}
+
+
 
 
 const openMoviesBtn = document.getElementById('movies')

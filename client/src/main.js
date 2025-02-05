@@ -155,17 +155,15 @@ function moviesForm() {
 
   const submitButton = document.createElement("button");
 
-  nameInput.setAttribute("name", "moviename");
-  genreInput.setAttribute("name", "moviegenre");
-  languageInput.setAttribute("name", "movielanguage");
-  nameLabel.setAttribute("for", "name");
-  genreLabel.setAttribute("for", "genre");
-  languageLabel.setAttribute("for", "language");
-
-  nameInput.setAttribute("type", "text");
-  genreInput.setAttribute("type", "text");
-  languageInput.setAttribute("type", "text");
-  submitButton.setAttribute("type", "submit");
+  nameInput.setAttribute('name', 'moviename')
+  genreInput.setAttribute('name', 'moviegenre')
+  languageInput.setAttribute('name', 'movielanguage')
+  nameInput.setAttribute('type', 'text')
+  genreInput.setAttribute('type', 'text')
+  languageInput.setAttribute('type', 'text')
+  nameLabel.setAttribute('for', 'moviename')
+  genreLabel.setAttribute('for', 'moviegenre')
+  languageLabel.setAttribute('for', 'movielanguage')
 
   nameLabel.innerText = "Title:";
   genreLabel.innerText = "Genre:";
@@ -199,6 +197,7 @@ function moviesForm() {
       body: JSON.stringify(movieData),
     });
     createForm.innerHTML = "";
+    displayMovies()
   }
 }
 

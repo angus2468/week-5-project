@@ -444,8 +444,6 @@ async function getLatestBook() {
 }
 getLatestBook();
 
-const openMoviesBtn = document.getElementById("movies");
-
 const openChecklistBtn = document.getElementById("checklist");
 
 openChecklistBtn.addEventListener("click", changeForegroundChecklist);

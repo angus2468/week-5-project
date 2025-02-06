@@ -11,7 +11,17 @@ html {
 }
 
 /*THIS IS THE START OF NEW MAIN PAGE GRID LAYOUT*/
-
+.logo {
+display: flex;
+padding-left: 40px;
+position: absolute;
+padding-bottom: 10px;
+ font-family: "Satisfy", serif;
+ font-weight: 400;
+ font-style: normal;
+ font-size: 60px;
+ color: rgb(80, 156, 226);
+}
 #createButton {
   width: 20px;
   height: 20px;

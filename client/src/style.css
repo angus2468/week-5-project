@@ -24,41 +24,20 @@ html {
   display: grid;
   grid-template-rows: 1fr 1fr;
   gap: 30px;
-  height: 85vh;
 }
 
 .moviesContainer {
   background-color: #93c4e1;
   border-radius: 10px;
+  height: 300px;
   padding: 20px;
 }
 
 .booksContainer {
   background-color: #d3dbd9;
   border-radius: 10px;
+  height: 300px;
   padding: 20px;
-  display: flex;
-}
-.bookContainer {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-.bookTextDiv {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  height: 200px;
-}
-
-.currentBook {
-  position: absolute;
-  right: 0px;
-  top: 0px;
 }
 
 .wcContainer {
@@ -66,8 +45,6 @@ html {
   display: grid;
   grid-template-rows: 1fr 3fr;
   gap: 30px;
-  width: 20vw;
-  height: 85vh;
 }
 
 .weatherContainer {
@@ -100,36 +77,31 @@ html {
 
 @media (max-width: 500px) {
   .mainNav {
+    gap: 15px;
     align-items: center;
     justify-content: center;
     background-color: goldenrod;
-    width: 100vw;
-    padding-bottom: 12px;
-    left: 20px;
+    padding: 10px;
+    width: 100%;
   }
   .mainNav div {
     font-size: 13px;
     font-weight: 600;
-    width: 100vw;
-    left: 20px;
-    justify-content: center;
-    align-items: center;
   }
   .nav-dropdown {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 51px;
+    top: 50px;
+    left: 10px;
     width: 100%;
-    right: 10px;
+    background-color: #a35f92;
+    padding: 10px;
   }
   .nav-dropdown div {
     border-bottom: 1px solid white;
-    padding: 15px;
+    padding: 10px;
     text-align: center;
-
-    background-color: #a35f92;
-    width: 100%;
   }
   .nav-dropdown.active {
     display: flex;
@@ -247,9 +219,17 @@ header {
 }
 
 /* css for sign up form */
+.form-background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: #dfdae0;
+}
 #loginContainer {
-  left: 80vh;
-  top: 15vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   height: 600px;
   width: 500px;
   background-color: white;
@@ -304,10 +284,10 @@ header {
   display: flex;
   position: relative;
   transition: all 0.5s ease-in-out;
-  left: 0px;
+  left: -20px;
 }
 .form-section-move {
-  left: -500px;
+  left: -520px;
 }
 .userForm {
   background-color: white;
@@ -365,14 +345,15 @@ header {
   margin-top: 30px;
   cursor: pointer;
 }
-.signUpBtn:hover {
+.signUpBtn:hover,
+.loginBtn:hover {
   background-color: #d18fc0;
   transform: translateY(-2px);
 }
 
-.loginBtn:hover {
-  background-color: #d18fc0;
-  transform: translateY(-2px);
+.signUpBtn {
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 .input:focus + .label {
   top: -7px;

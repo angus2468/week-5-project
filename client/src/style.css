@@ -58,7 +58,7 @@ html {
 }
 
 .moviesContainer {
-  background-color: #93c4e1;
+  background-color: #ffcab0;
   border-radius: 10px;
   padding: 20px;
 }
@@ -90,7 +90,7 @@ html {
 }
 
 .booksContainer {
-  background-color: #d3dbd9;
+  background-color: #ffebbb;
   border-radius: 10px;
   padding: 20px;
   display: flex;
@@ -131,14 +131,14 @@ html {
 
 .weatherContainer {
   grid-row: 1/2;
-  background-color: #ddfff7;
+  background-color: #fdffcd; 
   border-radius: 10px;
   padding: 10px;
 }
 
 .checklistContainer {
   grid-row: 2/5;
-  background-color: rgb(236, 159, 144);
+  background-color: #e0ffcd; 
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -272,7 +272,7 @@ html {
     justify-self: center;
   }
 
-  .bookContainer img {
+   .bookContainer img {
     height: 100%;
   }
 
@@ -289,7 +289,7 @@ html {
     height: 170px;
     display: flex;
   }
-
+  
   .movieContainer img {
     height: 100%;
   }
@@ -336,7 +336,7 @@ html {
 /* THIS IS THE END OF NEW MAIN PAGE GRID LAYOUT*/
 
 header {
-  background-color: goldenrod;
+  background-color: #cb7fcf;
   padding-bottom: 10px;
 }
 

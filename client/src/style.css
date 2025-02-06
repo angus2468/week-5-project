@@ -62,7 +62,7 @@ html {
 
 .moviesContainer {
 
-  background-color: rgb(227, 208, 130); 
+  background-color: #9DCDC0; 
 
   border-radius: 10px;
   padding: 20px;
@@ -169,7 +169,7 @@ p{
 
 .checklistContainer {
   grid-row: 2/5;
-  background-color: rgb(227, 209, 137); 
+  background-color: #9DCDC0; 
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -184,9 +184,9 @@ p{
   gap: 5px;
   padding: 10px;
   justify-content: center;
-  background-color: #ede2b4;
+  background-color: #7dc0ae;
   margin-top: 5px;
-  width: 280px;
+  width: 200px;
   border: #ede2b4 solid 2px;
   border-radius: 10px;
   position: relative;
@@ -202,7 +202,7 @@ p{
   width: 20px;
   position: absolute;
   right: 5px;
-  background-color: rgb(160, 230, 144);
+  background-color: #7dc0ae;
   border-style: hidden;
 }
 

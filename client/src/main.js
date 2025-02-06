@@ -463,7 +463,7 @@ function generateChecklist(dataToRender) {
     checklistPageDiv.appendChild(checklistContainer);
 
     deleteListItem.addEventListener("click", () => {
-      handleDelete(dataToRender[i].id);
+      handleDelete(dataToRender.rows[i].id);
     });
 
     async function handleDelete(id) {
@@ -526,7 +526,7 @@ function generateBooks(dataToRender) {
     bookPageDiv.appendChild(booksContainer);
 
     deleteBook.addEventListener("click", () => {
-      handleDelete(dataToRender[i].id);
+      handleDelete(dataToRender.rows[i].id);
     });
 
     async function handleDelete(id) {
@@ -590,7 +590,7 @@ function generateMovie(dataToRender) {
     moviePageDiv.appendChild(moviesContainer);
 
     deleteMovie.addEventListener("click", () => {
-      handleDelete(dataToRender[i].id);
+      handleDelete(dataToRender.rows[i].id);
     });
 
     async function handleDelete(id) {

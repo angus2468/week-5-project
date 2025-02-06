@@ -585,3 +585,13 @@ const navDropdown = document.getElementById("nav-dropdown");
 menuBtn.addEventListener("click", () => {
   navDropdown.classList.toggle("active");
 });
+
+const home = document.getElementById("home");
+home.addEventListener("click", () => {
+  const bookPageDiv = document.getElementById("bookPageDiv");
+  bookPageDiv.setAttribute("hidden", "");
+  const moviePageDiv = document.getElementById("moviePageDiv");
+  moviePageDiv.setAttribute("hidden", "");
+  const checklistPageDiv = document.getElementById("checklistPageDiv");
+  checklistPageDiv.setAttribute("hidden", "");
+});

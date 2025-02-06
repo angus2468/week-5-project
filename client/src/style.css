@@ -62,6 +62,17 @@ html {
   padding: 20px;
 }
 
+.movieContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+  align-items: center;
+}
+
+.movieContainer img {
+  height: 229px;
+}
+
 .booksContainer {
   background-color: #d3dbd9;
   border-radius: 10px;
@@ -476,6 +487,7 @@ header {
   height: 90vh;
   background-color: purple;
   position: absolute;
+  z-index: 1;
 }
 
 #bookPageDiv {
@@ -483,6 +495,7 @@ header {
   height: 100vh;
   background-color: green;
   position: absolute;
+  z-index: 1;
 }
 
 #moviePageDiv {
@@ -490,6 +503,7 @@ header {
   height: 100vh;
   background-color: rgb(0, 204, 255);
   position: absolute;
+  z-index: 1;
 }
 
 /*START OF NAV BAR PAGE STYLING*/

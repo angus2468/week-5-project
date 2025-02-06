@@ -22,6 +22,14 @@ padding-bottom: 10px;
  font-size: 60px;
  color: rgb(80, 156, 226);
 }
+h4 {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: 45px;
+  color: rgb(27, 59, 88);
+  font-family: "Satisfy", serif;
+}
 #createButton {
   width: 20px;
   height: 20px;

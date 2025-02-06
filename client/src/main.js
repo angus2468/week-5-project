@@ -21,12 +21,6 @@ login.addEventListener("click", () => {
   toggle.classList.remove("moveslider");
   formSection.classList.remove("form-section-move");
 });
-function hideLSPg() {
-  loginContainer.hidden = true;
-}
-signupBtn.addEventListener("click", hideLSPg);
-loginBtn.addEventListener("click", hideLSPg);
-
 //post to server updates based on reminders, watch history etc
 const createNav = document.getElementById("createNav");
 const createButton = document.getElementById("createButton");
@@ -249,6 +243,7 @@ function moviesForm() {
 //retrieve form data + add to database
 
 const signUpForm = document.getElementById("signupForm");
+const loginForm = document.getElementById("loginForm")
 async function submitUser(event) {
   event.preventDefault();
   const userFormData = new FormData(signUpForm);
@@ -266,7 +261,31 @@ async function submitUser(event) {
 signUpForm.addEventListener("submit", (event) => {
   submitUser(event);
 });
+async function loginUser(event){
+  event.preventDefault();
+  const formData = new FormData (loginForm)
+  const loginData = Object.fromEntries(formData)
+  const response = await fetch (`http://localhost:8080/userInfo`)
+  const users = await response.json()
+  console.log(users)
+  users.rows.forEach((user) => {
+    if (user.username === loginData.username && user.password === loginData.password) {
+       console.log("login successful!")
+       hideLSPg();
+  } else if (user.username !== loginData.username || user.password !== loginData.password){
+    console.log("Invalid username or password")
+  }
+    })
+  }
+loginBtn.addEventListener("click", loginUser)
+function hideLSPg() {
+  loginContainer.hidden = true;
+}
+signupBtn.addEventListener("click", hideLSPg);
+
+
 // signUpForm.addEventListener("submit", submitUser);
+//create a array that loops through userinfo and only recieves username and password
 
 //create new task
 

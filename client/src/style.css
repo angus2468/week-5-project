@@ -73,6 +73,21 @@ html {
   height: 229px;
 }
 
+.movieContainer section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: relative;
+  height: 200px;
+  padding-bottom: 10px;
+}
+
+.currentMovie {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
 .booksContainer {
   background-color: #d3dbd9;
   border-radius: 10px;

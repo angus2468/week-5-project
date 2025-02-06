@@ -358,6 +358,7 @@ async function displayMovies(movie) {
   movieContainer.setAttribute("class", "movieContainer");
   const h2Title = document.createElement("h2");
   h2Title.innerText = `Your current Movie!`;
+  h2Title.setAttribute('class', 'currentMovie')
   textDiv.appendChild(h2Title);
   const movieTitle = document.createElement("p");
   movieTitle.innerText = `Title: ${data.results[0].title}`;

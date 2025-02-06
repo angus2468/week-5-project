@@ -285,7 +285,7 @@ p{
   .mainContainer {
     display: flex;
     flex-direction: column;
-    gap: 250px;
+    gap: 263px;
     padding: 10px;
     height: 100vh;
     width: 95vw;
@@ -301,7 +301,7 @@ p{
   }
 
   .moviesContainer {
-    height: 150px;
+    height: 170px;
     width: 80%;
   }
   .booksContainer {
@@ -329,6 +329,7 @@ p{
   .movieContainer {
     height: 170px;
     display: flex;
+    padding-top: 0;
   }
   
   .movieContainer img {
@@ -341,7 +342,7 @@ p{
 
   .movieContainer section {
     height: 180px;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
   }
 
   .wcContainer {

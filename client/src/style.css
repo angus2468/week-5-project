@@ -247,9 +247,17 @@ header {
 }
 
 /* css for sign up form */
+.form-background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: #dfdae0;
+}
 #loginContainer {
-  left: 80vh;
-  top: 15vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   height: 600px;
   width: 500px;
   background-color: white;
@@ -304,10 +312,10 @@ header {
   display: flex;
   position: relative;
   transition: all 0.5s ease-in-out;
-  left: 0px;
+  left: -20px;
 }
 .form-section-move {
-  left: -500px;
+  left: -520px;
 }
 .userForm {
   background-color: white;
@@ -365,14 +373,15 @@ header {
   margin-top: 30px;
   cursor: pointer;
 }
-.signUpBtn:hover {
+.signUpBtn:hover,
+.loginBtn:hover {
   background-color: #d18fc0;
   transform: translateY(-2px);
 }
 
-.loginBtn:hover {
-  background-color: #d18fc0;
-  transform: translateY(-2px);
+.signUpBtn {
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 .input:focus + .label {
   top: -7px;
@@ -410,6 +419,7 @@ header {
   justify-content: center;
   padding: 0px 40px;
 }
+
 
 #checklistPageDiv {
   width: 100vw;

@@ -241,7 +241,7 @@ function moviesForm() {
 //requests for API information and display
 
 //retrieve form data + add to database
-
+const userLogo = document.getElementById("logo")
 const signUpForm = document.getElementById("signupForm");
 const loginForm = document.getElementById("loginForm");
 async function submitUser(event) {
@@ -265,14 +265,18 @@ async function loginUser(event) {
   event.preventDefault();
   const formData = new FormData(loginForm);
   const loginData = Object.fromEntries(formData);
-  const response = await fetch(`http://localhost:8080/userInfo`);
+  const response = await fetch(`${API_URL}userInfo`);
   const users = await response.json();
   console.log(users);
-  users.rows.forEach((user) => {
+  for (const user of users.rows){
     if (
       user.username === loginData.username &&
       user.password === loginData.password
     ) {
+      userLogo.innerText = ''
+      const h1User = document.createElement("h4")
+      h1User.innerText = `Welcome to your Hive, ${user.username}!`
+      userLogo.appendChild(h1User)
       console.log("login successful!");
       hideLSPg();
     } else if (
@@ -281,13 +285,13 @@ async function loginUser(event) {
     ) {
       console.log("Invalid username or password");
     }
-  });
+  };
 }
 loginBtn.addEventListener("click", loginUser);
 function hideLSPg() {
   loginContainer.hidden = true;
 }
-signupBtn.addEventListener("click", hideLSPg);
+// signupBtn.addEventListener("click", hideLSPg);
 
 // signUpForm.addEventListener("submit", submitUser);
 //create a array that loops through userinfo and only recieves username and password

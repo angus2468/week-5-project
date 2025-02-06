@@ -237,34 +237,54 @@ html {
     color: #a35f92;
   }
   .mainContainer {
-    display: grid;
-    grid-template-rows: repeat(4, auto);
-    gap: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 250px;
     padding: 10px;
-    height: auto;
+    height: 100vh;
     width: 100vw;
     justify-items: center;
     align-items: center;
   }
 
   .mbContainer {
-    grid-row: 1 / 3;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
     gap: 25px;
     width: 100vw;
     justify-items: center;
+    height: 20vh;
   }
 
-  .moviesContainer,
+  .moviesContainer {
+    height: 150px;
+    width: 80%;
+  }
   .booksContainer {
     background-color: #93c4e1;
     border-radius: 10px;
     width: 80%;
-    height: 170px;
+    height: 150px;
     width: 80%;
     padding: 15px;
     justify-self: center;
+  }
+
+  .movieContainer{
+    height: 100px;
+    display: flex;
+    
+    overflow-y: scroll;
+  }
+
+  .currentMovie {
+    font-size: 1em;
+  }
+
+  .movieContainer img {
+    height: 100px;
+  }
+
+  .movieContainer section {
+    height: 180px;
   }
 
   .booksContainer {
@@ -272,14 +292,10 @@ html {
   }
 
   .wcContainer {
-    position: relative;
-    display: grid;
-    grid-template-rows: 1fr 2fr;
     gap: 22px;
     width: 100vw;
     justify-items: center;
-    grid-row: 3 / 5;
-    right: 417px;
+    height: 20vh;
   }
 
   .weatherContainer,
@@ -296,7 +312,7 @@ html {
   }
   .checklistContainer {
     background-color: rgb(236, 159, 144);
-    height: 300px;
+    height: 100px;
     padding: 20px;
   }
 }

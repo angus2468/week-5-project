@@ -296,7 +296,7 @@ p{
     gap: 263px;
     padding: 10px;
     height: 100vh;
-    width: 95vw;
+    width: 94vw;
     justify-items: center;
     align-items: center;
   }
@@ -378,6 +378,10 @@ p{
 
   .checklistItem {
     height: 1em;
+  }
+
+  h4 {
+    display: none;
   }
 }
 

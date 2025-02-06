@@ -4,10 +4,13 @@ const API_URL = "http://localhost:8080/";
 
 //UI updates
 //UI for signin/signup
-let signup = document.getElementById("signup");
-let login = document.getElementById("login");
-let toggle = document.getElementById("toggle");
-let formSection = document.getElementById(".form-section-sl");
+const signup = document.getElementById("signup");
+const login = document.getElementById("login");
+const toggle = document.getElementById("toggle");
+const formSection = document.getElementById("form-section-sl");
+const loginBtn = document.getElementById("loginBtn");
+const signupBtn = document.getElementById("signUpBtn");
+const loginContainer = document.getElementById("form-background");
 
 signup.addEventListener("click", () => {
   toggle.classList.add("moveslider");
@@ -18,6 +21,11 @@ login.addEventListener("click", () => {
   toggle.classList.remove("moveslider");
   formSection.classList.remove("form-section-move");
 });
+function hideLSPg() {
+  loginContainer.hidden = true;
+}
+signupBtn.addEventListener("click", hideLSPg);
+loginBtn.addEventListener("click", hideLSPg);
 
 //post to server updates based on reminders, watch history etc
 const createNav = document.getElementById("createNav");
@@ -236,7 +244,7 @@ function moviesForm() {
 
 //retrieve form data + add to database
 
-const userForm = document.getElementById("signupForm");
+const signUpForm = document.getElementById("signupForm");
 async function submitUser(event) {
   event.preventDefault();
   const userFormData = new FormData(userForm);
@@ -250,11 +258,10 @@ async function submitUser(event) {
   });
 }
 
-userForm.addEventListener("submit", (event) => {
+signUpForm.addEventListener("submit", (event) => {
   submitUser(event);
 });
-
-userForm.addEventListener("submit", submitUser);
+signUpForm.addEventListener("submit", submitUser);
 
 //create new task
 
@@ -279,11 +286,11 @@ async function fetchBookData(book) {
   bookSection.innerHTML = "";
   const bookContainer = document.createElement("section");
   const textDiv = document.createElement("section");
-  textDiv.setAttribute('class', 'bookTextDiv')
+  textDiv.setAttribute("class", "bookTextDiv");
   bookContainer.setAttribute("class", "bookContainer");
   const h2Title = document.createElement("h2");
   h2Title.innerText = `Your current book!`;
-  h2Title.setAttribute('class', 'currentBook')
+  h2Title.setAttribute("class", "currentBook");
   textDiv.appendChild(h2Title);
   const bookTitle = document.createElement("p");
   bookTitle.innerText = `Title: ${data.items[0].volumeInfo.title}`;

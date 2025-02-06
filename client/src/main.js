@@ -328,18 +328,18 @@ displayChecklist();
 
 async function displayMovies(movie) {
   console.log(movie);
+  const movieElement = document.getElementById("moviesSection");
   const response = await fetch(
     `http://www.omdbapi.com/?t=${movie}&apikey=72bf2de2`
   );
 
   const data = await response.json();
   const movieContainer = document.createElement("div");
+  movieElement.innerHTML = "";
   const movieName = document.createElement("h1");
   movieName.innerText = data.Title;
   const movieGenre = document.createElement("p");
   movieGenre.innerText = " - " + data.Genre;
-  // const moviebutton = document.createElement("button");
-  // moviebutton.innerText = "X";
   const movieLanguage = document.createElement("p");
   movieLanguage.innerText = " - " + data.Language;
   const moviePlot = document.createElement("p");
@@ -348,8 +348,7 @@ async function displayMovies(movie) {
   movieContainer.appendChild(movieGenre);
   movieContainer.appendChild(movieLanguage);
   movieContainer.appendChild(moviePlot);
-  // movieContainer.appendChild(moviebutton);
-  const movieElement = document.getElementById("moviesSection");
+
   movieElement.appendChild(movieContainer);
   console.log(movieContainer);
 }

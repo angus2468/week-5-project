@@ -60,7 +60,7 @@ html {
 }
 
 .moviesContainer {
-  background-color: #ffcab0;
+  background-color: #9DCDC0;
   border-radius: 10px;
   padding: 20px;
   border: black solid 2px;
@@ -107,17 +107,17 @@ html {
   justify-content: flex-end;
   align-items: center;
   gap: 20px;
-  overflow-y: scroll;
   width: 100%;
 }
 
 .bookTextDiv {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   position: relative;
   height: 200px;
   width: 85%;
+  overflow-y: scroll;
 }
 
 /* .currentBook {
@@ -137,7 +137,7 @@ html {
 
 .weatherContainer {
   grid-row: 1/2;
-  background-color: #fdffcd; 
+  background-color: #ffebbb; 
   border-radius: 10px;
   padding: 10px;
   border: black solid 2px;
@@ -145,7 +145,7 @@ html {
 
 .checklistContainer {
   grid-row: 2/5;
-  background-color: #e0ffcd; 
+  background-color: #9DCDC0; 
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -178,7 +178,7 @@ html {
   width: 20px;
   position: absolute;
   right: 5px;
-  background-color: rgb(160, 230, 144);
+  background-color: rgb(206, 124, 108);
   border-style: hidden;
 }
 

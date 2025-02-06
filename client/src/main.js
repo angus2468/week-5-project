@@ -475,6 +475,7 @@ function generateChecklist(dataToRender) {
 
   for (let i = 0; i < dataToRender.rows.length; i++) {
     const checklistContainer = document.createElement("div");
+    const flexDiv = document.createElement('div')
     const itemDiv = document.createElement("div");
     const listItem = document.createElement("p");
     const deleteListItem = document.createElement("button");
@@ -485,9 +486,11 @@ function generateChecklist(dataToRender) {
     listItem.setAttribute("class", "listItem");
     deleteListItem.setAttribute("class", "deleteListItem");
     checklistContainer.setAttribute("class", "checklistPageItem");
+    flexDiv.setAttribute('class', 'checklistFlexDiv')
 
     itemDiv.appendChild(deleteListItem);
     itemDiv.appendChild(listItem);
+    flexDiv.appendChild(checklistContainer)
     checklistContainer.appendChild(itemDiv);
     checklistPageDiv.appendChild(checklistContainer);
 

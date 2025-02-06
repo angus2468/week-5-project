@@ -114,7 +114,7 @@ html {
 .bookTextDiv {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   position: relative;
   height: 200px;
   width: 85%;
@@ -178,7 +178,7 @@ html {
   width: 20px;
   position: absolute;
   right: 5px;
-  background-color: rgb(206, 124, 108);
+  background-color: rgb(160, 230, 144);
   border-style: hidden;
 }
 

@@ -160,7 +160,7 @@ html {
 }
 
 .checklistItem p {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .checklistItem button {
@@ -199,7 +199,6 @@ html {
     background-color: goldenrod;
     width: 100vw;
     padding-bottom: 12px;
-    left: 20px;
   }
   .mainNav div {
     font-size: 13px;
@@ -227,6 +226,8 @@ html {
   }
   .nav-dropdown.active {
     display: flex;
+    justify-content: flex-start;
+    z-index: 1;
   }
   .menu-button {
     display: contents;
@@ -268,10 +269,10 @@ html {
     justify-self: center;
   }
 
-  .movieContainer{
+  .movieContainer {
     height: 100px;
     display: flex;
-    
+
     overflow-y: scroll;
   }
 
@@ -341,27 +342,27 @@ header {
   font-weight: 700;
 }
 
-div#movies:hover{
+div#movies:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
-div#home:hover{
+div#home:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
-div#checklist:hover{
+div#checklist:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
-div#books:hover{
+div#books:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
-button#createButton{
+button#createButton {
   cursor: pointer;
 }
 
@@ -543,7 +544,6 @@ button#createButton{
   justify-content: center;
   padding: 0px 40px;
 }
-
 
 #checklistPageDiv {
   width: 100vw;

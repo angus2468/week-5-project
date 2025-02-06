@@ -48,7 +48,6 @@ app.get("/userInfo", async (req, res) => {
   const result = await db.query("SELECT * FROM userInfo");
   res.json(result);
 });
-
 app.get("/moviewatchlist", async (req, res) => {
   const result = await db.query("SELECT * FROM moviewatchlist");
   res.json(result);

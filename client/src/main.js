@@ -279,11 +279,11 @@ async function fetchBookData(book) {
   bookSection.innerHTML = "";
   const bookContainer = document.createElement("section");
   const textDiv = document.createElement("section");
-  textDiv.setAttribute('class', 'bookTextDiv')
+  textDiv.setAttribute("class", "bookTextDiv");
   bookContainer.setAttribute("class", "bookContainer");
   const h2Title = document.createElement("h2");
   h2Title.innerText = `Your current book!`;
-  h2Title.setAttribute('class', 'currentBook')
+  h2Title.setAttribute("class", "currentBook");
   textDiv.appendChild(h2Title);
   const bookTitle = document.createElement("p");
   bookTitle.innerText = `Title: ${data.items[0].volumeInfo.title}`;
@@ -348,9 +348,9 @@ async function displayMovies(movie) {
   movieSection.innerHTML = "";
   const movieContainer = document.createElement("section");
   const textDiv = document.createElement("section");
-  movieContainer.setAttribute("class", "bookContainer");
+  movieContainer.setAttribute("class", "movieContainer");
   const h2Title = document.createElement("h2");
-  h2Title.innerText = `Your current book!`;
+  h2Title.innerText = `Your current Movie!`;
   textDiv.appendChild(h2Title);
   const movieTitle = document.createElement("p");
   movieTitle.innerText = `Title: ${data.results[0].title}`;

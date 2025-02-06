@@ -11,6 +11,35 @@ html {
 
 /*THIS IS THE START OF NEW MAIN PAGE GRID LAYOUT*/
 
+#createButton {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  color: black;
+  background-color: rgb(221, 176, 62);
+  border: solid 2px rgb(181, 137, 54);
+}
+
+.createButton {
+  border-radius: 3px;
+  padding: 3px;
+  background-color: #d39236;
+  color: black;
+  font-weight: 200;
+}
+
+.hiddenNav {
+  margin-left: 10px;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.hiddenNavContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .mainContainer {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -31,6 +60,17 @@ html {
   background-color: #93c4e1;
   border-radius: 10px;
   padding: 20px;
+}
+
+.movieContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+  align-items: center;
+}
+
+.movieContainer img {
+  height: 229px;
 }
 
 .booksContainer {
@@ -81,8 +121,45 @@ html {
   grid-row: 2/5;
   background-color: rgb(236, 159, 144);
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
 }
+
+.checklistItem {
+  display: flex;
+  gap: 5px;
+  padding: 10px;
+  justify-content: center;
+  background-color: rgb(206, 124, 108);
+  margin-top: 5px;
+  width: 150px;
+  border: #a35f92 solid 2px;
+  border-radius: 10px;
+  position: relative;
+  /* font-weight: 400; */
+}
+
+.checklistItem p {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.checklistItem button {
+  border-radius: 10px;
+  width: 20px;
+  position: absolute;
+  right: 5px;
+  background-color: rgb(206, 124, 108);
+  border-style: hidden;
+}
+
+.checklistItem button:hover {
+  transform: translateY(2px);
+  background-color: rgb(221, 154, 141);
+}
+
 /* added a hide button for the menu button*/
 .menu-button {
   display: none;
@@ -238,12 +315,6 @@ header {
 .hiddenForm {
   position: relative;
   flex-direction: column;
-}
-
-.checklistItem {
-  display: flex;
-  gap: 5px;
-  padding: 10px;
 }
 
 /* css for sign up form */
@@ -426,6 +497,7 @@ header {
   height: 90vh;
   background-color: purple;
   position: absolute;
+  z-index: 1;
 }
 
 #bookPageDiv {
@@ -433,6 +505,7 @@ header {
   height: 100vh;
   background-color: green;
   position: absolute;
+  z-index: 1;
 }
 
 #moviePageDiv {
@@ -440,6 +513,7 @@ header {
   height: 100vh;
   background-color: rgb(0, 204, 255);
   position: absolute;
+  z-index: 1;
 }
 
 /*START OF NAV BAR PAGE STYLING*/
@@ -454,7 +528,6 @@ header {
   justify-content: center;
   border-radius: 20px;
   margin-top: 10px;
-
   border: white solid 2px;
   position: relative;
 }

@@ -236,7 +236,7 @@ function moviesForm() {
       body: JSON.stringify(movieData),
     });
     createForm.innerHTML = "";
-    displayMovies();
+    getLatestMovie();
   }
 }
 
@@ -338,30 +338,45 @@ async function displayChecklist() {
 displayChecklist();
 
 async function displayMovies(movie) {
-  console.log(movie);
-  const movieElement = document.getElementById("moviesSection");
+  const option = {
+    method: "get",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZDRhNGNhYTJjYTc4YzA3ZDIzODk1NWRjNmU2ZmQ1OSIsIm5iZiI6MTczODgzMjg3OC4zNywic3ViIjoiNjdhNDdiZWUyZjQ0ZjgyYWQzMmZlOGI0Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.CyFTSze3QSe46-VBUpp8-tikM-eIMeKAkNW69Nxg2vg",
+    },
+  };
   const response = await fetch(
-    `http://www.omdbapi.com/?t=${movie}&apikey=72bf2de2`
+    `https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&language=en-US&page=1`,
+    option
   );
-
   const data = await response.json();
-  const movieContainer = document.createElement("div");
-  movieElement.innerHTML = "";
-  const movieName = document.createElement("h1");
-  movieName.innerText = data.Title;
-  const movieGenre = document.createElement("p");
-  movieGenre.innerText = " - " + data.Genre;
-  const movieLanguage = document.createElement("p");
-  movieLanguage.innerText = " - " + data.Language;
-  const moviePlot = document.createElement("p");
-  moviePlot.innerText = " - " + data.Plot;
-  movieContainer.appendChild(movieName);
-  movieContainer.appendChild(movieGenre);
-  movieContainer.appendChild(movieLanguage);
-  movieContainer.appendChild(moviePlot);
-
-  movieElement.appendChild(movieContainer);
-  console.log(movieContainer);
+  const movieSection = document.getElementById("moviesSection");
+  movieSection.innerHTML = "";
+  const movieContainer = document.createElement("section");
+  const textDiv = document.createElement("section");
+  movieContainer.setAttribute("class", "movieContainer");
+  const h2Title = document.createElement("h2");
+  h2Title.innerText = `Your current Movie!`;
+  textDiv.appendChild(h2Title);
+  const movieTitle = document.createElement("p");
+  movieTitle.innerText = `Title: ${data.results[0].title}`;
+  textDiv.appendChild(movieTitle);
+  const movieDate = document.createElement("p");
+  movieDate.innerText = `Date published: ${data.results[0].release_date}`;
+  textDiv.appendChild(movieDate);
+  const movieDescription = document.createElement("p");
+  movieDescription.innerText = `Description: ${data.results[0].overview}`;
+  textDiv.appendChild(movieDescription);
+  const movieCover = document.createElement("img");
+  // const bookCoverPicture = async function(){
+  //   const res = await fetch(`https://api.themoviedb.org/3/movie/${data.results[0].id}/images`, option)
+  //   const datacover = await res.json()
+  // }
+  movieCover.src = `https://image.tmdb.org/t/p/w300_and_h450_bestv2${data.results[0].poster_path}`;
+  movieContainer.appendChild(textDiv);
+  movieContainer.appendChild(movieCover);
+  movieSection.appendChild(movieContainer);
 }
 
 async function getLatestMovie() {

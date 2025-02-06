@@ -24,24 +24,41 @@ html {
   display: grid;
   grid-template-rows: 1fr 1fr;
   gap: 30px;
+  height: 85vh;
 }
 
 .moviesContainer {
   background-color: #93c4e1;
   border-radius: 10px;
-  height: 300px;
   padding: 20px;
 }
 
 .booksContainer {
   background-color: #d3dbd9;
   border-radius: 10px;
-  height: 300px;
   padding: 20px;
+  display: flex;
 }
 .bookContainer {
   display: flex;
-  gap: 5px;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.bookTextDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  height: 200px;
+}
+
+.currentBook {
+  position: absolute;
+  right: 0px;
+  top: 0px;
 }
 
 .wcContainer {
@@ -49,6 +66,8 @@ html {
   display: grid;
   grid-template-rows: 1fr 3fr;
   gap: 30px;
+  width: 20vw;
+  height: 85vh;
 }
 
 .weatherContainer {

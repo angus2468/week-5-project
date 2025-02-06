@@ -275,27 +275,29 @@ async function fetchBookData(book) {
     `https://www.googleapis.com/books/v1/volumes?q=${book}&key=AIzaSyABiSCRECheWyoruOwQs0AN81RKWe3-gsU`
   );
   const data = await response.json();
-  const calenderSection = document.getElementById("calenderSection");
-  calenderSection.innerHTML = "";
+  const bookSection = document.getElementById("bookSection");
+  bookSection.innerHTML = "";
   const bookContainer = document.createElement("section");
+  const textDiv = document.createElement("section");
   bookContainer.setAttribute("class", "bookContainer");
   const h2Title = document.createElement("h2");
   h2Title.innerText = `Your current book!`;
-  bookContainer.appendChild(h2Title);
+  textDiv.appendChild(h2Title);
   const bookTitle = document.createElement("p");
   bookTitle.innerText = `Title: ${data.items[0].volumeInfo.title}`;
-  bookContainer.appendChild(bookTitle);
+  textDiv.appendChild(bookTitle);
   const bookDate = document.createElement("p");
   bookDate.innerText = `Date published: ${data.items[0].volumeInfo.publishedDate}`;
-  bookContainer.appendChild(bookDate);
+  textDiv.appendChild(bookDate);
   const bookDescription = document.createElement("p");
   bookDescription.innerText = `Description: ${data.items[0].volumeInfo.description}`;
-  bookContainer.appendChild(bookDescription);
+  textDiv.appendChild(bookDescription);
   const bookCover = document.createElement("img");
   console.log(data.items[0].volumeInfo);
   bookCover.src = data.items[0].volumeInfo.imageLinks.smallThumbnail;
+  bookContainer.appendChild(textDiv);
   bookContainer.appendChild(bookCover);
-  calenderSection.appendChild(bookContainer);
+  bookSection.appendChild(bookContainer);
 }
 
 async function displayChecklist() {
@@ -368,6 +370,8 @@ async function displayWeather(weather) {
   );
 
   const data = await response.json();
+  const weatherSection = document.getElementById("weatherSection");
+  weatherSection.innerHTML = "";
   const weatherContainer = document.createElement("div");
   const myLocation = document.createElement("h3");
   myLocation.innerText = data.location.name;
@@ -381,7 +385,6 @@ async function displayWeather(weather) {
   weatherContainer.appendChild(currentTemp);
   weatherContainer.appendChild(currentWeather);
   weatherContainer.appendChild(weatherImg);
-  const weatherSection = document.getElementById("remindersSection");
   weatherSection.appendChild(weatherContainer);
   console.log;
 }

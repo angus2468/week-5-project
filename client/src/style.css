@@ -61,7 +61,9 @@ html {
 }
 
 .moviesContainer {
+
   background-color: rgb(227, 208, 130); 
+
   border-radius: 10px;
   padding: 20px;
   border: black solid 2px;
@@ -129,7 +131,6 @@ p{
   justify-content: flex-end;
   align-items: center;
   gap: 20px;
-  overflow-y: scroll;
   width: 100%;
 }
 
@@ -140,6 +141,7 @@ p{
   position: relative;
   height: 200px;
   width: 85%;
+  overflow-y: scroll;
 }
 
 /* .currentBook {
@@ -159,7 +161,7 @@ p{
 
 .weatherContainer {
   grid-row: 1/2;
-  background-color: #fdffcd; 
+  background-color: #ffebbb; 
   border-radius: 10px;
   padding: 10px;
   border: black solid 2px;

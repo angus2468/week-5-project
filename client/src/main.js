@@ -1,5 +1,5 @@
 //error handling for repeat items e.g you have watched this already, do you wish to add this again.
-const API_URL = "http://localhost:8080/";
+const API_URL = "https://week-5-project.onrender.com/";
 //hamburger/drop down menu for creation of reminders
 
 //UI updates
@@ -92,7 +92,7 @@ function checklistForm() {
     event.preventDefault();
     const taskFormData = new FormData(createForm);
     const taskData = Object.fromEntries(taskFormData);
-    fetch(`http://localhost:8080/checklist`, {
+    fetch(`${API_URL}checklist`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -100,7 +100,7 @@ function checklistForm() {
       body: JSON.stringify(taskData),
     });
     createForm.innerHTML = "";
-    fetchChecklistData()
+    fetchChecklistData();
   }
 }
 
@@ -160,7 +160,7 @@ function bookForm() {
     event.preventDefault();
     const bookFormData = new FormData(bookForm);
     const bookData = Object.fromEntries(bookFormData);
-    await fetch(`http://localhost:8080/booklist`, {
+    await fetch(`${API_URL}booklist`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -169,7 +169,7 @@ function bookForm() {
     });
     bookForm.innerHTML = "";
     getLatestBook();
-    fetchBookData()
+    fetchBookData();
   }
 }
 
@@ -231,7 +231,7 @@ function moviesForm() {
     event.preventDefault();
     const movieFormData = new FormData(createForm);
     const movieData = Object.fromEntries(movieFormData);
-    fetch(`http://localhost:8080/moviewatchlist`, {
+    fetch(`${API_URL}moviewatchlist`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -253,7 +253,7 @@ async function submitUser(event) {
   event.preventDefault();
   const userFormData = new FormData(signUpForm);
   const userData = Object.fromEntries(userFormData);
-  fetch(`http://localhost:8080/userInfo`, {
+  fetch(`${API_URL}userInfo`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -363,7 +363,7 @@ async function displayMovies(movie) {
   movieContainer.setAttribute("class", "movieContainer");
   const h2Title = document.createElement("h2");
   h2Title.innerText = `Your current Movie!`;
-  h2Title.setAttribute('class', 'currentMovie')
+  h2Title.setAttribute("class", "currentMovie");
   textDiv.appendChild(h2Title);
   const movieTitle = document.createElement("p");
   movieTitle.innerText = `Title: ${data.results[0].title}`;
@@ -386,7 +386,7 @@ async function displayMovies(movie) {
 }
 
 async function getLatestMovie() {
-  const response = await fetch(`http://localhost:8080/moviewatchlist`);
+  const response = await fetch(`${API_URL}moviewatchlist`);
   const data = await response.json();
   const latestMovie = data.rows[data.rows.length - 1].moviename;
   console.log(latestMovie);
@@ -422,7 +422,7 @@ async function displayWeather(weather) {
 displayWeather();
 
 async function getLatestBook() {
-  const response = await fetch(`http://localhost:8080/booklist`);
+  const response = await fetch(`${API_URL}booklist`);
   const data = await response.json();
   const latestBook = data.rows[data.rows.length - 1].name;
   console.log(latestBook);
@@ -441,7 +441,7 @@ function changeForegroundChecklist() {
 }
 
 async function fetchChecklistData() {
-  const response = await fetch("http://localhost:8080/checklist");
+  const response = await fetch(`${API_URL}checklist`);
   const data = await response.json();
   generateChecklist(data);
 }
@@ -472,7 +472,7 @@ function generateChecklist(dataToRender) {
     });
 
     async function handleDelete(id) {
-      const response = await fetch(`http://localhost:8080/checklist/${id}`, {
+      const response = await fetch(`${API_URL}checklist/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
@@ -495,7 +495,7 @@ function changeForegroundBooks() {
 }
 
 async function fetchBookPageData() {
-  const response = await fetch("http://localhost:8080/booklist");
+  const response = await fetch(`${API_URL}booklist`);
   const data = await response.json();
   generateBooks(data);
 }
@@ -535,7 +535,7 @@ function generateBooks(dataToRender) {
     });
 
     async function handleDelete(id) {
-      const response = await fetch(`http://localhost:8080/booklist/${id}`, {
+      const response = await fetch(`${API_URL}booklist/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
@@ -558,7 +558,7 @@ function changeForeground() {
 const foregroundDiv = document.getElementById("foregroundDiv");
 
 async function fetchMovieData() {
-  const response = await fetch("http://localhost:8080/moviewatchlist");
+  const response = await fetch(`${API_URL}moviewatchlist`);
   const data = await response.json();
   generateMovie(data);
 }
@@ -599,12 +599,9 @@ function generateMovie(dataToRender) {
     });
 
     async function handleDelete(id) {
-      const response = await fetch(
-        `http://localhost:8080/moviewatchlist/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`${API_URL}moviewatchlist/${id}`, {
+        method: "DELETE",
+      });
       if (response.ok) {
         fetchMovieData();
       }

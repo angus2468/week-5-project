@@ -39,6 +39,10 @@ html {
   height: 300px;
   padding: 20px;
 }
+.bookContainer {
+  display: flex;
+  gap: 5px;
+}
 
 .wcContainer {
   grid-column: 4/5;
@@ -429,7 +433,6 @@ header {
   background-color: none;
   border-style: hidden;
   background-color: #d18fc0;
-
 }
 
 .bookPageItem {

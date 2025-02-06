@@ -47,6 +47,8 @@ html {
   gap: 30px;
   background-color: #e6adec;
   padding: 30px;
+  background-image: url('https://cdn.pixabay.com/photo/2023/10/04/13/37/lemon-8293727_1280.jpg');
+  border: black solid 2px;
 }
 
 .mbContainer {
@@ -61,6 +63,7 @@ html {
   background-color: #ffcab0;
   border-radius: 10px;
   padding: 20px;
+  border: black solid 2px;
 }
 
 .movieContainer {
@@ -96,6 +99,7 @@ html {
   border-radius: 10px;
   padding: 20px;
   display: flex;
+  border: black solid 2px;
 }
 .bookContainer {
   display: flex;
@@ -136,6 +140,7 @@ html {
   background-color: #fdffcd; 
   border-radius: 10px;
   padding: 10px;
+  border: black solid 2px;
 }
 
 .checklistContainer {
@@ -147,6 +152,7 @@ html {
   justify-content: center;
   align-items: center;
   overflow-y: scroll;
+  border: black solid 2px;
 }
 
 .checklistItem {
@@ -154,7 +160,7 @@ html {
   gap: 5px;
   padding: 10px;
   justify-content: center;
-  background-color: rgb(206, 124, 108);
+  background-color: rgb(160, 230, 144);
   margin-top: 5px;
   width: 150px;
   border: #a35f92 solid 2px;
@@ -338,7 +344,7 @@ html {
 /* THIS IS THE END OF NEW MAIN PAGE GRID LAYOUT*/
 
 header {
-  background-color: #cb7fcf;
+  background-color: goldenrod;
   padding-bottom: 10px;
 }
 

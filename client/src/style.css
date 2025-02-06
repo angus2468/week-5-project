@@ -11,6 +11,35 @@ html {
 
 /*THIS IS THE START OF NEW MAIN PAGE GRID LAYOUT*/
 
+#createButton {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  color: black;
+  background-color: rgb(221, 176, 62);
+  border: solid 2px rgb(181, 137, 54);
+}
+
+.createButton {
+  border-radius: 3px;
+  padding: 3px;
+  background-color: #d39236;
+  color: black;
+  font-weight: 200;
+}
+
+.hiddenNav {
+  margin-left: 10px;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.hiddenNavContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .mainContainer {
   display: grid;
   grid-template-columns: 3fr 1fr;

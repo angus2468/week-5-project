@@ -428,8 +428,10 @@ async function displayWeather(weather) {
   weatherSection.innerHTML = "";
   const weatherContainer = document.createElement("div");
   const myLocation = document.createElement("h3");
+  myLocation.setAttribute("class", "myLocation")
   myLocation.innerText = data.location.name;
   const currentWeather = document.createElement("h1");
+  currentWeather.setAttribute("class", "currentWeather")
   currentWeather.innerText = data.current.condition.text;
   const weatherImg = document.createElement("img");
   weatherImg.src = data.current.condition.icon;

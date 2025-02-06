@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Funnel+Display:wght@300..800&family=Pacifico&family=Satisfy&family=Smooch+Sans:wght@100..900&family=Varela+Round&display=swap');
 * {
   margin: 0px;
   padding: 0px;
@@ -60,7 +61,9 @@ html {
 }
 
 .moviesContainer {
-  background-color: #9DCDC0;
+
+  background-color: rgb(227, 208, 130); 
+
   border-radius: 10px;
   padding: 20px;
   border: black solid 2px;
@@ -72,6 +75,8 @@ html {
   gap: 20px;
   align-items: center;
   overflow-y: scroll;
+  padding-left: 30px;
+  padding-top: 50px;
 }
 
 .movieContainer img {
@@ -93,11 +98,30 @@ html {
   right: 0px;
   top: 0px;
 } */
-
+.currentMovie,
+.currentBook,
+.currentWeather {
+  font-family: "Funnel Display", serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 800;
+  color: #162102;
+}
+.myLocation {
+  font-family: "Funnel Display", serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 800;
+}
+p{
+ font-family: "Smooch Sans", serif;
+ font-weight: 500;
+ font-size: 20px; 
+}
 .booksContainer {
-  background-color: #ffebbb;
+  background-color: rgba(237, 226, 180);
   border-radius: 10px;
-  padding: 20px;
+  padding: 50px;
   display: flex;
   border: black solid 2px;
 }
@@ -145,7 +169,7 @@ html {
 
 .checklistContainer {
   grid-row: 2/5;
-  background-color: #9DCDC0; 
+  background-color: rgb(227, 209, 137); 
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -160,10 +184,10 @@ html {
   gap: 5px;
   padding: 10px;
   justify-content: center;
-  background-color: rgb(160, 230, 144);
+  background-color: #ede2b4;
   margin-top: 5px;
-  width: 150px;
-  border: #a35f92 solid 2px;
+  width: 280px;
+  border: #ede2b4 solid 2px;
   border-radius: 10px;
   position: relative;
   /* font-weight: 400; */
@@ -232,7 +256,7 @@ html {
     padding: 15px;
     text-align: center;
 
-    background-color: #a35f92;
+    background-color: goldenrod;
     width: 100%;
   }
   .nav-dropdown.active {
@@ -271,7 +295,6 @@ html {
     width: 80%;
   }
   .booksContainer {
-    background-color: #93c4e1;
     border-radius: 10px;
     width: 80%;
     height: 150px;
@@ -320,7 +343,6 @@ html {
 
   .weatherContainer,
   .checklistContainer {
-    background-color: #ddfff7;
     border-radius: 10px;
     width: 80%;
     justify-self: center;
@@ -331,7 +353,6 @@ html {
     font-size: 11px;
   }
   .checklistContainer {
-    background-color: rgb(236, 159, 144);
     height: 100px;
     padding: 20px;
   }

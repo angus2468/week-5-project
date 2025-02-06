@@ -26,6 +26,7 @@ html {
   background-color: #d39236;
   color: black;
   font-weight: 200;
+  cursor: pointer;
 }
 
 .hiddenNav {
@@ -97,7 +98,7 @@ html {
 .bookContainer {
   display: flex;
   flex-direction: row-reverse;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 20px;
   overflow-y: scroll;
@@ -324,8 +325,28 @@ header {
   font-weight: 700;
 }
 
-.mainNav div:hover {
+div#movies:hover{
   text-decoration: underline;
+  cursor: pointer;
+}
+
+div#home:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+div#checklist:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+div#books:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+button#createButton{
+  cursor: pointer;
 }
 
 .hiddenForm {

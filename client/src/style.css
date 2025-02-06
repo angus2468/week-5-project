@@ -100,31 +100,36 @@ html {
 
 @media (max-width: 500px) {
   .mainNav {
-    gap: 15px;
     align-items: center;
     justify-content: center;
     background-color: goldenrod;
-    padding: 10px;
-    width: 100%;
+    width: 100vw;
+    padding-bottom: 12px;
+    left: 20px;
   }
   .mainNav div {
     font-size: 13px;
     font-weight: 600;
+    width: 100vw;
+    left: 20px;
+    justify-content: center;
+    align-items: center;
   }
   .nav-dropdown {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 50px;
-    left: 10px;
+    top: 51px;
     width: 100%;
-    background-color: #a35f92;
-    padding: 10px;
+    right: 10px;
   }
   .nav-dropdown div {
     border-bottom: 1px solid white;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
+
+    background-color: #a35f92;
+    width: 100%;
   }
   .nav-dropdown.active {
     display: flex;

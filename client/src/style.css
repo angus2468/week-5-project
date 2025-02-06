@@ -592,6 +592,30 @@ button#createButton {
   z-index: 1;
 }
 
+#checklistPageDiv2{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+#moviesPageDiv2{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+#booksPageDiv2{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
 /*START OF NAV BAR PAGE STYLING*/
 
 .checklistPageItem {
@@ -622,7 +646,7 @@ button#createButton {
   background-color: rgb(44, 162, 44);
   margin: 5px;
   width: 300px;
-  height: 50px;
+  height: auto;
   display: flex;
   justify-content: center;
   border-radius: 10px;
@@ -645,7 +669,7 @@ button#createButton {
   background-color: rgb(78, 201, 231);
   margin: 5px;
   width: 300px;
-  height: 50px;
+  height: auto;
   display: flex;
   justify-content: center;
   border-radius: 10px;

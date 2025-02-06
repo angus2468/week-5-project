@@ -471,12 +471,13 @@ async function fetchChecklistData() {
 }
 
 function generateChecklist(dataToRender) {
-  checklistPageDiv.innerHTML = "";
+  const checklistPageDiv2 = document.getElementById("checklistPageDiv2");
+  checklistPageDiv2.innerHTML = "";
 
   for (let i = 0; i < dataToRender.rows.length; i++) {
     const checklistContainer = document.createElement("div");
-    const flexDiv = document.createElement('div')
     const itemDiv = document.createElement("div");
+    const pageDiv = document.getElementById("checklistPageDiv2");
     const listItem = document.createElement("p");
     const deleteListItem = document.createElement("button");
 
@@ -486,13 +487,12 @@ function generateChecklist(dataToRender) {
     listItem.setAttribute("class", "listItem");
     deleteListItem.setAttribute("class", "deleteListItem");
     checklistContainer.setAttribute("class", "checklistPageItem");
-    flexDiv.setAttribute('class', 'checklistFlexDiv')
 
-    itemDiv.appendChild(deleteListItem);
     itemDiv.appendChild(listItem);
-    flexDiv.appendChild(checklistContainer)
+    itemDiv.appendChild(deleteListItem);
     checklistContainer.appendChild(itemDiv);
-    checklistPageDiv.appendChild(checklistContainer);
+    pageDiv.appendChild(checklistContainer);
+    
 
     deleteListItem.addEventListener("click", () => {
       handleDelete(dataToRender.rows[i].id);
@@ -528,12 +528,14 @@ async function fetchBookPageData() {
 }
 
 function generateBooks(dataToRender) {
-  bookPageDiv.innerHTML = "";
+  const bookPageDiv2 = document.getElementById("booksPageDiv2");
+  bookPageDiv2.innerHTML = "";
   console.log(dataToRender);
 
   for (let i = 0; i < dataToRender.rows.length; i++) {
     const booksContainer = document.createElement("div");
     const booksDiv = document.createElement("div");
+    const pageDiv = document.getElementById("booksPageDiv2")
     const bookName = document.createElement("p");
     const bookGenre = document.createElement("p");
     const bookAuthor = document.createElement("p");
@@ -555,7 +557,7 @@ function generateBooks(dataToRender) {
     booksDiv.appendChild(bookGenre);
     booksDiv.appendChild(bookAuthor);
     booksContainer.appendChild(booksDiv);
-    bookPageDiv.appendChild(booksContainer);
+    pageDiv.appendChild(booksContainer)
 
     deleteBook.addEventListener("click", () => {
       handleDelete(dataToRender.rows[i].id);
@@ -591,12 +593,14 @@ async function fetchMovieData() {
 }
 
 function generateMovie(dataToRender) {
-  moviePageDiv.innerHTML = "";
+  const moviesPageDiv2 = document.getElementById("moviesPageDiv2")
+  moviesPageDiv2.innerHTML = "";
   console.log(dataToRender);
 
   for (let i = 0; i < dataToRender.rows.length; i++) {
     const moviesContainer = document.createElement("div");
     const movieDiv = document.createElement("div");
+    const pageDiv = document.getElementById("moviesPageDiv2")
     const movieName = document.createElement("p");
     const movieGenre = document.createElement("p");
     const movieLanguage = document.createElement("p");
@@ -619,7 +623,8 @@ function generateMovie(dataToRender) {
     movieDiv.appendChild(movieGenre);
     movieDiv.appendChild(movieLanguage);
     moviesContainer.appendChild(movieDiv);
-    moviePageDiv.appendChild(moviesContainer);
+    pageDiv.appendChild(moviesContainer);
+
 
     deleteMovie.addEventListener("click", () => {
       handleDelete(dataToRender.rows[i].id);

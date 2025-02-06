@@ -243,7 +243,7 @@ function moviesForm() {
 //retrieve form data + add to database
 
 const signUpForm = document.getElementById("signupForm");
-const loginForm = document.getElementById("loginForm")
+const loginForm = document.getElementById("loginForm");
 async function submitUser(event) {
   event.preventDefault();
   const userFormData = new FormData(signUpForm);
@@ -261,28 +261,33 @@ async function submitUser(event) {
 signUpForm.addEventListener("submit", (event) => {
   submitUser(event);
 });
-async function loginUser(event){
+async function loginUser(event) {
   event.preventDefault();
-  const formData = new FormData (loginForm)
-  const loginData = Object.fromEntries(formData)
-  const response = await fetch (`http://localhost:8080/userInfo`)
-  const users = await response.json()
-  console.log(users)
+  const formData = new FormData(loginForm);
+  const loginData = Object.fromEntries(formData);
+  const response = await fetch(`http://localhost:8080/userInfo`);
+  const users = await response.json();
+  console.log(users);
   users.rows.forEach((user) => {
-    if (user.username === loginData.username && user.password === loginData.password) {
-       console.log("login successful!")
-       hideLSPg();
-  } else if (user.username !== loginData.username || user.password !== loginData.password){
-    console.log("Invalid username or password")
-  }
-    })
-  }
-loginBtn.addEventListener("click", loginUser)
+    if (
+      user.username === loginData.username &&
+      user.password === loginData.password
+    ) {
+      console.log("login successful!");
+      hideLSPg();
+    } else if (
+      user.username !== loginData.username ||
+      user.password !== loginData.password
+    ) {
+      console.log("Invalid username or password");
+    }
+  });
+}
+loginBtn.addEventListener("click", loginUser);
 function hideLSPg() {
   loginContainer.hidden = true;
 }
 signupBtn.addEventListener("click", hideLSPg);
-
 
 // signUpForm.addEventListener("submit", submitUser);
 //create a array that loops through userinfo and only recieves username and password
@@ -415,7 +420,7 @@ getLatestMovie();
 
 async function displayWeather(weather) {
   const response = await fetch(
-    `http://api.weatherapi.com/v1/current.json?key=2d89413830e24b93bab110358250502&q=London`
+    `https://api.weatherapi.com/v1/current.json?key=2d89413830e24b93bab110358250502&q=London`
   );
 
   const data = await response.json();

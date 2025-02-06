@@ -247,21 +247,22 @@ function moviesForm() {
 const signUpForm = document.getElementById("signupForm");
 async function submitUser(event) {
   event.preventDefault();
-  const userFormData = new FormData(userForm);
+  const userFormData = new FormData(signUpForm);
   const userData = Object.fromEntries(userFormData);
-  fetch(`http:localhost:8080/userInfo`, {
+  fetch(`http://localhost:8080/userInfo`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(userData),
   });
+  console.log(userData);
 }
 
 signUpForm.addEventListener("submit", (event) => {
   submitUser(event);
 });
-signUpForm.addEventListener("submit", submitUser);
+// signUpForm.addEventListener("submit", submitUser);
 
 //create new task
 

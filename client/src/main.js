@@ -100,6 +100,7 @@ function checklistForm() {
       body: JSON.stringify(taskData),
     });
     createForm.innerHTML = "";
+    fetchChecklistData()
   }
 }
 
@@ -168,6 +169,7 @@ function bookForm() {
     });
     bookForm.innerHTML = "";
     getLatestBook();
+    fetchBookData()
   }
 }
 
@@ -219,6 +221,7 @@ function moviesForm() {
   createForm.addEventListener("submit", (event) => {
     handleSubmit(event);
   });
+
   const clear = document.getElementById("Clear");
   clear.addEventListener("click", () => {
     createForm.innerHTML = "";
@@ -237,6 +240,7 @@ function moviesForm() {
     });
     createForm.innerHTML = "";
     getLatestMovie();
+    fetchMovieData();
   }
 }
 
